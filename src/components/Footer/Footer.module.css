@@ -1,0 +1,115 @@
+/*********************FOOTER **/
+/*********************FOOTER **/
+/*********************FOOTER **/
+/*********************FOOTER **/
+/*********************FOOTER **/
+/*********************FOOTER **/
+footer {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color:#FF6B6B;
+    font-family: Arial, Helvetica, sans-serif;
+}
+footer a {
+    text-decoration: none;
+    color: #FF6B6B;
+    display: block;
+}
+#footerLogo figure {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+#footerLogo figure img {
+    width: 100%;
+    height: auto;
+}
+#footerLogo p {
+    color: #FF6B6B;
+    font-size: 12px;
+    margin-top: 10px;
+}
+#footerLogo p span {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#socials {
+    width: 150px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #FF6B6B;
+    height: 40px;
+    width: 40px;
+}
+
+#socials a svg {
+    width: 80%;
+    height: 80%;
+}
+#socials a svg:hover,#socials a svg:active {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-out;
+}
+#mobileCopyright {
+    display: none;
+}
+@media only screen and (max-width: 600px) {
+    #footerLogo p {
+        display: none;
+    }
+    footer {
+        flex-wrap: wrap;
+    }
+    #footerLogo {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    #footerLogo figure {
+        width: 60px;
+        height: 60px;
+    }
+    #footerLogo a {
+        font-size: 12px;
+        padding-bottom: 7px;
+    }
+    #footerNav {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    #footerNav a {
+        font-size: 15px;
+    }
+    #footerContact {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #mobileCopyright {
+        display: block;
+        color: #999;
+        font-size: 10px;
+    }
+    #mobileCopyright span {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}

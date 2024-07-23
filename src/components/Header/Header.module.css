@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+
+/*  .gb {
+    border: 1px solid red;
+}   */
+ 
+
+header {
+    background-color: #005792;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/*HEADLINE COMPONENT */
+#headline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF6B6B;
+    padding: 20px;
+}
+#logo {
+    width: 60px;
+    height: 60px;
+}
+#logo svg {
+    width: 100%;
+    height: 100%;
+}
+h1 {
+    font-family: "Zain", sans-serif;
+    padding: 10px;
+}
+
+
+
+
+
+
+/* NAV SUBREDDITS / TOPICS COMPONENT */
+#topics {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#topics ul {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  justify-content: space-between;
+    list-style-type: none;
+}
+.topic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+#topicIcon {
+    width: 40px;
+    height: 40px;
+}
+#topicIcon svg {
+    width: 100%;
+    height: 100%;
+}
+.topic h3 {
+    color: #DAF6FB;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+
+
+
+/* SEARCH COMPONENT */
+form {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#searchField {
+    width: 250px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    cursor: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+
+}
+#searchField::placeholder {
+    font-size: 16px;
+    text-align: center;
+}
+#searchButton {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #005792;
+    outline: none;
+    border: none;
+}
+#searchButton svg {
+    width: 100%;
+    height: 100%;
+    color: #FF6B6B;
+}
+
+
