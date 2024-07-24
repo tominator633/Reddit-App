@@ -1,7 +1,7 @@
 
 export const subredditsData = [
     {
-        name: "sport",
+        name: "sportsnewstod",
         iconSrc: "img/TR-logo-pink.png"
     },
     {

@@ -5,11 +5,11 @@
     font-family: "Urbanist", sans-serif;
 }
 
-
-   .gb {
+/* 
+  .gb {
     border: 1px solid red;
 }    
-
+ */
 
 /* NAV SUBREDDITS / TOPICS COMPONENT */
  .swiper {
@@ -18,7 +18,6 @@
     display: flex;
     align-items: center;
   justify-content: space-between;
-  border-radius: 50px;
 }
 .swiperSlide {
     display: flex;
@@ -49,4 +48,22 @@
     color: #DAF6FB;
     font-weight: 400;
     font-size: 14px;
+}
+
+
+
+#btnPrev,
+#btnNext {
+    color: #DAF6FB;
+    width: 25px;
+    height: 25px;
+    background-color: #FF6B6B;
+    border: none;
+    border-radius: 50%;
+}
+
+#btnPrev::after,
+#btnNext::after {
+    font-size: 12px;
+    font-weight: 700;
 }

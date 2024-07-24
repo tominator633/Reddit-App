@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { Navigation, A11y, Mousewheel, FreeMode } from 'swiper/modules';
 import "swiper/css/bundle";
 import styles from "./SubredditsSlider.module.css";
-import SliderBtnPrev from "../SliderBtnPrev/SliderBtnPrev";
+
 
 
 
@@ -15,11 +15,14 @@ export default function SubredditsSlider ({subredditsData}) {
       freeMode={true}
       grabCursor={true}
       mousewheel={true}
-      navigation={false}
+      navigation={{
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      }}
       spaceBetween={10}
       slidesPerView={4}
     >
-      
+      <button className="swiper-button-prev" id={styles.btnPrev}></button>
       {subredditsData.map((item,index) => 
          (
           <SwiperSlide key={index} className={`${styles.swiperSlide} ${styles.gb}`}>
@@ -32,8 +35,7 @@ export default function SubredditsSlider ({subredditsData}) {
           </SwiperSlide>
         )
       )}
-
-      <SliderBtnPrev/>
+      <button className="swiper-button-next" id={styles.btnNext}></button>
     </Swiper>
     )
 }
