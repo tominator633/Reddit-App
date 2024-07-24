@@ -9,7 +9,7 @@ export default function Footer () {
             <figure role="presentation">
                 <img src="img/TR-logo-pink.png" alt="logo of the author"/>
             </figure>
-            <p aria-label="copyright message" >2024 <span>&#169;</span> Tomas Ruzicka. <br/>All rights reserved.</p>
+            <p>2024 <span>&#169;</span> Tomas Ruzicka. <br/>All rights reserved.</p>
         </section>
         <section id={styles.footerContact} className={styles.gb} role="presentation">
             <section id={styles.socials} className={styles.gb} role="presentation">
@@ -24,7 +24,7 @@ export default function Footer () {
                 </a>
             </section>
         </section>
-        <p aria-label="copyright message" id={styles.mobileCopyright} >2024 <span>&#169;</span> Tomas Ruzicka. All rights reserved.</p>
+        <p id={styles.mobileCopyright} >2024 <span>&#169;</span> Tomas Ruzicka. All rights reserved.</p>
       </footer>
     )
 }

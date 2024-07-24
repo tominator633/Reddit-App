@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+/*  .gb {
+    border: 1px solid red;
+}    */
+
+.comment {
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 20px;
+}
+.commentInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+}
+.commentUser {
+    font-weight: 700;
+    color:#005792;
+}
+.commentTimePosted {
+    font-weight: 400;
+    font-size: 13px;
+    color: #80abc9;
+}
