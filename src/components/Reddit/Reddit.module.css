@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+/*  .gb {
+    border: 1px solid red;
+}   */
+
+
+.reddit {
+    margin-top: 30px;
+    width: 700px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.votesColumn {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 10px;
+}
+.redditColumn {
+    width: 80%;
+}
+.rightColumn {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.arrowUp {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+
+}
+.arrowUp svg {
+    width: 100%;
+    height: 100%;
+    color: #005792;
+}
+
+.votes {
+    margin-top: 10px;
+    font-weight: 700;
+    color:#005792;
+}
+
+.arrowDown {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+
+}
+.arrowDown svg {
+    width: 100%;
+    height: 100%;
+    color: #005792;
+}
+
+
+.redditInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+}
+.redditUser {
+    font-weight: 700;
+    color:#005792;
+}
+.redditTimePosted {
+    font-weight: 400;
+    font-size: 13px;
+    color: #80abc9;
+}
+
+.commentsButton {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+}
+.commentsButton svg {
+    width: 100%;
+    height: 100%;
+    color: #005792;
+}

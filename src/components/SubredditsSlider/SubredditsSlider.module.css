@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+
+   .gb {
+    border: 1px solid red;
+}    
+
+
+/* NAV SUBREDDITS / TOPICS COMPONENT */
+ .swiper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  justify-content: space-between;
+  border-radius: 50px;
+}
+.swiperSlide {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.topic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+#topicIcon {
+    width: 40px;
+    height: 40px;
+}
+#topicIcon svg {
+    width: 100%;
+    height: 100%;
+}
+#topicIcon img {
+    width: 100%;
+    height: 100%;
+}
+.topic h3 {
+    color: #DAF6FB;
+    font-weight: 400;
+    font-size: 14px;
+}

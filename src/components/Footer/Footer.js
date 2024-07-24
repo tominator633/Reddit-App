@@ -7,7 +7,7 @@ export default function Footer () {
         <footer className={styles.gb}>
         <section id={styles.footerLogo} className={styles.gb} role="presentation">
             <figure role="presentation">
-                <img src="" alt="logo of the author"/>
+                <img src="img/TR-logo-pink.png" alt="logo of the author"/>
             </figure>
             <p aria-label="copyright message" >2024 <span>&#169;</span> Tomas Ruzicka. <br/>All rights reserved.</p>
         </section>
