@@ -1,28 +1,26 @@
 import React from "react";
 import styles from "./Reddit.module.css";
 
-export default function Reddit () {
+export default function Reddit ({content}) {
     return (
-        <div className={styles.reddit}>
+        <div className={styles.reddit} id={content.id} >
                 <div className={`${styles.votesColumn} ${styles.gb}`} role="presentation">
                     <button className={`${styles.arrowUp} ${styles.gb}`} aria-label="upvote this reddit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"></path></svg>
                     </button>
-                    <p className={`${styles.votes} ${styles.gb}`} aria-label="456 upvotes">456</p>
+                    <p className={`${styles.votes} ${styles.gb}`} aria-label={`The score of this reddit is ${content.score}`}>{content.score}</p>
                     <button className={`${styles.arrowDown} ${styles.gb}`}  aria-label="downvote this reddit">
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m10 2l-.15.005A2 2 0 0 0 8 4v6.999L5.414 11A2 2 0 0 0 4 14.414L10.586 21a2 2 0 0 0 2.828 0L20 14.414a2 2 0 0 0 .434-2.18l-.068-.145A2 2 0 0 0 18.586 11L16 10.999V4a2 2 0 0 0-2-2z"></path></svg>
                     </button>
                 </div>
                 <div className={`${styles.redditColumn} ${styles.gb}`} role="presentation">
                     <div className={`${styles.redditInfo} ${styles.gb}`} role="presentation">
-                        <p className={`${styles.redditUser} ${styles.gb}`}>royalDestroyer</p>
+                        <p className={`${styles.redditUser} ${styles.gb}`}>{content.user}</p>
                         <p className={`${styles.redditTimePosted} ${styles.gb}`}>2 hours ago</p>
                     </div>
                     <div className={`${styles.redditContent} ${styles.gb}`}>
-                        <h4>A title of the paragraph</h4>
-                        <p className={styles.gb}>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, ipsa harum, ab odit id unde officia ex et reprehenderit earum doloribus molestias sit doloremque! Labore recusandae corrupti impedit aliquam harum!
-                        </p>
+                        <h4>{content.title}</h4>
+                        <p className={styles.gb}>{content.text}</p>
                     </div>
                 </div>
                 <div className={`${styles.rightColumn} ${styles.gb}`}role="presentation">

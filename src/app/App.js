@@ -17,8 +17,6 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
 
 export default function App() {
 
-redditData.getData();
-
   return (
     <RouterProvider router={appRouter} />
   );

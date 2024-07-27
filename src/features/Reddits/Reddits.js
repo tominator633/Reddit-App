@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./Reddits.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import Reddit from "../../components/Reddit/Reddit";
-import { loadReddits, selectResultReddits, selectIsLoading, selectHasError} from "./RedditsSlice";
+import { loadReddits, selectResultReddits, selectIsLoading, selectHasError} from "./redditsSlice";
 
 export default function Reddits () {
     const dispatch = useDispatch();
