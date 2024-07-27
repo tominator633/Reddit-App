@@ -2,7 +2,9 @@ import React from 'react';
 import AppLayout from './AppLayout';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-import Reddits from '../components/Reddits/Reddits';
+import Reddits from '../features/Reddits/Reddits';
+import RedditDetailWindow from '../components/RedditDetailWindow/RedditDetailWindow';
+import redditData from '../data/redditData';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
 
@@ -14,6 +16,9 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
 ))
 
 export default function App() {
+
+redditData.getData();
+
   return (
     <RouterProvider router={appRouter} />
   );

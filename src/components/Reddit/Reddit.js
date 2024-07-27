@@ -19,6 +19,7 @@ export default function Reddit () {
                         <p className={`${styles.redditTimePosted} ${styles.gb}`}>2 hours ago</p>
                     </div>
                     <div className={`${styles.redditContent} ${styles.gb}`}>
+                        <h4>A title of the paragraph</h4>
                         <p className={styles.gb}>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, ipsa harum, ab odit id unde officia ex et reprehenderit earum doloribus molestias sit doloremque! Labore recusandae corrupti impedit aliquam harum!
                         </p>

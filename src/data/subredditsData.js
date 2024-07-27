@@ -44,4 +44,4 @@ export const subredditsData = [
         name: "shopping",
         iconSrc: "img/TR-logo-pink.png"
     }
-]
+];

@@ -8,7 +8,7 @@ export default function RedditDetailWindow () {
     return (
 <div className={`${styles.windowBarrier} ${styles.gb}`} role="presentation">
     <section className={`${styles.redditDetailWindow} ${styles.gb}`} role="dialog" aria-label="reddit detail window for...">
-        <div className={`${styles.closeBtnCon} ${styles.gb}`}>
+        <div className={`${styles.closeBtnCon} ${styles.gb}`} role="presentation">
             <button className={`${styles.closeBtn} ${styles.gb}`}>Close</button>
         </div>
         <Reddit/>
