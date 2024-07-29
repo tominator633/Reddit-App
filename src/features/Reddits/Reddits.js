@@ -14,15 +14,35 @@ export default function Reddits () {
         dispatch(loadReddits());
     }, [dispatch]);
     
-    return (
-        <>
-        <h2 className={styles.gb}>Reddits</h2>
-        <section className={`${styles.reddits} ${styles.gb}`}>
-            {resultReddits.map((content) => (
-                <Reddit content={content} key={content.id} />
-            ))}
-        </section>
-        </>
-    )
+    if (isLoading) {
+        return (
+            <>
+            <h2 className={styles.gb}>Reddits</h2>
+            <section className={`${styles.reddits} ${styles.gb}`}>
+               <p>LOADING</p>
+            </section>
+            </>
+        )
+    } else if (hasError) {
+        return (
+            <>
+            <h2 className={styles.gb}>Reddits</h2>
+            <section className={`${styles.reddits} ${styles.gb}`}>
+               <p>REQUEST FAILED</p>
+            </section>
+            </>
+        )
+    } else {
+        return (
+            <>
+            <h2 className={styles.gb}>Reddits</h2>
+            <section className={`${styles.reddits} ${styles.gb}`}>
+                {resultReddits.map((content) => (
+                    <Reddit content={content} key={content.id} />
+                ))}
+            </section>
+            </>
+        )
+    }
 }
 

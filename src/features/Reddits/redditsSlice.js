@@ -11,15 +11,45 @@ export const loadReddits = createAsyncThunk(
         if (response.ok) {
             const jsonResponse = await response.json();
             const redditsArr = jsonResponse.data.children.map((post) => {
+
+                let imgThumbnail;
+                const thumbnailIsImg = /\.(jpeg|jpg|png)$/i;
+                if (thumbnailIsImg.test(post.data.thumbnail)) {
+                    imgThumbnail = post.data.thumbnail;
+                } else {
+                    imgThumbnail = null;
+                };
+
+                let imgUrl;
+                const urlIncludesImg = /\.(jpeg|jpg|png)$/i;
+                if (urlIncludesImg.test(post.data.url)) {
+                    imgUrl = post.data.url;
+                } else {
+                    imgUrl = null;
+                };
+
+                let videoUrl;
+                if (post.data.is_video) {
+                    videoUrl = post.data.media.reddit_video.fallback_url;
+                } else {
+                    videoUrl = null;
+                };
+
                 return {
                     id: post.data.id,
                     user: post.data.author,
                     postTime: "",
                     subreddit: post.data.subreddit,
                     title: post.data.title,
-                    text: post.data.selftext_html,
-                    img: "",
+                    text: post.data.selftext,
+                    imgSrc: imgUrl,
+                    isVideo: post.data.is_video,
+                    videoSrc: videoUrl,
                     score: post.data.score,
+                    thumbnail: imgThumbnail,
+                    url: post.data.url,
+                    isSelfpost: post.data.is_self,
+                    
                 }
             });
             return redditsArr;

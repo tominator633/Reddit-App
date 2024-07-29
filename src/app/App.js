@@ -4,7 +4,6 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Reddits from '../features/Reddits/Reddits';
 import RedditDetailWindow from '../components/RedditDetailWindow/RedditDetailWindow';
-import redditData from '../data/redditData';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
 

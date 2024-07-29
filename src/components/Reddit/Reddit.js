@@ -20,7 +20,39 @@ export default function Reddit ({content}) {
                     </div>
                     <div className={`${styles.redditContent} ${styles.gb}`}>
                         <h4>{content.title}</h4>
-                        <p className={styles.gb}>{content.text}</p>
+                        
+                        {/* content has selftext */}
+                        {content.text && <p className={`${styles.selftextContent} ${styles.gb}`}>{content.text}</p>}
+
+                        {/* content is external URL */}
+                        {(!content.isSelfpost && !content.isVideo && !content.imgSrc) ? 
+                        <a className={`${styles.externalContent} ${styles.gb}`} href={content.url} target="_blank" >
+                            {/* image thumbnail is present?*/}
+                            {content.thumbnail &&
+                            <figure>
+                                <img src={content.thumbnail} alt={content.title}/>
+                            </figure>}
+                            <p className={styles.gb}>{content.url}</p>
+                        </a> : null}
+
+                        {/* content is img */}
+                        {content.imgSrc && 
+                            <figure className={`${styles.imgContent} ${styles.gb}`}>
+                                <img src={content.imgSrc} alt={content.title}/>
+                            </figure>
+                            }
+
+                        {/* content is video */}
+                        {content.videoSrc && 
+                            <>
+                            <video className={`${styles.videoContent} ${styles.gb}`} controls>
+                            <source src={content.videoSrc} type="video/mp4"/>
+                            </video>
+                            </>
+                            
+                        
+                        }
+
                     </div>
                 </div>
                 <div className={`${styles.rightColumn} ${styles.gb}`}role="presentation">
