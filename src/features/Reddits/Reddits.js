@@ -3,6 +3,7 @@ import styles from "./Reddits.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import Reddit from "../../components/Reddit/Reddit";
 import { loadReddits, selectResultReddits, selectIsLoading, selectHasError} from "./redditsSlice";
+import Loading from "../../components/Loading/Loading";
 
 export default function Reddits () {
     const dispatch = useDispatch();
@@ -16,12 +17,7 @@ export default function Reddits () {
     
     if (isLoading) {
         return (
-            <>
-            <h2 className={styles.gb}>Reddits</h2>
-            <section className={`${styles.reddits} ${styles.gb}`}>
-               <p>LOADING</p>
-            </section>
-            </>
+            <Loading/>
         )
     } else if (hasError) {
         return (
