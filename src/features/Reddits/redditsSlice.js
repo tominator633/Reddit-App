@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { act } from 'react';
+
 const baseUrl = "https://www.reddit.com";
 
 

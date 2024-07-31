@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Header.module.css";
-import SubredditsSlider from "../SubredditsSlider/SubredditsSlider";
+import SubredditsSlider from "../../features/Subreddits/Subreddits";
 import { subredditsData } from "../../data/subredditsData";
 
 
