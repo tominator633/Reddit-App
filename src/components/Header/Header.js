@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Header.module.css";
-import SubredditsSlider from "../../features/Subreddits/Subreddits";
-import { subredditsData } from "../../data/subredditsData";
+import Subreddits from "../../features/Subreddits/Subreddits";
+
 
 
 export default function Header () {
@@ -17,7 +17,7 @@ export default function Header () {
             <h1 className={styles.gb} >Reddit.to.read</h1>
         </div>
         <nav className={styles.gb} id={styles.topics}>
-            <SubredditsSlider subredditsData={subredditsData} />
+            <Subreddits/>
         </nav>
         <form className={styles.gb} >
             <input id={styles.searchField} type="search" name="search" value="" aria-label="search for a keyword" placeholder="search" />
