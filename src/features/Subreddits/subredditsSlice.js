@@ -48,8 +48,7 @@ export const loadInitialSwiperSubreddit = createAsyncThunk(
 export const subredditsSlice = createSlice({
     name: "subreddits",
     initialState: {
-        swiperSubreddits: ["funny", "AskReddit", "gaming", "worldnews",],
-        //swiperSubreddits: [{name: "funny"}, {name: "AskReddit"}, {name: "gaming"}, {name: "worldnews"},],
+        swiperSubreddits: ["funny", "AskReddit", "gaming", "worldnews", "movies", "science"],
         isLoading: false,
         hasError: false
     },

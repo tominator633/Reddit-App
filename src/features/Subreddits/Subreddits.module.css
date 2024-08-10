@@ -24,7 +24,7 @@
     align-items: center;
     justify-content: space-around;
 }
-.topic {
+#topic {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,12 +47,16 @@
     height: 100%;
     border-radius: 50%;
 }
-.topic h3 {
+#topic h3 {
     color: #DAF6FB;
-    font-weight: 400;
     font-size: 14px;
 }
-
+.activeNavLink {
+    font-weight: 700;
+}
+.inactiveNavLink {
+    font-weight: 100;
+}
 
 
 #btnPrev,
