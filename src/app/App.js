@@ -10,7 +10,6 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 
 const appRouter = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<AppLayout/>} >
-      <Route index path="popular" element={<Reddits/>} />
       <Route path=':subredditName' element={<Reddits/>} />
   </Route>
 ))

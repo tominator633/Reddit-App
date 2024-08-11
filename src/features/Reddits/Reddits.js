@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./Reddits.module.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Reddit from "../../components/Reddit/Reddit";
 import { loadReddits, selectResultReddits, selectIsLoading, selectHasError} from "./redditsSlice";
 import Loading from "../../components/Loading/Loading";
@@ -12,6 +12,7 @@ export default function Reddits () {
     const isLoading = useSelector(selectIsLoading);
     const hasError = useSelector(selectHasError);
     let {subredditName} = useParams();
+ 
 
     useEffect(() => {
         dispatch(loadReddits(subredditName));
