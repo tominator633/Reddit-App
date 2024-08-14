@@ -61,7 +61,6 @@ export const loadReddits = createAsyncThunk(
 export const redditsSlice = createSlice({
     name: "reddits",
     initialState: {
-        subredditEndpoint: "/r/popular.json",
         resultReddits: [],
         isLoading: false,
         hasError: false
