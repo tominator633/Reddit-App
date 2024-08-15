@@ -20,7 +20,7 @@ export default function Reddits () {
     
     if (isLoading) {
         return (
-            <Loading/>
+            <Loading loadingText="Loading reddits..."/>
         )
     } else if (hasError) {
         return (

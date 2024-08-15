@@ -34,7 +34,7 @@ export const loadReddits = createAsyncThunk(
                 } else {
                     videoUrl = null;
                 };
-
+        
                 return {
                     id: post.data.id,
                     user: post.data.author,
@@ -49,6 +49,7 @@ export const loadReddits = createAsyncThunk(
                     thumbnail: imgThumbnail,
                     url: post.data.url,
                     isSelfpost: post.data.is_self,
+                    permalink: post.data.permalink,
                     
                 }
             });

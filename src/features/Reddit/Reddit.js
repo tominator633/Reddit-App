@@ -1,14 +1,15 @@
 import React from "react";
 import styles from "./Reddit.module.css";
 import { Link } from "react-router-dom";
-import { setCurrentReddit } from "./redditSlice";
-import { useDispatch} from 'react-redux';
+import { setCurrentReddit, loadComments, selectCurrentReddit } from "./redditSlice";
+import { useDispatch, useSelector} from 'react-redux';
 
 export default function Reddit ({content}) {
     const dispatch = useDispatch();
-    //dispatch content on Link click
+    const currentReddit = useSelector(selectCurrentReddit);
     const handleDetailsClick = () => {
         dispatch(setCurrentReddit(content));
+        dispatch(loadComments(content.permalink));
     }
 
 

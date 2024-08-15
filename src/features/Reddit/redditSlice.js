@@ -2,12 +2,27 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const baseUrl = "https://www.reddit.com";
 
-/* export const loadComments = createAsyncThunk(
+ export const loadComments = createAsyncThunk(
     "reddit/loadComments",
-    async () => {
-
+    async (permalink) => {
+        const searchEndpoint = `/${permalink}.json`;
+        const response = await fetch(baseUrl + searchEndpoint);
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            const commentsArr = jsonResponse[1].data.children.map((post) => {
+                return {
+                author: post.data.author,
+                body: post.data.body,
+                created: post.data.created,
+                
+                }
+                }    
+            );
+            console.log(commentsArr);
+            return commentsArr;
+        }
     }
-) */
+)
 
 
 export const redditSlice = createSlice({
@@ -15,34 +30,40 @@ export const redditSlice = createSlice({
     initialState: {
         currentReddit: {},
         comments: [],
-        isLoading: false,
-        hasError: false,
+        isCommentsLoading: false,
+        hasCommentsError: false,
     },
     reducers: {
         setCurrentReddit: (state, action) => {
             state.currentReddit = action.payload;
+        },
+        emptyComments: (state, action) => {
+            state.comments = [];
         }
     },
-/*     extraReducers: {
+    extraReducers: {
         [loadComments.pending]: (state,action) => {
-            state.isLoading = true;
-            state.hasError = false;
+            state.isCommentsLoading = true;
+            state.hasCommentsError = false;
         },
         [loadComments.rejected]: (state,action) => {
-            state.isLoading = false;
-            state.hasError = true;
+            state.isCommentsLoading = false;
+            state.hasCommentsError = true;
             state.comments = [];
         },
         [loadComments.fulfilled]: (state,action) => {
             state.comments = action.payload;
-            state.isLoading = false;
-            state.hasError = false;
+            state.isCommentsLoading = false;
+            state.hasCommentsError = false;
         }
-    } */
+    }
 });
 
 
 
 export const selectCurrentReddit = (state) => state.reddit.currentReddit;
-export const {setCurrentReddit} = redditSlice.actions;
+export const selectComments = (state) => state.reddit.comments;
+export const selectIsCommentsLoading = (state) => state.reddit.isCommentsLoading;
+export const selectHasCommentsError = (state) => state.reddit.hasCommentsError;
+export const {setCurrentReddit, emptyComments} = redditSlice.actions;
 export default redditSlice.reducer;
