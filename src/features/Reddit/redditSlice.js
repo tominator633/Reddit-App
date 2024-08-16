@@ -10,15 +10,29 @@ const baseUrl = "https://www.reddit.com";
         if (response.ok) {
             const jsonResponse = await response.json();
             const commentsArr = jsonResponse[1].data.children.map((post) => {
-                return {
-                author: post.data.author,
-                body: post.data.body,
-                created: post.data.created,
-                
-                }
-                }    
+
+                    return {
+                        author: post.data.author,
+                        body: post.data.body,
+                        created: post.data.created,
+                        score: post.data.score,
+                        kind: post.kind,
+                        replies: post.data.replies ?
+                            post.data.replies.data.children.map((reply) => {
+                            return {
+                            rAuthor: reply.data.author,
+                            rBody: reply.data.body,
+                            rCreated: reply.data.created,
+                            rScore: reply.data.score,
+                            rKind: reply.kind,
+                            }  
+                            })
+                            :
+                            "",
+                        }
+                }  
             );
-            console.log(commentsArr);
+            console.log(jsonResponse);
             return commentsArr;
         }
     }

@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./RedditDetailWindow.module.css";
 import Comment from "../Comment/Comment";
 import { useParams, useNavigate } from "react-router-dom";
 import { selectCurrentReddit, selectComments, emptyComments, selectIsCommentsLoading, selectHasCommentsError } from "../../features/Reddit/redditSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from "../Loading/Loading";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+
 
 
 export default function RedditDetailWindow () {
@@ -17,6 +19,7 @@ export default function RedditDetailWindow () {
     const isCommentsLoading = useSelector(selectIsCommentsLoading);
     const hasCommentsError = useSelector(selectHasCommentsError);
 
+
     const handleCloseButtonClick = () => {
         dispatch(emptyComments());
         navigate(-1);
@@ -24,7 +27,7 @@ export default function RedditDetailWindow () {
 
     return (
 <div id={redditId} className={`${styles.windowBarrier} ${styles.gb}`} role="presentation">
-    <section className={`${styles.redditDetailWindow} ${styles.gb}`} role="dialog" aria-label="reddit detail window for...">
+    <section className={`${styles.redditDetailWindow} ${styles.gb}`} role="dialog" aria-label="reddit detail window">
         <div className={`${styles.closeBtnCon} ${styles.gb}`} role="presentation">
             <button onClick={handleCloseButtonClick} className={`${styles.closeBtn} ${styles.gb}`}>Close</button>
         </div>
@@ -52,9 +55,19 @@ export default function RedditDetailWindow () {
             {isCommentsLoading ? 
             <Loading loadingText="Loading comments..."/> 
             :
-            comments.map((content) => { 
-                return <Comment content={content} />
+            hasCommentsError ?
+            <ErrorMessage/>
+            :
+            comments.length === 0 ?
+            <p>This post has no comments</p>
+            :
+            comments.map((content, index) => {
+                if (content.kind === "t1") {
+                    return <Comment content={content} key={index}/>
+                }
+                
             }) }
+
             
         </div>
     </section>

@@ -5,6 +5,7 @@ import { useParams, useNavigate, Outlet } from 'react-router-dom';
 import Reddit from "../Reddit/Reddit";
 import { loadReddits, selectResultReddits, selectIsLoading, selectHasError} from "./redditsSlice";
 import Loading from "../../components/Loading/Loading";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 export default function Reddits () {
     const dispatch = useDispatch();
@@ -26,9 +27,7 @@ export default function Reddits () {
         return (
             <>
             <h2 className={styles.gb}>{subredditName}</h2>
-            <section className={`${styles.reddits} ${styles.gb}`}>
-               <p>REQUEST FAILED</p>
-            </section>
+            <ErrorMessage/>
             </>
         )
     } else {

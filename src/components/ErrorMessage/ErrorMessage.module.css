@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+.errorContainer {
+    width: 100%;
+    height: 60svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.errorDiv {
+    width: 300px;
+    border-radius: 20px;
+    background-color:#005792;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.errorText {
+    color:#DAF6FB;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.errorFigure {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+.errorFigure svg {
+    color: #DAF6FB;
+    width: 100%;
+    height: 100%;
+}
