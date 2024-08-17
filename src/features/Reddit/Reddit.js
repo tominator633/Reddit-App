@@ -3,6 +3,7 @@ import styles from "./Reddit.module.css";
 import { Link } from "react-router-dom";
 import { setCurrentReddit, loadComments, selectCurrentReddit } from "./redditSlice";
 import { useDispatch, useSelector} from 'react-redux';
+import { epochToAgo } from "../../utils/utils";
 
 export default function Reddit ({content}) {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export default function Reddit ({content}) {
                 <div className={`${styles.redditColumn} ${styles.gb}`} role="presentation">
                     <div className={`${styles.redditInfo} ${styles.gb}`} role="presentation">
                         <p className={`${styles.redditUser} ${styles.gb}`}>{content.user}</p>
-                        <p className={`${styles.redditTimePosted} ${styles.gb}`}>2 hours ago</p>
+                        <p className={`${styles.redditTimePosted} ${styles.gb}`}>{epochToAgo(content.created)}</p>
                     </div>
                     <div className={`${styles.redditContent} ${styles.gb}`}>
                         <h4>{content.title}</h4>

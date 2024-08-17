@@ -38,7 +38,7 @@ export const loadReddits = createAsyncThunk(
                 return {
                     id: post.data.id,
                     user: post.data.author,
-                    postTime: "",
+                    created: post.data.created,
                     subreddit: post.data.subreddit,
                     title: post.data.title,
                     text: post.data.selftext,

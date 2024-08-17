@@ -7,7 +7,7 @@
 
 /*  .gb {
     border: 1px solid red;
-}    */
+}    */ 
 
 .comment {
     margin-top: 10px;
@@ -54,11 +54,19 @@
 }
 .repliesButton {
     font-size: 13px;
-    background-color:#005792;
     color: white;
     border-radius: 8px;
     padding: 4px;
     margin-left: 10px;
     border: none;
     cursor: pointer;
+    display:  flex;
+    align-items: center;
+}
+.repliesButton span {
+    margin-right: 2px;
+}
+
+.closeCross {
+    display: flex;
 }

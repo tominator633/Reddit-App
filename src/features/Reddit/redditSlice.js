@@ -10,7 +10,7 @@ const baseUrl = "https://www.reddit.com";
         if (response.ok) {
             const jsonResponse = await response.json();
             const commentsArr = jsonResponse[1].data.children.map((post) => {
-
+             
                     return {
                         author: post.data.author,
                         body: post.data.body,
@@ -19,20 +19,24 @@ const baseUrl = "https://www.reddit.com";
                         kind: post.kind,
                         replies: post.data.replies ?
                             post.data.replies.data.children.map((reply) => {
-                            return {
-                            rAuthor: reply.data.author,
-                            rBody: reply.data.body,
-                            rCreated: reply.data.created,
-                            rScore: reply.data.score,
-                            rKind: reply.kind,
-                            }  
-                            })
+                      
+                                return {
+                                    rAuthor: reply.data.author,
+                                    rBody: reply.data.body,
+                                    rCreated: reply.data.created,
+                                    rScore: reply.data.score,
+                                    rKind: reply.kind,
+                                    } 
+                            
+                            }).filter(reply => reply.rKind === "t1")
                             :
                             "",
                         }
+              
+                  
                 }  
-            );
-            console.log(jsonResponse);
+            ).filter(post => post.kind === "t1");
+            console.log(commentsArr);
             return commentsArr;
         }
     }

@@ -6,6 +6,7 @@ import { selectCurrentReddit, selectComments, emptyComments, selectIsCommentsLoa
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { epochToAgo } from "../../utils/utils";
 
 
 
@@ -44,7 +45,7 @@ export default function RedditDetailWindow () {
                 <div className={`${styles.redditColumn} ${styles.gb}`} role="presentation">
                     <div className={`${styles.redditInfo} ${styles.gb}`} role="presentation">
                         <p className={`${styles.redditUser} ${styles.gb}`}>{currentReddit.user}</p>
-                        <p className={`${styles.redditTimePosted} ${styles.gb}`}>2 hours ago</p>
+                        <p className={`${styles.redditTimePosted} ${styles.gb}`}>{epochToAgo(currentReddit.created)}</p>
                     </div>
                     <div className={`${styles.redditContent} ${styles.gb}`}>
                         <h4>{currentReddit.title}</h4>
@@ -62,9 +63,7 @@ export default function RedditDetailWindow () {
             <p>This post has no comments</p>
             :
             comments.map((content, index) => {
-                if (content.kind === "t1") {
                     return <Comment content={content} key={index}/>
-                }
                 
             }) }
 

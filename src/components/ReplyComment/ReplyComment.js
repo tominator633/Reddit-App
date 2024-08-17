@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./ReplyComment.module.css";
+import { epochToAgo } from "../../utils/utils";
 
 export default function ReplyComment ({replyContent}) {
     return (
         <div className={`${styles.comment} ${styles.gb}`}>
             <div className={`${styles.commentInfo} ${styles.gb}`}>
                 <p className={`${styles.commentUser} ${styles.gb}`}>{replyContent.rAuthor}</p>
-                <p className={`${styles.commentTimePosted} ${styles.gb}`}>{replyContent.rCreated}</p>
+                <p className={`${styles.commentTimePosted} ${styles.gb}`}>{epochToAgo(replyContent.rCreated)}</p>
             </div>
             <div className={`${styles.commentContent} ${styles.gb}`}>
                 <p className={styles.gb}>{replyContent.rBody}</p>
