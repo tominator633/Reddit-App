@@ -1,13 +1,26 @@
 import React, {useState} from "react";
 import styles from "./Search.module.css";
+import { useNavigate, createSearchParams, useParams } from 'react-router-dom';
 
 
 
 export default function Search ({searchBtn, setSearchBtn}) {
 
+    const navigate = useNavigate();
+    let {subredditName} = useParams();
     const [searchInput, setSearchInput] = useState("");
+
     const handleSearchFieldChange = ({target}) => {
         setSearchInput(target.value);
+        const query = {
+            title: target.value
+        };
+        const queryString = createSearchParams(query);
+        navigate({
+            pathname: `/${subredditName}`,
+            search: `?${queryString}`
+        });
+        !target.value && navigate(subredditName);
     }
     const handleCloseSearchBtnClick = () => {
         setSearchBtn(!searchBtn);

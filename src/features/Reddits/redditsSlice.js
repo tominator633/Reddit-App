@@ -90,5 +90,13 @@ export const selectResultReddits = (state) => state.reddits.resultReddits;
 export const selectIsLoading = (state) => state.reddits.isLoading;
 export const selectHasError = (state) => state.reddits.hasError;
 
+export const filterReddits = (query, reddits) => {
+    return reddits.filter(reddit => reddit.title.toLowerCase().includes(query.toLowerCase()));
+}
+
+
+
+
+
 
 export default redditsSlice.reducer;
