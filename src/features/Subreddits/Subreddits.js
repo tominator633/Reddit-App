@@ -33,7 +33,7 @@ export default function Subreddits () {
         prevEl: ".swiper-button-prev"
       }}
       spaceBetween={10}
-      slidesPerView={4}
+      slidesPerView={5}
     >
       <button className="swiper-button-prev" id={styles.btnPrev}></button>
 

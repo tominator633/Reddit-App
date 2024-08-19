@@ -6,18 +6,21 @@
 }
 
 
-/*   .gb {
+/*    .gb {
     border: 1px solid red;
 }    */
- 
 
 header {
-    background-color: #005792;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    background-color: #005792;
+}
+.mainLine {
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 7px;
 }
 
 
@@ -27,11 +30,10 @@ header {
     align-items: center;
     justify-content: center;
     color: #FF6B6B;
-    padding: 20px;
 }
 #logo {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
 }
 #logo svg {
     width: 100%;
@@ -39,17 +41,25 @@ header {
 }
 h1 {
     font-family: "Zain", sans-serif;
-    padding: 10px;
+    padding: 5px;
+    line-height: 18px;
+    font-size: 33px;
+    color: white;
+    text-align: right;
+}
+
+h1 span {
+    font-family: "Zain", sans-serif;
+    color: #FF6B6B;
+    font-size: 33px;
 }
 
 
 
 
-
-
 /* NAV SUBREDDITS / TOPICS COMPONENT */
-#topics {
-    width: 50%;
+#middleCon {
+    width: 70%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,29 +69,8 @@ h1 {
 
 
 /* SEARCH COMPONENT */
-form {
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#searchField {
-    width: 250px;
-    height: 40px;
-    border-radius: 20px;
-    border: none;
-    font-size: 16px;
-    cursor: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    outline: none;
 
-}
-#searchField::placeholder {
-    font-size: 16px;
-    text-align: center;
-}
-#searchButton {
+#searchBtn {
     width: 45px;
     height: 45px;
     cursor: pointer;
@@ -89,8 +78,10 @@ form {
     background-color: #005792;
     outline: none;
     border: none;
+    margin-right: 10px;
+ 
 }
-#searchButton svg {
+#searchBtn svg {
     width: 100%;
     height: 100%;
     color: #FF6B6B;
