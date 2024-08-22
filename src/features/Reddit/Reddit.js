@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Reddit.module.css";
 import { Link } from "react-router-dom";
 import { setCurrentReddit, loadComments } from "./redditSlice";
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { epochToAgo } from "../../utils/utils";
 
 export default function Reddit ({content}) {
