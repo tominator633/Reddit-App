@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Urbanist", sans-serif;
+}
+
+
+/*  .gb {
+    border: 1px solid red;
+}   
+ */
+
+/* NAV SUBREDDITS / TOPICS COMPONENT */
+ .swiper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  justify-content: space-between;
+}
+.swiperSlide {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.activeSubreddit,.inactiveSubreddit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.activeSubreddit figure {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+.inactiveSubreddit figure {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+#iconPopular svg {
+    width: 100%;
+    height: 100%;
+    color: #FF6B6B;
+}
+#icon svg {
+    width: 100%;
+    height: 100%;
+    color: #DAF6FB;
+}
+#icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.activeSubreddit h3{
+    color:  #FF6B6B;
+    font-size: 16px;
+    font-weight: 700;
+}
+.inactiveSubreddit h3 {
+    color: #DAF6FB;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.editSubredditsBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    margin-top: 10px;
+    cursor: pointer;
+    border: none;
+}
+.editSubredditsBtn svg {
+    width: 100%;
+    height: 100%;
+    color: #FF6B6B;
+}
+
+#btnPrev,
+#btnNext {
+    color: #DAF6FB;
+    width: 25px;
+    height: 25px;
+    background-color: #FF6B6B;
+    border: none;
+    border-radius: 50%;
+}
+
+#btnPrev::after,
+#btnNext::after {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+
+@media only screen and (max-width: 860px) {
+    .activeSubreddit figure {
+        width: 40px;
+        height: 40px;
+    }
+    .inactiveSubreddit figure {
+        width: 35px;
+        height: 35px;
+    }
+    .activeSubreddit h3{
+        font-size: 14px;
+    }
+    .inactiveSubreddit h3 {
+        font-size: 12px;
+    }
+    #btnPrev,
+    #btnNext {
+        background-color: transparent;
+    }
+}
+
+@media only screen and (max-width: 690px) {
+
+}

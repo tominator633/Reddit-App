@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from "./Header.module.css";
-import Subreddits from "../../features/Subreddits/Subreddits";
+import SubredditsSwiper from "../SubredditsSwiper/SubredditsSwiper";
 import Search from "../Search/Search";
 import { useNavigate, createSearchParams, useParams } from 'react-router-dom';
 
@@ -50,7 +50,7 @@ export default function Header () {
             <h1 className={styles.gb} > <span>Reddit</span>.to.read</h1>
         </div>
         <nav className={styles.gb} id={styles.middleCon}>
-            <Subreddits/>
+            <SubredditsSwiper/>
         </nav>
         {searchBtn ? 
         <button  onClick={handleCloseSearchBtnClick} className={`${styles.closeSearchBtn} ${styles.gb}`}>

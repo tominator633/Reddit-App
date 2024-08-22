@@ -11,6 +11,9 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
       <Route path=':subredditName' element={<Reddits/>}>
         <Route path=':redditId' element={<RedditDetailWindow/>}/>
       </Route>
+  {/*     <Route path='subreddits' element={}>
+
+      </Route> */}
   </Route>
 ));
 
