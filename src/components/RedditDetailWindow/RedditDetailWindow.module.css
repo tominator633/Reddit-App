@@ -160,6 +160,9 @@
 
 
 @media only screen and (max-width: 750px) {
+    .windowBarrier {
+        width: 100%;
+    }
     .redditDetailWindow {
         width: 100%;
         height: 100%;
