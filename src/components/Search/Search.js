@@ -8,8 +8,8 @@ export default function Search ({onChange, searchInput}) {
         <input id={styles.searchField} 
                 type="search"
                 name="search" 
-                aria-label="search for a keyword" 
-                placeholder="search"
+                aria-label="search reddits based on keywords" 
+                placeholder="search reddits"
                 onChange={onChange}
                 value={searchInput}/>
     </form>

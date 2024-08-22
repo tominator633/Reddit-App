@@ -66,15 +66,15 @@
         height: 20px;
     }
     .commentUser {
-        font-size: 12px;
+        font-size: 14px;
     }
     .commentTimePosted {
-        font-size: 9px;
+        font-size: 12px;
     }
     .score {
-        font-size: 12px;
+        font-size: 14px;
     }
     .commentContent p {
-        font-size: 12px;
+        font-size: 14px;
     }
 }

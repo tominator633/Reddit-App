@@ -143,6 +143,7 @@
 @media only screen and (max-width: 740px) {
     .reddit {
         width: 95%;
+        margin-top: 15px;
     }
 }
 @media only screen and (max-width: 640px) {

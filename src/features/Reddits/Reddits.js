@@ -31,7 +31,7 @@ export default function Reddits () {
         return (
             <>
             <h2 className={`${styles.redditsH2} ${styles.gb}`}>{subredditName}</h2>
-            <ErrorMessage/>
+            <ErrorMessage message="Request failed" />
             </>
         )
     } else {
@@ -39,9 +39,14 @@ export default function Reddits () {
             <>
             <h2 className={`${styles.redditsH2} ${styles.gb}`}>{subredditName}</h2>
             <section className={`${styles.reddits} ${styles.gb}`}>
-                {redditsToRender.map((content) => (
+                {
+                redditsToRender.length > 0 ?
+                redditsToRender.map((content) => (
                     <Reddit content={content} key={content.id} />
-                ))}
+                ))
+                :
+                <ErrorMessage message="No results" />
+                }
             </section>
             <Outlet/>
             </>
