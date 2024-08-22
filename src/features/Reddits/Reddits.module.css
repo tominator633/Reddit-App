@@ -6,12 +6,13 @@
 }
 
 
-/*   .gb {
+/*  .gb {
     border: 1px solid red;
-}  */
+} */
 
 
 .redditsH2 {
+    margin-top: 30px;
     height: 60px;
     font-size: 25px;
     display: flex;
@@ -28,5 +29,6 @@
 @media only screen and (max-width: 640px) {
     .redditsH2 {
         font-size: 20px;
+        height: 40px;
     }
 }

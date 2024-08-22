@@ -90,7 +90,7 @@
 .commentsButton svg {
     width: 100%;
     height: 100%;
-    color: #005792;
+    color: #FF6B6B;
 }
 
 
@@ -143,7 +143,6 @@
 @media only screen and (max-width: 740px) {
     .reddit {
         width: 95%;
-        margin-top: 15px;
     }
 }
 @media only screen and (max-width: 640px) {
@@ -157,9 +156,9 @@
         font-size: 12px;
     }
     .commentsButton {
-        width: 25px;
-        height: 25px;
-        margin-top: 5px;
+        width: 30px;
+        height: 30px;
+
     }
     .redditTimePosted {
         font-size: 9px;
@@ -168,22 +167,22 @@
 
 @media only screen and (max-width: 560px) {
     .votesColumn {
-        width: 15%;
+        width: 12%;
     }   
     .redditColumn {
-        width: 73%;
+        width: 76%;
     }
     .rightColumn {
         width: 12%;
     }
     .redditInfo {
-        height: 20px;
+        height: 30px;
     }
     .redditUser {
-        font-size: 12px;
+        font-size: 14px;
     }
     .redditContent {
-        font-size: 12px;
+        font-size: 14px;
     }
     .externalContent {
         margin-top: 5px;
