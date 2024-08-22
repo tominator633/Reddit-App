@@ -11,7 +11,7 @@ export default function AppLayout() {
         if (!subredditName) {
             navigate("/popular");
         }
-    }, []);
+    }, [navigate, subredditName]);
     return (
         <>
         <Header/>

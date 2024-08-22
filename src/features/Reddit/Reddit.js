@@ -35,7 +35,7 @@ export default function Reddit ({content}) {
 
                         {/* content is external URL */}
                         {(!content.isSelfpost && !content.isVideo && !content.imgSrc) ? 
-                        <a className={`${styles.externalContent} ${styles.gb}`} href={content.url} target="_blank" >
+                        <a className={`${styles.externalContent} ${styles.gb}`} href={content.url} target="_blank" rel="noreferrer noopener" >
                             {/* image thumbnail is present?*/}
                             {content.thumbnail &&
                             <figure>

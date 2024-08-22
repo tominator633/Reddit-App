@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./RedditDetailWindow.module.css";
 import Comment from "../Comment/Comment";
 import { useParams, useNavigate } from "react-router-dom";

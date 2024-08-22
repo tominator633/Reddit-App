@@ -21,7 +21,7 @@ export default function Reddits () {
 
     useEffect(() => {
         dispatch(loadReddits(subredditName));
-    }, [subredditName]);
+    }, [dispatch, subredditName]);
     
     if (isLoading) {
         return (

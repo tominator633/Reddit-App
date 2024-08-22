@@ -5,7 +5,7 @@ import "swiper/css/bundle";
 import styles from "./Subreddits.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {loadInitialSwiperSubreddit, selectSwiperSubreddits, selectIsLoading, selectHasError} from "./subredditsSlice";
+import {loadInitialSwiperSubreddit, selectSwiperSubreddits} from "./subredditsSlice";
 
 
 
@@ -20,7 +20,7 @@ export default function Subreddits () {
   swiperSubreddits.forEach((initialSubreddit) => {
       dispatch(loadInitialSwiperSubreddit(initialSubreddit));
     })
-  },[]);
+  },[dispatch, swiperSubreddits]);
  
     return (
     <Swiper className={`${styles.swiper} ${styles.gb}`}
