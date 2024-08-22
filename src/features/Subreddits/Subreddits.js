@@ -24,7 +24,7 @@ export default function Subreddits () {
  
     return (
     <Swiper className={`${styles.swiper} ${styles.gb}`}
-      modules={[FreeMode, Mousewheel, Navigation, A11y]}
+      modules={[FreeMode, Mousewheel, Navigation, A11y, ]}
       freeMode={true}
       grabCursor={true}
       mousewheel={true}
@@ -32,8 +32,25 @@ export default function Subreddits () {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
       }}
-      spaceBetween={10}
-      slidesPerView={5}
+      breakpoints={{
+        0: {
+          slidesPerView: 5,
+          spaceBetween: 0
+        },
+        800: {
+          slidesPerView: 4,
+          spaceBetween: 0
+        },
+        1000: {
+          slidesPerView: 5,
+          spaceBetween: 0,
+        },
+        1250: {
+          slidesPerView: 6,
+          spaceBetween: 10,
+        },
+     
+      }}
     >
       <button className="swiper-button-prev" id={styles.btnPrev}></button>
 

@@ -5,11 +5,11 @@
     font-family: "Urbanist", sans-serif;
 }
 
-/* 
-  .gb {
+
+/*   .gb {
     border: 1px solid red;
-}    
- */
+}     */
+
 
 /* NAV SUBREDDITS / TOPICS COMPONENT */
  .swiper {
@@ -78,4 +78,35 @@
 #btnNext::after {
     font-size: 12px;
     font-weight: 700;
+}
+
+
+
+@media only screen and (max-width: 860px) {
+    .activeSubreddit figure {
+        width: 40px;
+        height: 40px;
+    }
+    .inactiveSubreddit figure {
+        width: 35px;
+        height: 35px;
+    }
+    .activeSubreddit h3{
+        color: #FEE;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .inactiveSubreddit h3 {
+        color: #DAF6FB;
+        font-size: 12px;
+        font-weight: 400;
+    }
+    #btnPrev,
+    #btnNext {
+        background-color: transparent;
+    }
+}
+
+@media only screen and (max-width: 690px) {
+
 }

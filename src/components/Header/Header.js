@@ -2,15 +2,40 @@ import React, {useState} from "react";
 import styles from "./Header.module.css";
 import Subreddits from "../../features/Subreddits/Subreddits";
 import Search from "../Search/Search";
+import { useNavigate, createSearchParams, useParams } from 'react-router-dom';
 
 
 
 export default function Header () {
 
+    const navigate = useNavigate();
+    let {subredditName} = useParams();
     const [searchBtn, setSearchBtn] = useState(false);
+    const [searchInput, setSearchInput] = useState("");
+
+    const handleSearchFieldChange = ({target}) => {
+        setSearchInput(target.value);
+        const query = {
+            title: target.value
+        };
+        const queryString = createSearchParams(query);
+        navigate({
+            pathname: `/${subredditName}`,
+            search: `?${queryString}`
+        });
+        !target.value && navigate(subredditName);
+    }
+
     const handleSearchBtnClick = () => {
         setSearchBtn(!searchBtn);
     }
+    const handleCloseSearchBtnClick = () => {
+        setSearchBtn(!searchBtn);
+        setSearchInput("");
+        navigate(subredditName);
+    }
+
+
 
     return (
 <header className={styles.gb}>
@@ -27,16 +52,23 @@ export default function Header () {
         <nav className={styles.gb} id={styles.middleCon}>
             <Subreddits/>
         </nav>
+        {searchBtn ? 
+        <button  onClick={handleCloseSearchBtnClick} className={`${styles.closeSearchBtn} ${styles.gb}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-4.99-5.58-5.34A6.49 6.49 0 0 0 3.03 9h2.02c.24-2.12 1.92-3.8 4.06-3.98C11.65 4.8 14 6.95 14 9.5c0 2.49-2.01 4.5-4.5 4.5c-.17 0-.33-.03-.5-.05v2.02l.01.01c1.8.13 3.47-.47 4.72-1.55l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0s.41-1.08 0-1.49z"/><path fill="currentColor" d="M6.12 11.17L4 13.29l-2.12-2.12c-.2-.2-.51-.2-.71 0s-.2.51 0 .71L3.29 14l-2.12 2.12c-.2.2-.2.51 0 .71s.51.2.71 0L4 14.71l2.12 2.12c.2.2.51.2.71 0s.2-.51 0-.71L4.71 14l2.12-2.12c.2-.2.2-.51 0-.71a.513.513 0 0 0-.71 0"/></svg>        
+        </button>
+        :
         <button onClick={handleSearchBtnClick}
                 style={searchBtn ? {visibility: "hidden"} : {visibility: "visible"}}
-                id={styles.searchBtn} 
-                className={styles.gb} 
+                className={`${styles.searchBtn} ${styles.gb}`}
                 aria-label="search section">
             <svg role="presentation" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14"></path></svg>
         </button>
+        }
+        
     </section>
-    {searchBtn && <Search searchBtn={searchBtn}
-                            setSearchBtn={setSearchBtn} />}
+    {searchBtn && <Search onChange={handleSearchFieldChange} 
+                            searchInput={searchInput} />
+    }
 </header>
     )
 }
