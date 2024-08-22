@@ -46,7 +46,6 @@
     height: 30px;
     background-color: white;
     border: none;
-
 }
 .arrowUp svg {
     width: 100%;
@@ -84,7 +83,7 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background-color: white;
+    background-color: transparent;
     border: none;
 }
 .commentsButton svg {
@@ -109,11 +108,14 @@
     background-color: #FEE;
     border-radius: 20px;
     color: #005792;
+    word-break: break-word; 
 }
 .externalContent p {
     font-size: 14px;
     padding-left: 10px;
+    
 }
+
 .externalContent img {
     border-radius: 20px;
     display: block;
@@ -134,3 +136,69 @@
     max-height: 80svh;
     margin-top: 10px;
 }
+
+
+
+@media only screen and (max-width: 740px) {
+    .reddit {
+        width: 95%;
+        margin-top: 15px;
+    }
+}
+@media only screen and (max-width: 640px) {
+    .arrowUp {
+        margin-top: 10px;
+        width: 20px;
+        height: 20px;
+    }
+    .votes {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+    .commentsButton {
+        width: 25px;
+        height: 25px;
+        margin-top: 5px;
+    }
+    .redditTimePosted {
+        font-size: 9px;
+    }
+}
+
+@media only screen and (max-width: 560px) {
+    .votesColumn {
+        width: 15%;
+    }   
+    .redditColumn {
+        width: 73%;
+    }
+    .rightColumn {
+        width: 12%;
+    }
+    .redditInfo {
+        height: 20px;
+    }
+    .redditUser {
+        font-size: 12px;
+    }
+    .redditContent {
+        font-size: 12px;
+    }
+    .externalContent {
+        margin-top: 5px;
+        padding: 5px;
+    }
+    .externalContent p {
+        font-size: 10px;
+        padding-left: 5px;
+    }
+    .externalContent img {
+        border-radius: 20px;
+        display: block;
+    }
+
+
+}
+
+
+

@@ -48,7 +48,7 @@ export default function RedditDetailWindow () {
                 <h4>{currentReddit.title}</h4>
             </div>
         </div>
-        <h2 className={`${styles.commentsHeadline} ${styles.gb}`}>{`Comments (${comments.length})`}</h2>
+        <h2 className={`${styles.commentsH2} ${styles.gb}`}>{`Comments (${comments.length})`}</h2>
         <div className={`${styles.commentsSection} ${styles.gb}`}>
             {isCommentsLoading ? 
             <Loading loadingText="Loading comments..."/> 

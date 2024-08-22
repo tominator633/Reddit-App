@@ -40,6 +40,15 @@ form {
 
 
 
-@media only screen and (max-width: 860px) {
-
+@media only screen and (max-width: 560px) {
+    #searchField {
+        height: 30px;
+        width: 98%;
+        font-size: 12px;
+    }
+    #searchField::placeholder {
+        font-size: 12px;
+        text-align: center;
+    }
+    
 }

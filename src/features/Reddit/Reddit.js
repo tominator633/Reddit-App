@@ -28,7 +28,7 @@ export default function Reddit ({content}) {
                         <p className={`${styles.redditTimePosted} ${styles.gb}`}>{epochToAgo(content.created)}</p>
                     </div>
                     <div className={`${styles.redditContent} ${styles.gb}`}>
-                        <h4>{content.title}</h4>
+                        <h4 className={`${styles.redditTitle} ${styles.gb}`}>{content.title}</h4>
                         
                         {/* content has selftext */}
                         {content.text && <p className={`${styles.selftextContent} ${styles.gb}`}>{content.text}</p>}

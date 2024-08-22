@@ -7,7 +7,7 @@
 
 /*  .gb {
     border: 1px solid red;
-}    */
+}   */
 
 .comment {
     margin-top: 10px;
@@ -57,4 +57,24 @@
     color: #005792;
     font-weight: 700;
     font-size: 14px;
+}
+
+
+@media only screen and (max-width: 560px) {
+
+    .commentInfo {
+        height: 20px;
+    }
+    .commentUser {
+        font-size: 12px;
+    }
+    .commentTimePosted {
+        font-size: 9px;
+    }
+    .score {
+        font-size: 12px;
+    }
+    .commentContent p {
+        font-size: 12px;
+    }
 }
