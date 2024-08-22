@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y, Mousewheel, FreeMode } from 'swiper/modules';
 import "swiper/css/bundle";
 import styles from "./Subreddits.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {loadInitialSwiperSubreddit, selectSwiperSubreddits, selectIsLoading, selectHasError, selectSubredditsData, addSubreddit, deleteSubreddit} from "./subredditsSlice";
+import {loadInitialSwiperSubreddit, selectSwiperSubreddits, selectIsLoading, selectHasError} from "./subredditsSlice";
 
 
 
@@ -13,8 +13,8 @@ import {loadInitialSwiperSubreddit, selectSwiperSubreddits, selectIsLoading, sel
 export default function Subreddits () {
   const dispatch = useDispatch();
   const swiperSubreddits = useSelector(selectSwiperSubreddits);
-  const isLoading = useSelector(selectIsLoading);
-  const hasError = useSelector(selectHasError);
+/*   const isLoading = useSelector(selectIsLoading);
+  const hasError = useSelector(selectHasError); */
 
  useEffect(() => {
   swiperSubreddits.forEach((initialSubreddit) => {
@@ -82,15 +82,3 @@ export default function Subreddits () {
     </Swiper>
     )
 }
-
-
-/*             breakpoints={{
-              0: {
-                slidesPerView: 1,
-                spaceBetween: 10
-              },
-              480: {
-                slidesPerView: 4,
-                spaceBetween: 5
-              }
-            }} */

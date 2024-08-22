@@ -13,7 +13,7 @@ export default function Reddits () {
     const isLoading = useSelector(selectIsLoading);
     const hasError = useSelector(selectHasError);
     let {subredditName} = useParams();
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const title = searchParams.get("title");
 
     const redditsToRender = title ? filterReddits(title,resultReddits) : resultReddits;

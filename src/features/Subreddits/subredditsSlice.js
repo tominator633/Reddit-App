@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { act } from 'react';
 const baseUrl = "https://www.reddit.com";
 
 /* export const loadSubredditData = createAsyncThunk(
@@ -61,11 +60,11 @@ export const subredditsSlice = createSlice({
         },
     },
     extraReducers: {
-        [loadInitialSwiperSubreddit.pending]: (state, action) => {
+        [loadInitialSwiperSubreddit.pending]: (state) => {
             state.isLoading = true;
             state.hasError = false;
         },
-        [loadInitialSwiperSubreddit.rejected]: (state, action) => {
+        [loadInitialSwiperSubreddit.rejected]: (state) => {
             state.isLoading = false;
             state.hasError = true;
         },

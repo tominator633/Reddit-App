@@ -1,7 +1,5 @@
 import React from 'react';
 import AppLayout from './AppLayout';
-import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
 import Reddits from '../features/Reddits/Reddits';
 import RedditDetailWindow from '../components/RedditDetailWindow/RedditDetailWindow';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
@@ -22,19 +20,3 @@ export default function App() {
     <RouterProvider router={appRouter} />
   );
 }
-
-
-
-
-/* 
-export default function App() {
-  return (
-    <>
-    <Header/>
-    <Reddits/>
-    <Footer/>
-    </>
-    
-  )
-}
- */
