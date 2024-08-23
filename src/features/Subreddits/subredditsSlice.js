@@ -32,11 +32,13 @@ export const loadInitialSwiperSubreddit = createAsyncThunk(
             return {
                 name: subredditData.display_name,
                 id: subredditData.id,
-                title: subredditData.title,
-                url: subredditData.url,
-                description: subredditData.public_description,
                 subscribers: subredditData.subscribers,
-                iconSrc: subredditData.icon_img,
+                url: subredditData.url,
+                headerTitle: subredditData.header_title,
+                iconImg: subredditData.icon_img,
+                headerImg: subredditData.header_img,
+                bannerImg: subredditData.banner_img,
+                publicDescription: subredditData.public_description,
             }
         }
     }
