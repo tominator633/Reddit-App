@@ -51,7 +51,7 @@ export const subredditsSlice = createSlice({
     initialState: {
         swiperSubreddits: ["funny", "AskReddit", "gaming", "worldnews", "movies", "science"],
         isLoading: false,
-        hasError: false
+        hasError: false,
     },
     reducers: {
         addSubreddit: (state, action) => {

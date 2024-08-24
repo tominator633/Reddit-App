@@ -13,7 +13,7 @@ export default function AppLayout() {
         if (!subredditName && path !== "/subreddits") {
             navigate("/popular");
         }
-    }, [navigate, subredditName]);
+    }, [navigate, subredditName, path]);
     return (
         <>
         <Header/>

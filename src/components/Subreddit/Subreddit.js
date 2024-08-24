@@ -23,10 +23,19 @@ export default function Subreddit ({content}) {
                     }
                 </figure>
                 <div className={`${styles.srNameTitle} ${styles.gb}`}>
-                    <h3>{content.name}</h3>
-                    <p>{content.headerTitle}</p>
+                    <h3 className={`${styles.srName} ${styles.gb}`}>{content.name}</h3>
+                    <p className={`${styles.srTitle} ${styles.gb}`}>{content.headerTitle}</p>
                 </div>
                 
+            </div>
+            <div className={`${styles.srButtons} ${styles.gb}`}>
+                <button className={`${styles.srDetail} ${styles.gb}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M11 17h2v-6h-2zm1-8q.425 0 .713-.288T13 8t-.288-.712T12 7t-.712.288T11 8t.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22m0-2q3.35 0 5.675-2.325T20 12t-2.325-5.675T12 4T6.325 6.325T4 12t2.325 5.675T12 20m0-8"/></svg>
+{/*                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M16 1.466C7.973 1.466 1.466 7.973 1.466 16S7.973 30.534 16 30.534S30.534 24.027 30.534 16S24.027 1.466 16 1.466M14.757 8h2.42v2.574h-2.42zm4.005 15.622H16.1c-1.034 0-1.475-.44-1.475-1.496V15.26c0-.33-.176-.483-.484-.483h-.88V12.4h2.663c1.035 0 1.474.462 1.474 1.496v6.887c0 .31.176.484.484.484h.88z"/></svg>
+ */}                </button>
+                <button className={`${styles.srDelete} ${styles.gb}`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M7 21q-.825 0-1.412-.587T5 19V6H4V4h5V3h6v1h5v2h-1v13q0 .825-.587 1.413T17 21zm2-4h2V8H9zm4 0h2V8h-2z"/></svg>
+                </button>
             </div>
         </div>
     )

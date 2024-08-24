@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Search.module.css";
 
-export default function Search ({onChange, searchInput}) {
+export default function Search ({onChange, searchInput, placeholder}) {
 
     return (
     <form>
@@ -9,7 +9,7 @@ export default function Search ({onChange, searchInput}) {
                 type="search"
                 name="search" 
                 aria-label="search reddits based on keywords" 
-                placeholder="search reddits"
+                placeholder={placeholder}
                 onChange={onChange}
                 value={searchInput}/>
     </form>
