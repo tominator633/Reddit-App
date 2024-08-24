@@ -21,6 +21,8 @@ const baseUrl = "https://www.reddit.com";
         }
     }
 ); */
+
+
 export const loadInitialSwiperSubreddit = createAsyncThunk(
     "subreddits/loadInitialSwiperSubreddit",
     async (subreddit) => {
@@ -45,34 +47,64 @@ export const loadInitialSwiperSubreddit = createAsyncThunk(
 );
 
 
+export const searchSubreddits = createAsyncThunk(
+    "subreddits/searchSubreddits",
+    async (searchInput) => {
+        const searchEndpoint = `/subreddits/search.json?q=${searchInput}&limit=10`;
+        const response = await fetch(baseUrl + searchEndpoint);
+        if (response.ok) {
+            const jsonResponse = await response.json();
+            console.log(jsonResponse);
+            const searchedSubredditsArr = jsonResponse.data.children.map((subreddit) => {
+                return {
+                    name: subreddit.data.display_name,
+                    id: subreddit.data.id,
+                    subscribers: subreddit.data.subscribers,
+                    url: subreddit.data.url,
+                    headerTitle: subreddit.data.header_title,
+                    iconImg: subreddit.data.icon_img,
+                    headerImg: subreddit.data.header_img,
+                    bannerImg: subreddit.data.banner_img,
+                    publicDescription: subreddit.data.public_description,
+                }
+            });
+            return searchedSubredditsArr;
+        }
+    }
+)
+
 
 export const subredditsSlice = createSlice({
     name: "subreddits",
     initialState: {
-        swiperSubreddits: ["funny", "AskReddit", "gaming", "worldnews", "movies", "science"],
-        isLoading: false,
-        hasError: false,
+        swiperSubreddits: ["funny", "AskReddit"],
+        isLoadInitialSwiperSubredditLoading: false,
+        hasLoadInitialSwiperSubredditError: false,
+        searchedSubreddits: [],
+        isSearchSubredditsLoading: false,
+        hasSearchSubredditsError: false,
     },
     reducers: {
         addSubreddit: (state, action) => {
             state.swiperSubreddits.push(action.payload);
         },
         deleteSubreddit: (state, action) => {
-            return state.swiperSubreddits.filter(item => item !== action.payload)
+            const newArr = state.swiperSubreddits.filter(item => item.id !== action.payload.id);
+            state.swiperSubreddits = newArr;
         },
     },
     extraReducers: {
         [loadInitialSwiperSubreddit.pending]: (state) => {
-            state.isLoading = true;
-            state.hasError = false;
+            state.isLoadInitialSwiperSubredditLoading = true;
+            state.hasLoadInitialSwiperSubredditError = false;
         },
         [loadInitialSwiperSubreddit.rejected]: (state) => {
-            state.isLoading = false;
-            state.hasError = true;
+            state.isLoadInitialSwiperSubredditLoading = false;
+            state.hasLoadInitialSwiperSubredditError = true;
         },
         [loadInitialSwiperSubreddit.fulfilled]: (state, action) => {
-            state.isLoading = false;
-            state.hasError = false;
+            state.isLoadInitialSwiperSubredditLoading = false;
+            state.hasLoadInitialSwiperSubredditError = false;
            state.swiperSubreddits.forEach((subreddit, index) => {
             if (subreddit === action.payload.name) {
               state.swiperSubreddits[index] = action.payload;
@@ -80,13 +112,34 @@ export const subredditsSlice = createSlice({
           });
           //forEach is mutable. Immutable version would include map method and returning a new array
           
-        }
+        },
+        [searchSubreddits.pending]: (state) => {
+            state.isSearchSubredditsLoading = true;
+            state.hasSearchSubredditsError = false;
+        },
+        [searchSubreddits.rejected]: (state) => {
+            state.isSearchSubredditsLoading = false;
+            state.hasSearchSubredditsError = true;
+            state.searchedSubreddits = [];
+        },
+        [searchSubreddits.fulfilled]: (state, action) => {
+            state.isSearchSubredditsLoading = false;
+            state.hasSearchSubredditsError = false;
+            state.searchedSubreddits = action.payload;          
+        },
     }
 });
 
 export const selectSwiperSubreddits = (state) => state.subreddits.swiperSubreddits;
-export const selectIsLoading = (state) => state.subreddits.isLoading;
-export const selectHasError = (state) => state.subreddits.hasError;
+export const selectIsLoadInitialSwiperSubredditLoading = (state) => state.subreddits.isLoadInitialSwiperSubredditLoading;
+export const selectHasLoadInitialSwiperSubredditError = (state) => state.subreddits.hasLoadInitialSwiperSubredditError;
+
+export const selectSearchedSubreddits = (state) => state.subreddits.searchedSubreddits;
+export const selectIsSearchSubredditsLoading = (state) => state.subreddits.isSearchSubredditsLoading;
+export const selectHasSearchSubredditsError = (state) => state.subreddits.hasSearchSubredditsError;
+
+
+
 export const {addSubreddit, deleteSubreddit} = subredditsSlice.actions;
 
 

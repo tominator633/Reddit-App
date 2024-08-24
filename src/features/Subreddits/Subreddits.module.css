@@ -5,10 +5,10 @@
     font-family: "Urbanist", sans-serif;
 }
 
-
+/* 
 .gb {
     border: 1px solid red;
-}   
+}    */
 
 .srManagerCon {
     margin: 0 auto;
@@ -78,4 +78,22 @@
     width: 80%;
     height: 80%;
     color: white;
+}
+
+.searchedSubreddits {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;;
+}
+
+.searchSubredditsH2 {
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 25px;
+    color: #005792;
 }

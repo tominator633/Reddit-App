@@ -54,6 +54,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background-color: #005792;
 }
 
 .srIcon img,.srIcon svg {
@@ -70,7 +71,9 @@
 
 .srName {
     color: #005792;
-    font-size: 18px;
+    font-size: 15px;
+    padding: 0px 3px;
+    word-break: break-all;
 }
 
 .srTitle {
@@ -85,7 +88,7 @@
     justify-content: space-around;
 }
 
-.srDetail,.srDelete {
+.srDetail,.srDeleteOrAdd {
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -93,7 +96,7 @@
     border: none;
 }
 
-.srDetail svg,.srDelete svg {
+.srDetail svg,.srDeleteOrAdd svg {
     width: 100%;
     height: 100%;
     color: #FF6B6B;
