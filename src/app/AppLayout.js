@@ -9,11 +9,16 @@ export default function AppLayout() {
     const location = useLocation();
     const path = location.pathname;
     let {subredditName} = useParams();
-    useEffect(() => {
+/*     useEffect(() => {
         if (!subredditName && path !== "/subreddits") {
             navigate("/popular");
         }
-    }, [navigate, subredditName, path]);
+    }, [navigate, subredditName, path]); */
+    useEffect(() => {
+        if (path === "/") {
+            navigate("/popular");
+        }
+    }, [navigate, path]);
     return (
         <>
         <Header/>

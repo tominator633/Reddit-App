@@ -38,7 +38,7 @@ export default function Subreddits () {
                     return    (
                         <Subreddit content={subreddit} 
                                     key={index}
-                                    swiperSubreddit={true}/>
+                                    isSwiperSubreddit={true}/>
                         )
                         } 
                     )
@@ -68,15 +68,15 @@ export default function Subreddits () {
                     return (
                         <Subreddit content={subreddit} 
                                     key={index}
-                                    swiperSubreddit={false}/>
+                                    isSwiperSubreddit={false}/>
                     )
                     })
                     }
                 </div>
                 
-                
+                <Outlet/>
             </section>
-            <Outlet/>
+           
         </div>
     )
 };

@@ -83,6 +83,7 @@ export const subredditsSlice = createSlice({
         searchedSubreddits: [],
         isSearchSubredditsLoading: false,
         hasSearchSubredditsError: false,
+        currentSubreddit: {},
     },
     reducers: {
         addSubreddit: (state, action) => {
@@ -97,6 +98,9 @@ export const subredditsSlice = createSlice({
             state.swiperSubreddits = newArr;
             state.searchedSubreddits.unshift(action.payload);
         },
+        setCurrentSubreddit: (state, action) => {
+            state.currentSubreddit = action.payload;
+        }
     },
     extraReducers: {
         [loadInitialSwiperSubreddit.pending]: (state) => {
@@ -142,9 +146,9 @@ export const selectSearchedSubreddits = (state) => state.subreddits.searchedSubr
 export const selectIsSearchSubredditsLoading = (state) => state.subreddits.isSearchSubredditsLoading;
 export const selectHasSearchSubredditsError = (state) => state.subreddits.hasSearchSubredditsError;
 
+export const selectCurrentSubreddit = (state) => state.subreddits.currentSubreddit;
 
-
-export const {addSubreddit, deleteSubreddit} = subredditsSlice.actions;
+export const {addSubreddit, deleteSubreddit, setCurrentSubreddit} = subredditsSlice.actions;
 
 
 
