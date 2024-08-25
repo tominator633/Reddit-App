@@ -4,7 +4,7 @@ import Subreddit from "../../components/Subreddit/Subreddit";
 import Search from "../../components/Search/Search";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { useParams, Outlet, useSearchParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {useSelector, useDispatch } from 'react-redux';
 import {selectSwiperSubreddits, selectSearchedSubreddits, searchSubreddits, selectIsSearchSubredditsLoading, selectHasSearchSubredditsError} from "./subredditsSlice";
 

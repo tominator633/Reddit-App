@@ -1,27 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const baseUrl = "https://www.reddit.com";
 
-/* export const loadSubredditData = createAsyncThunk(
-    "subreddits/loadSubredditIcon",
-    async (subreddit) => {
-        const searchEndpoint = `/r/${subreddit}/about.json`;
-        const response = await fetch(baseUrl + searchEndpoint);
-        if (response.ok) {
-            const jsonResponse = await response.json();
-            const subredditData = jsonResponse.data;
-            return {
-                name: subredditData.display_name,
-                id: subredditData.id,
-                title: subredditData.title,
-                url: subredditData.url,
-                description: subredditData.public_description,
-                subscribers: subredditData.subscribers,
-                iconSrc: subredditData.icon_img,
-            }
-        }
-    }
-); */
-
 
 export const loadInitialSwiperSubreddit = createAsyncThunk(
     "subreddits/loadInitialSwiperSubreddit",

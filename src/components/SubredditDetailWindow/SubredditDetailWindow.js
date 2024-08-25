@@ -56,6 +56,6 @@ export default function SubredditDetailWindow () {
                 <p className={`${styles.subredditSubscribers} ${styles.gb}`}>{`Subscribers: ${currentSubreddit.subscribers}`}</p>
             </div>
         </section>
-</div>
+    </div>
     )
 }
