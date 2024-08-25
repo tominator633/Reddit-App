@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import styles from "./Header.module.css";
 import SubredditsSwiper from "../SubredditsSwiper/SubredditsSwiper";
 import Search from "../Search/Search";
-import { useNavigate, createSearchParams, useParams } from 'react-router-dom';
+import { useNavigate, createSearchParams, useParams, NavLink } from 'react-router-dom';
 
 
 
@@ -55,6 +55,12 @@ export default function Header () {
         <nav className={styles.gb} id={styles.middleCon}>
             <SubredditsSwiper/>
         </nav>
+        <NavLink to="/subreddits" 
+                className={`${styles.subredditsManagerBtn} ${styles.gb}`}
+                onClick={() => setSearchBtn(false)}
+                      >
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.5 12c0-.23-.01-.45-.03-.68l1.86-1.41c.4-.3.51-.86.26-1.3l-1.87-3.23a.987.987 0 0 0-1.25-.42l-2.15.91c-.37-.26-.76-.49-1.17-.68l-.29-2.31c-.06-.5-.49-.88-.99-.88h-3.73c-.51 0-.94.38-1 .88l-.29 2.31c-.41.19-.8.42-1.17.68l-2.15-.91c-.46-.2-1-.02-1.25.42L2.41 8.62c-.25.44-.14.99.26 1.3l1.86 1.41a7.3 7.3 0 0 0 0 1.35l-1.86 1.41c-.4.3-.51.86-.26 1.3l1.87 3.23c.25.44.79.62 1.25.42l2.15-.91c.37.26.76.49 1.17.68l.29 2.31c.06.5.49.88.99.88h3.73c.5 0 .93-.38.99-.88l.29-2.31c.41-.19.8-.42 1.17-.68l2.15.91c.46.2 1 .02 1.25-.42l1.87-3.23c.25-.44.14-.99-.26-1.3l-1.86-1.41c.03-.23.04-.45.04-.68m-7.46 3.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5"/></svg>            
+        </NavLink>
         {searchBtn ? 
         <button  onClick={handleCloseSearchBtnClick} 
                 className={`${styles.closeSearchBtn} ${styles.gb}`}>
@@ -68,6 +74,7 @@ export default function Header () {
             <svg role="presentation" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14"></path></svg>
         </button>
         }
+        
         
     </section>
     {searchBtn && <Search onChange={handleSearchFieldChange} 

@@ -50,7 +50,7 @@ export const loadInitialSwiperSubreddit = createAsyncThunk(
 export const searchSubreddits = createAsyncThunk(
     "subreddits/searchSubreddits",
     async (searchInput) => {
-        const searchEndpoint = `/subreddits/search.json?q=${searchInput}&limit=10`;
+        const searchEndpoint = `/subreddits/search.json?q=${searchInput}&limit=20`;
         const response = await fetch(baseUrl + searchEndpoint);
         if (response.ok) {
             const jsonResponse = await response.json();
@@ -86,11 +86,16 @@ export const subredditsSlice = createSlice({
     },
     reducers: {
         addSubreddit: (state, action) => {
-            state.swiperSubreddits.push(action.payload);
+            if (!state.swiperSubreddits.some(subreddit => subreddit.id === action.payload.id)) {
+                state.swiperSubreddits.push(action.payload);
+                const updatedSearchedSubreddits = state.searchedSubreddits.filter(subreddit => subreddit.id !== action.payload.id);
+                state.searchedSubreddits = updatedSearchedSubreddits;
+            }
         },
         deleteSubreddit: (state, action) => {
             const newArr = state.swiperSubreddits.filter(item => item.id !== action.payload.id);
             state.swiperSubreddits = newArr;
+            state.searchedSubreddits.unshift(action.payload);
         },
     },
     extraReducers: {
@@ -105,13 +110,12 @@ export const subredditsSlice = createSlice({
         [loadInitialSwiperSubreddit.fulfilled]: (state, action) => {
             state.isLoadInitialSwiperSubredditLoading = false;
             state.hasLoadInitialSwiperSubredditError = false;
-           state.swiperSubreddits.forEach((subreddit, index) => {
+            state.swiperSubreddits.forEach((subreddit, index) => {
             if (subreddit === action.payload.name) {
               state.swiperSubreddits[index] = action.payload;
             }
-          });
+            });
           //forEach is mutable. Immutable version would include map method and returning a new array
-          
         },
         [searchSubreddits.pending]: (state) => {
             state.isSearchSubredditsLoading = true;

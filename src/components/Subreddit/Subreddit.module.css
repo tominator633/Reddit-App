@@ -7,7 +7,7 @@
 
 /* .gb {
     border: 1px solid red;
-}   */
+}    */
 
 
 .srCon {
@@ -27,7 +27,8 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     background-color: #FEE;
 }
 
@@ -74,11 +75,9 @@
     font-size: 15px;
     padding: 0px 3px;
     word-break: break-all;
+    text-align: center;
 }
 
-.srTitle {
-    font-size: 12px;
-}
 
 .srButtons {
     width: 100%;
@@ -100,4 +99,23 @@
     width: 100%;
     height: 100%;
     color: #FF6B6B;
+}
+
+@media only screen and (max-width: 520px) {
+    .srCon {
+        width: 120px;
+        height: 120px;
+        border-radius: 20px;
+    }
+    .srIcon {
+        width: 30px;
+        height: 30px;
+    }
+    .srDetail,.srDeleteOrAdd {
+        width: 25px;
+        height: 25px;
+    }
+    .srName {
+        font-size: 13px;
+    }
 }

@@ -10,9 +10,8 @@ import { epochToAgo } from "../../utils/utils";
 
 
 
-export default function RedditDetailWindow () {
-
-    let {redditId} = useParams();
+export default function SubredditDetailWindow () {
+    let {subredditId} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const currentReddit = useSelector(selectCurrentReddit);

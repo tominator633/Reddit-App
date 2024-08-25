@@ -2,8 +2,11 @@ import React, {useState} from "react";
 import styles from "./Subreddits.module.css";
 import Subreddit from "../../components/Subreddit/Subreddit";
 import Search from "../../components/Search/Search";
+import Loading from "../../components/Loading/Loading";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { useParams, Outlet, useSearchParams } from 'react-router-dom';
 import {useSelector, useDispatch } from 'react-redux';
-import {selectSwiperSubreddits, selectSearchedSubreddits, searchSubreddits} from "./subredditsSlice";
+import {selectSwiperSubreddits, selectSearchedSubreddits, searchSubreddits, selectIsSearchSubredditsLoading, selectHasSearchSubredditsError} from "./subredditsSlice";
 
 export default function Subreddits () {
 
@@ -11,6 +14,8 @@ export default function Subreddits () {
 
     const swiperSubreddits = useSelector(selectSwiperSubreddits);
     const searchedSubreddits = useSelector(selectSearchedSubreddits);
+    const isSearchSubredditsLoading = useSelector(selectIsSearchSubredditsLoading);
+    const hasSearchSubredditsError = useSelector(selectHasSearchSubredditsError);
 
     const [searchInput, setSearchInput] = useState("");
 
@@ -28,21 +33,25 @@ export default function Subreddits () {
             <section className={`${styles.mySubredditsCon} ${styles.gb}`}>
                 <h2 className={`${styles.mySubredditsH2} ${styles.gb}`}>My Subreddits selection</h2>
                 <div className={`${styles.mySubreddits} ${styles.gb}`}>
-                    {swiperSubreddits.map((subreddit, index) => {
+                    {swiperSubreddits.length > 0 ?
+                    swiperSubreddits.map((subreddit, index) => {
                     return    (
                         <Subreddit content={subreddit} 
                                     key={index}
                                     swiperSubreddit={true}/>
                         )
                         } 
-                    )}
+                    )
+                    :
+                    <ErrorMessage message="You have no subreddits in your selection." />
+                    }
                 </div>
             </section>
             <section className={`${styles.searchSubredditsCon} ${styles.gb}`}>
                 <h2 className={`${styles.searchSubredditsH2} ${styles.gb}`}>Explore subreddits</h2>
                 <Search onChange={handleSearchFieldChange} 
                         searchInput={searchInput}
-                        placeholder="Search subreddits and add them to your selection"/>
+                        placeholder="Search subreddits here"/>
                 {searchInput &&
                 <button className={`${styles.submitSearchSubredditsBtn} ${styles.gb}`}
                         onClick={handleSubmitSearchSubredditsBtnClick}>
@@ -50,18 +59,24 @@ export default function Subreddits () {
                 </button>
                 }
                 <div className={`${styles.searchedSubreddits} ${styles.gb}`}>
-                    {searchedSubreddits.map((subreddit, index) => {
+                    {isSearchSubredditsLoading ?
+                    <Loading loadingText="Loading subreddits..."/>
+                    : hasSearchSubredditsError ?
+                    <ErrorMessage message="Request failed." />
+                    :
+                    searchedSubreddits.map((subreddit, index) => {
                     return (
                         <Subreddit content={subreddit} 
                                     key={index}
                                     swiperSubreddit={false}/>
                     )
-                    })}
+                    })
+                    }
                 </div>
                 
                 
             </section>
-            
+            <Outlet/>
         </div>
     )
 };

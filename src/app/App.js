@@ -3,7 +3,9 @@ import AppLayout from './AppLayout';
 import Reddits from '../features/Reddits/Reddits';
 import RedditDetailWindow from '../components/RedditDetailWindow/RedditDetailWindow';
 import Subreddits from '../features/Subreddits/Subreddits';
+import SubredditDetailWindow from '../components/SubredditDetailWindow/SubredditDetailWindow';
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
+
 
 
 
@@ -12,7 +14,9 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
       <Route path=':subredditName' element={<Reddits/>}>
         <Route path=':redditId' element={<RedditDetailWindow/>}/>
       </Route>
-      <Route path='subreddits' element={<Subreddits/>}/>
+      <Route path='subreddits' element={<Subreddits/>}>
+        <Route path=':subredditId' element={<SubredditDetailWindow/>} />
+      </Route>
   </Route>
 ));
 
