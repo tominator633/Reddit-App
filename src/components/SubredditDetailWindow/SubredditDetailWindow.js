@@ -31,7 +31,7 @@ export default function SubredditDetailWindow () {
                 <figure className={`${styles.subredditBanner} ${styles.gb}`}>
                     {currentSubreddit.bannerImg &&
                     <img src={currentSubreddit.bannerImg} 
-                        />
+                        alt=""/>
                     }
         
                 </figure>
