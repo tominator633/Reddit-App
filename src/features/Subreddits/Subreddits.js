@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import styles from "./Subreddits.module.css";
 import Subreddit from "../../components/Subreddit/Subreddit";
-import Search from "../../components/Search/Search";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { Outlet } from 'react-router-dom';
@@ -18,6 +17,11 @@ export default function Subreddits () {
     const hasSearchSubredditsError = useSelector(selectHasSearchSubredditsError);
 
     const [searchInput, setSearchInput] = useState("");
+    const searchInputRef = useRef(null);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
 
 
     const handleSearchFieldChange = ({target}) => {
@@ -27,6 +31,13 @@ export default function Subreddits () {
     const handleSubmitSearchSubredditsBtnClick = () => {
         dispatch(searchSubreddits(searchInput));
     }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && searchInput) {
+            event.preventDefault(); // Prevent the default form submission
+            dispatch(searchSubreddits(searchInput));
+        }
+    };
 
     return (
         <div className={`${styles.srManagerCon} ${styles.gb}`}>
@@ -49,9 +60,15 @@ export default function Subreddits () {
             </section>
             <section className={`${styles.searchSubredditsCon} ${styles.gb}`}>
                 <h2 className={`${styles.searchSubredditsH2} ${styles.gb}`}>Explore subreddits</h2>
-                <Search onChange={handleSearchFieldChange} 
-                        searchInput={searchInput}
-                        placeholder="Search subreddits here"/>
+                <form onSubmit={handleSubmit}
+                        onKeyDown={handleKeyDown}>
+                    <input className={styles.searchField} 
+                            onChange={handleSearchFieldChange}
+                            id="searchSubredditsField"
+                            value={searchInput}
+                            ref={searchInputRef}
+                            placeholder="Search subreddits here"/>
+                </form>
                 {searchInput &&
                 <button className={`${styles.submitSearchSubredditsBtn} ${styles.gb}`}
                         onClick={handleSubmitSearchSubredditsBtnClick}>
@@ -72,6 +89,9 @@ export default function Subreddits () {
                     )
                     })
                     }
+                    {searchedSubreddits.length === 0 && 
+                    <ErrorMessage message="No subreddits found for given keywords. Try something else." />
+                    }
                 </div>
                 
                 <Outlet/>
@@ -80,3 +100,4 @@ export default function Subreddits () {
         </div>
     )
 };
+

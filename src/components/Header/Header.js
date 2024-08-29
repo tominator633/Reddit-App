@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import styles from "./Header.module.css";
 import SubredditsSwiper from "../SubredditsSwiper/SubredditsSwiper";
-import Search from "../Search/Search";
 import { useNavigate, createSearchParams, useParams, NavLink } from 'react-router-dom';
 
 
@@ -10,11 +9,28 @@ import { useNavigate, createSearchParams, useParams, NavLink } from 'react-route
 
 export default function Header () {
 
-
+    
     const navigate = useNavigate();
     let {subredditName} = useParams();
+
     const [searchBtn, setSearchBtn] = useState(false);
     const [searchInput, setSearchInput] = useState("");
+    const searchInputRef = useRef(null);
+
+
+    const handleSearchBtnClick = () => {
+        setSearchBtn(!searchBtn);
+    }
+
+    const handleCloseSearchBtnClick = () => {
+        setSearchBtn(!searchBtn);
+        setSearchInput("");
+        navigate(subredditName);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
 
     const handleSearchFieldChange = ({target}) => {
         setSearchInput(target.value);
@@ -29,14 +45,14 @@ export default function Header () {
         !target.value && navigate(subredditName);
     }
 
-    const handleSearchBtnClick = () => {
-        setSearchBtn(!searchBtn);
-    }
-    const handleCloseSearchBtnClick = () => {
-        setSearchBtn(!searchBtn);
-        setSearchInput("");
-        navigate(subredditName);
-    }
+    
+    useEffect(() => {
+        if (searchBtn && searchInputRef.current) {
+            requestAnimationFrame(() => {
+                searchInputRef.current.focus();
+              });
+        }
+    }, [searchBtn]);
 
 
 
@@ -77,13 +93,21 @@ export default function Header () {
         
         
     </section>
-    {searchBtn && <Search onChange={handleSearchFieldChange} 
-                            searchInput={searchInput}
-                            placeholder="Search reddits" />
+    {searchBtn && 
+    <form onSubmit={handleSubmit}>
+        <input className={styles.searchField} 
+                onChange={handleSearchFieldChange}
+                id="searchRedditsField"
+                value={searchInput}
+                ref={searchInputRef}
+                placeholder="Search reddits"/>
+    </form>
     }
 </header>
     )
 }
+
+
 
 
 
