@@ -37,7 +37,11 @@ export default function Subreddits () {
             event.preventDefault(); // Prevent the default form submission
             dispatch(searchSubreddits(searchInput));
         }
-    };
+    }
+
+    const handleErrorSearchSubmitReloadClick = () => {
+        dispatch(searchSubreddits(searchInput));
+    }
 
     return (
         <div className={`${styles.srManagerCon} ${styles.gb}`}>
@@ -79,7 +83,8 @@ export default function Subreddits () {
                     {isSearchSubredditsLoading ?
                     <Loading loadingText="Loading subreddits..."/>
                     : hasSearchSubredditsError ?
-                    <ErrorMessage message="Request failed." />
+                    <ErrorMessage message="Request failed."
+                                    onClick={handleErrorSearchSubmitReloadClick} />
                     : searchedSubreddits.length === 0 ?
                     <ErrorMessage message="No subreddits found" />
                     :
