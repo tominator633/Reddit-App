@@ -22,6 +22,11 @@ export default function Reddits () {
     useEffect(() => {
         dispatch(loadReddits(subredditName));
     }, [dispatch, subredditName]);
+
+
+    const handleErrorBtnClick = () => {
+            dispatch(loadReddits(subredditName));
+    }
     
     if (isLoading) {
         return (
@@ -31,7 +36,8 @@ export default function Reddits () {
         return (
             <>
             <h2 className={`${styles.redditsH2} ${styles.gb}`}>{subredditName}</h2>
-            <ErrorMessage message="Request failed" />
+            <ErrorMessage message="Request failed" 
+                        onClick={handleErrorBtnClick}/>
             </>
         )
     } else {

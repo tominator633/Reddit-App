@@ -80,6 +80,8 @@ export default function Subreddits () {
                     <Loading loadingText="Loading subreddits..."/>
                     : hasSearchSubredditsError ?
                     <ErrorMessage message="Request failed." />
+                    : searchedSubreddits.length === 0 ?
+                    <ErrorMessage message="No subreddits found" />
                     :
                     searchedSubreddits.map((subreddit, index) => {
                     return (
@@ -88,9 +90,6 @@ export default function Subreddits () {
                                     isSwiperSubreddit={false}/>
                     )
                     })
-                    }
-                    {searchedSubreddits.length === 0 && 
-                    <ErrorMessage message="No subreddits found for given keywords. Try something else." />
                     }
                 </div>
                 
