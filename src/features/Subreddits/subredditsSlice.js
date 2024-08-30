@@ -23,7 +23,7 @@ export const loadInitialSwiperSubreddit = createAsyncThunk(
             }
         }
     }
-);
+); 
 
 
 export const searchSubreddits = createAsyncThunk(
