@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./RedditDetailWindow.module.css";
 import Comment from "../Comment/Comment";
 import { useParams, useNavigate } from "react-router-dom";
-import { selectCurrentReddit, selectComments, emptyComments, selectIsCommentsLoading, selectHasCommentsError } from "../../features/Reddit/redditSlice";
+import { selectCurrentReddit,loadComments, selectComments, emptyComments, selectIsCommentsLoading, selectHasCommentsError } from "../../features/Reddit/redditSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -25,6 +25,10 @@ export default function RedditDetailWindow () {
         dispatch(emptyComments());
         navigate(-1);
     };
+
+    const handleErrorCommentsReloadBtn = () => {
+        dispatch(loadComments(currentReddit.permalink));
+    }
 
     return (
 <div id={redditId} className={`${styles.windowBarrier} ${styles.gb}`} role="presentation">
@@ -54,7 +58,8 @@ export default function RedditDetailWindow () {
             <Loading loadingText="Loading comments..."/> 
             :
             hasCommentsError ?
-            <ErrorMessage message="Request failed."/>
+            <ErrorMessage message="Request failed."
+                            onClick={handleErrorCommentsReloadBtn}/>
             :
             comments.length === 0 ?
             <p className={`${styles.noComments} ${styles.gb}`}>This post has no comments</p>

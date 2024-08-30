@@ -33,7 +33,6 @@ export const searchSubreddits = createAsyncThunk(
         const response = await fetch(baseUrl + searchEndpoint);
         if (response.ok) {
             const jsonResponse = await response.json();
-            console.log(jsonResponse);
             const searchedSubredditsArr = jsonResponse.data.children.map((subreddit) => {
                 return {
                     name: subreddit.data.display_name,

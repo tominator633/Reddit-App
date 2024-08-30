@@ -24,7 +24,8 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
       swiperSubreddits.forEach((initialSubreddit) => {
         dispatch(loadInitialSwiperSubreddit(initialSubreddit));
       })
-      },[dispatch, swiperSubreddits]);
+      },[]); //this dependency array must be empty, otherwise it retains data everytime a new subreddit is added
+
 
       const handleSwiperSubredditClick = () => {
         setSearchBtn(false);
