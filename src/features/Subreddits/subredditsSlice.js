@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const baseUrl = "https://www.reddit.com";
 
 
-export const loadInitialSwiperSubreddit = createAsyncThunk(
+/* export const loadInitialSwiperSubreddit = createAsyncThunk(
     "subreddits/loadInitialSwiperSubreddit",
     async (subreddit) => {
         const searchEndpoint = `/r/${subreddit}/about.json`;
@@ -23,7 +23,7 @@ export const loadInitialSwiperSubreddit = createAsyncThunk(
             }
         }
     }
-); 
+);  */
 
 
 export const searchSubreddits = createAsyncThunk(
@@ -55,9 +55,9 @@ export const searchSubreddits = createAsyncThunk(
 export const subredditsSlice = createSlice({
     name: "subreddits",
     initialState: {
-        swiperSubreddits: ["funny", "AskReddit"],
-        isLoadInitialSwiperSubredditLoading: false,
-        hasLoadInitialSwiperSubredditError: false,
+        swiperSubreddits: [],
+ /*        isLoadInitialSwiperSubredditLoading: false,
+        hasLoadInitialSwiperSubredditError: false, */
         searchedSubreddits: [],
         isSearchSubredditsLoading: false,
         hasSearchSubredditsError: false,
@@ -81,7 +81,7 @@ export const subredditsSlice = createSlice({
         }
     },
     extraReducers: {
-        [loadInitialSwiperSubreddit.pending]: (state) => {
+/*         [loadInitialSwiperSubreddit.pending]: (state) => {
             state.isLoadInitialSwiperSubredditLoading = true;
             state.hasLoadInitialSwiperSubredditError = false;
         },
@@ -98,7 +98,7 @@ export const subredditsSlice = createSlice({
             }
             });
           //forEach is mutable. Immutable version would include map method and returning a new array
-        },
+        }, */
         [searchSubreddits.pending]: (state) => {
             state.isSearchSubredditsLoading = true;
             state.hasSearchSubredditsError = false;
@@ -117,8 +117,8 @@ export const subredditsSlice = createSlice({
 });
 
 export const selectSwiperSubreddits = (state) => state.subreddits.swiperSubreddits;
-export const selectIsLoadInitialSwiperSubredditLoading = (state) => state.subreddits.isLoadInitialSwiperSubredditLoading;
-export const selectHasLoadInitialSwiperSubredditError = (state) => state.subreddits.hasLoadInitialSwiperSubredditError;
+/* export const selectIsLoadInitialSwiperSubredditLoading = (state) => state.subreddits.isLoadInitialSwiperSubredditLoading;
+export const selectHasLoadInitialSwiperSubredditError = (state) => state.subreddits.hasLoadInitialSwiperSubredditError; */
 
 export const selectSearchedSubreddits = (state) => state.subreddits.searchedSubreddits;
 export const selectIsSearchSubredditsLoading = (state) => state.subreddits.isSearchSubredditsLoading;

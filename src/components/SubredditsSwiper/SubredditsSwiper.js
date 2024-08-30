@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y, Mousewheel, FreeMode } from 'swiper/modules';
 import "swiper/css/bundle";
 import styles from "./SubredditsSwiper.module.css";
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams} from 'react-router-dom';
-import {loadInitialSwiperSubreddit, selectSwiperSubreddits, selectIsLoadInitialSwiperSubredditLoading, selectHasLoadInitialSwiperSubredditError} from "../../features/Subreddits/subredditsSlice";
+import { selectSwiperSubreddits} from "../../features/Subreddits/subredditsSlice";
 import { loadReddits} from "../../features/Reddits/redditsSlice";
 
 
@@ -16,15 +16,13 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
 
     let {subredditName} = useParams();
     const swiperSubreddits = useSelector(selectSwiperSubreddits);
-    const isLoadInitialSwiperSubredditLoading = useSelector(selectIsLoadInitialSwiperSubredditLoading);
-    const hasLoadInitialSwiperSubredditError = useSelector(selectHasLoadInitialSwiperSubredditError);
-
+/* 
     useEffect(() => {
       swiperSubreddits.forEach((initialSubreddit) => {
         dispatch(loadInitialSwiperSubreddit(initialSubreddit));
         // eslint-disable-next-line react-hooks/exhaustive-deps
       })
-      },[]); //this dependency array must be empty, otherwise it retains data everytime a new subreddit is added
+      },[]); //this dependency array must be empty, otherwise it retains data everytime a new subreddit is added */
 
 
       const handleSwiperSubredditClick = () => {
@@ -33,9 +31,6 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
       }
 
       const handleSwiperReloadBtnClick = () => {
-        swiperSubreddits.forEach((initialSubreddit) => {
-          dispatch(loadInitialSwiperSubreddit(initialSubreddit));
-        });
         dispatch(loadReddits(subredditName));
       }
 
@@ -82,15 +77,7 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
             </NavLink>
       </SwiperSlide>
 
-      {hasLoadInitialSwiperSubredditError ?
-      <div className={`${styles.swiperErrorDiv} ${styles.gb}`}>
-          <p className={`${styles.swiperErrorMessage} ${styles.gb}`}>Request failed</p>
-          <button className={`${styles.swiperReloadBtn} ${styles.gb}`}
-                  onClick={handleSwiperReloadBtnClick}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19.933 13.041a8 8 0 1 1-9.925-8.788c3.899-1 7.935 1.007 9.425 4.747"/><path d="M20 4v5h-5"/></g></svg>
-          </button>
-      </div>
-      :
+      {
       swiperSubreddits.map((subreddit,index) => 
          (
           <SwiperSlide id={subreddit.id} key={index} className={`${styles.swiperSlide} ${styles.gb}`}>
