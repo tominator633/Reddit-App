@@ -86,6 +86,20 @@
     font-weight: 700;
 }
 
+
+.inactiveSubreddit:active {
+    opacity: 50%;
+}
+
+
+
+
+
+
+/* LOADING */
+/* LOADING */
+/* LOADING */
+/* LOADING */
 /* LOADING */
 
 .iconLoading {

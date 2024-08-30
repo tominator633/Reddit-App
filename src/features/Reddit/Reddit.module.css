@@ -92,6 +92,9 @@
     height: 100%;
     color: #FF6B6B;
 }
+.commentsButton svg:active {
+    opacity: 50%;
+}
 
 
 .selftextContent {

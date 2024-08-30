@@ -58,7 +58,9 @@
     width: 80%;
     height: 80%;
 }
-
+.closeBtn:active {
+    opacity: 50%;
+}
 
 
 .redditDetail {

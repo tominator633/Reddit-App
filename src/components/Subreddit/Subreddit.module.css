@@ -94,6 +94,9 @@
     cursor: pointer;
     border: none;
 }
+.srDetail:active,.srDeleteOrAdd:active {
+    opacity: 50%;
+}
 
 .srDetail svg,.srDeleteOrAdd svg {
     width: 100%;
