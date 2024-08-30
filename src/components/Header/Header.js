@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import styles from "./Header.module.css";
 import SubredditsSwiper from "../SubredditsSwiper/SubredditsSwiper";
-import { useNavigate, createSearchParams, useParams, NavLink } from 'react-router-dom';
+import { useNavigate, createSearchParams, useParams, NavLink,  useSearchParams } from 'react-router-dom';
 
 
 
@@ -15,11 +15,20 @@ export default function Header () {
 
     const [searchBtn, setSearchBtn] = useState(false);
     const [searchInput, setSearchInput] = useState("");
+    const [searchParams, setSearchParams ] = useSearchParams();
     const searchInputRef = useRef(null);
 
 
     const handleSearchBtnClick = () => {
         setSearchBtn(!searchBtn);
+        const query = {
+            title: ""
+        };
+        const queryString = createSearchParams(query);
+        navigate({
+            pathname: `/${subredditName}`,
+            search: `?${queryString}`
+        });
     }
 
     const handleCloseSearchBtnClick = () => {
@@ -34,14 +43,7 @@ export default function Header () {
 
     const handleSearchFieldChange = ({target}) => {
         setSearchInput(target.value);
-        const query = {
-            title: target.value
-        };
-        const queryString = createSearchParams(query);
-        navigate({
-            pathname: `/${subredditName}`,
-            search: `?${queryString}`
-        });
+        setSearchParams( {title: target.value} );
         !target.value && navigate(subredditName);
     }
 
@@ -69,7 +71,8 @@ export default function Header () {
             <h1 className={styles.gb} > <span>Reddit</span>.to.read</h1>
         </div>
         <nav className={styles.gb} id={styles.middleCon}>
-            <SubredditsSwiper/>
+            <SubredditsSwiper setSearchBtn={setSearchBtn}
+                                setSearchInput={setSearchInput}/>
         </nav>
         <NavLink to="/subreddits" 
                 className={`${styles.subredditsManagerBtn} ${styles.gb}`}
