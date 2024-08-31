@@ -34,7 +34,7 @@ export default function Subreddits () {
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter' && searchInput) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault();
             dispatch(searchSubreddits(searchInput));
         }
     }
@@ -44,6 +44,7 @@ export default function Subreddits () {
     }
 
     return (
+        <>
         <div className={`${styles.srManagerCon} ${styles.gb}`}>
             <section className={`${styles.mySubredditsCon} ${styles.gb}`}>
                 <h2 className={`${styles.mySubredditsH2} ${styles.gb}`}>My Subreddits selection</h2>
@@ -98,10 +99,17 @@ export default function Subreddits () {
                     }
                 </div>
                 
-                <Outlet/>
+                
             </section>
-           
+            
         </div>
+        <Outlet/>
+        </>
     )
 };
+
+
+
+/* the Outlet is just below the outermost element, in 
+order for the backdrop filter to blur everything in behind */
 

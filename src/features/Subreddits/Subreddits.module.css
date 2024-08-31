@@ -10,9 +10,22 @@
     border: 1px solid red;
 }    */
 
+@keyframes blendShift {
+    0% {
+        opacity: 0;
+        margin-top: -50px;
+    }
+    100% {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
 .srManagerCon {
     margin: 0 auto;
     width: 100%;
+    margin-top: -50px; /* Start position above the original position */
+    animation: blendShift 0.5s ease-out forwards;
 }
 .mySubredditsCon {
     width: 100%;

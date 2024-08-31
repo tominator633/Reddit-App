@@ -3,35 +3,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y, Mousewheel, FreeMode } from 'swiper/modules';
 import "swiper/css/bundle";
 import styles from "./SubredditsSwiper.module.css";
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { NavLink} from 'react-router-dom';
 import { selectSwiperSubreddits} from "../../features/Subreddits/subredditsSlice";
-import { loadReddits} from "../../features/Reddits/redditsSlice";
-
-
 
 
 export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
-    const dispatch = useDispatch();
 
-    let {subredditName} = useParams();
     const swiperSubreddits = useSelector(selectSwiperSubreddits);
-/* 
-    useEffect(() => {
-      swiperSubreddits.forEach((initialSubreddit) => {
-        dispatch(loadInitialSwiperSubreddit(initialSubreddit));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-      })
-      },[]); //this dependency array must be empty, otherwise it retains data everytime a new subreddit is added */
 
-
-      const handleSwiperSubredditClick = () => {
+    const handleSwiperSubredditClick = () => {
         setSearchBtn(false);
         setSearchInput("");
-      }
-
-      const handleSwiperReloadBtnClick = () => {
-        dispatch(loadReddits(subredditName));
       }
 
  

@@ -9,7 +9,16 @@
     border: 1px solid red;
 }   */
 
-
+@keyframes blendShift {
+    0% {
+        opacity: 0;
+        top: -50px;
+    }
+    100% {
+        opacity: 1;
+        top: 0px;
+    }
+}
 
 .reddit {
     margin-top: 30px;
@@ -22,6 +31,9 @@
     padding-bottom: 10px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     overflow: hidden;
+    position: relative;
+    top: -50px; /* Start position above the original position */
+    animation: blendShift 0.5s ease-out forwards;
 }
 .votesColumn {
     width: 10%;
@@ -134,11 +146,13 @@
 .imgContent img {
     max-width: 100%;
     max-height: 90svh;
+    border-radius: 10px;
 }
 .videoContent {
     max-width: 100%;
     max-height: 80svh;
     margin-top: 10px;
+    border-radius: 10px;
 }
 
 

@@ -56,8 +56,6 @@ export const subredditsSlice = createSlice({
     name: "subreddits",
     initialState: {
         swiperSubreddits: [],
- /*        isLoadInitialSwiperSubredditLoading: false,
-        hasLoadInitialSwiperSubredditError: false, */
         searchedSubreddits: [],
         isSearchSubredditsLoading: false,
         hasSearchSubredditsError: false,
