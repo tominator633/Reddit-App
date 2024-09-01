@@ -9,14 +9,14 @@
     border: 1px solid red;
 }   */
 
-@keyframes blendShiftReplyComment {
+@keyframes blendShiftUpReplyComment {
     0% {
         opacity: 0;
-        margin-left: -50px;
+        margin-bottom: -20px;
     }
     100% {
         opacity: 1;
-        margin-left: 10px;
+        margin-bottom: 0px;
     }
 }
 
@@ -28,8 +28,7 @@
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 20px;
     background-color: white;
-    margin-left: -50px; /* Start position above the original position */
-    animation: blendShiftReplyComment 0.5s ease-out forwards;
+    animation: blendShiftUpReplyComment 0.5s ease-out forwards;
 }
 .commentInfo {
     display: flex;

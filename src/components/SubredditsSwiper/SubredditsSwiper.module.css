@@ -55,13 +55,7 @@
     height: 100%;
     border-radius: 50%;
 }
-.activeSubreddit h3{
-    color:  #FF6B6B;
-    font-size: 16px;
-    font-weight: 700;
-    word-break: break-all;
-    text-align: center;
-}
+
 .inactiveSubreddit h3 {
     color: #DAF6FB;
     font-size: 14px;
@@ -69,9 +63,15 @@
     word-break: break-all;
     text-align: center;
 }
+.activeSubreddit h3{
+    color:  #FF6B6B;
+    font-size: 14px;
+    font-weight: 700;
+    word-break: break-all;
+    text-align: center;
+}
 
-#btnPrev,
-#btnNext {
+#btnPrev,#btnNext {
     color: #DAF6FB;
     width: 25px;
     height: 25px;

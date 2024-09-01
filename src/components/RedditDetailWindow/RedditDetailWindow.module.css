@@ -178,6 +178,8 @@
 .commentsSection {
     background-color: white;
     padding: 10px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .clearfix::after {

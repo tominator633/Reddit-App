@@ -59,7 +59,7 @@ export default function Header () {
 
 
     return (
-<header className={styles.gb}>
+<header className={styles.gb} id="header">
     <section className={`${styles.mainLine} ${styles.gb}`}>
         <div id={styles.headline} className={styles.gb} role="presentation">
             <figure id={styles.logo} className={styles.gb}>
@@ -98,8 +98,10 @@ export default function Header () {
         
     </section>
     {searchBtn && 
-    <form onSubmit={handleSubmit}>
-        <input className={styles.searchField} 
+    <form onSubmit={handleSubmit}
+            className={`${styles.searchRedditsForm} ${styles.gb}`}
+            id="searchRedditsForm">
+        <input className={`${styles.searchField} ${styles.gb}`}
                 onChange={handleSearchFieldChange}
                 id="searchRedditsField"
                 value={searchInput}

@@ -30,14 +30,14 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
       }}
       breakpoints={{
         0: {
-          slidesPerView: 5,
+          slidesPerView: 4,
           spaceBetween: 3
         },
         800: {
           slidesPerView: 4,
           spaceBetween: 3
         },
-        1000: {
+        1070: {
           slidesPerView: 5,
           spaceBetween: 3,
         },
