@@ -1,14 +1,19 @@
 import React, {useState, useRef, useEffect} from "react";
+import { useMediaQuery } from "react-responsive"; //first npm install react-responsive, then define media queries
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./Header.module.css";
 import SubredditsSwiper from "../SubredditsSwiper/SubredditsSwiper";
 import { useNavigate, createSearchParams, useParams, NavLink,  useSearchParams } from 'react-router-dom';
+import {searchRedditsFormVar, searchRedditsFieldVar} from "./headerFMVariants";
+
+
 
 
 
 
 
 export default function Header () {
-
+    const isBelow900px = useMediaQuery({ query: "(max-width: 900px)" });
     
     const navigate = useNavigate();
     let {subredditName} = useParams();
@@ -57,7 +62,6 @@ export default function Header () {
     }, [searchBtn]);
 
 
-
     return (
 <header className={styles.gb} id="header">
     <section className={`${styles.mainLine} ${styles.gb}`}>
@@ -97,18 +101,35 @@ export default function Header () {
         
         
     </section>
+    <AnimatePresence>
     {searchBtn && 
-    <form onSubmit={handleSubmit}
+    <motion.form onSubmit={handleSubmit}
             className={`${styles.searchRedditsForm} ${styles.gb}`}
-            id="searchRedditsForm">
-        <input className={`${styles.searchField} ${styles.gb}`}
+            id="searchRedditsForm"
+
+            variants={searchRedditsFormVar(isBelow900px)}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            
+            >
+        <motion.input className={`${styles.searchField} ${styles.gb}`}
                 onChange={handleSearchFieldChange}
                 id="searchRedditsField"
                 value={searchInput}
                 ref={searchInputRef}
-                placeholder="Search reddits"/>
-    </form>
+                placeholder="Search reddits"
+
+                variants={searchRedditsFieldVar}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                
+                
+                />
+    </motion.form>
     }
+    </AnimatePresence>
 </header>
     )
 }

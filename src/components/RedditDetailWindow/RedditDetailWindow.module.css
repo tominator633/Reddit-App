@@ -8,14 +8,7 @@
 /*   .gb {
     border: 1px solid red;
 }  */
-@keyframes blend {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
+
 @keyframes blendShift {
     0% {
         opacity: 0;
@@ -26,14 +19,7 @@
         margin-top: 0px;
     }
 }
-@keyframes shiftUpRedditDetailWindow {
-    0% {
-        margin-top: 100%;
-    }
-    100% {
-        margin-top: 0px;
-    }
-}
+
 
 .windowBarrier {
     width: 100%;
@@ -47,7 +33,6 @@
     align-items: center;
     justify-content: center;
     z-index: 100;
-    animation: blend 0.5s ease-out forwards;
 }
 
 
@@ -61,8 +46,6 @@
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
     overflow-y: scroll;
-    margin-top: 100%; /* Start position above the original position */
-    animation: shiftUpRedditDetailWindow 0.5s ease-out forwards;
 }
 
 .closeBtn {

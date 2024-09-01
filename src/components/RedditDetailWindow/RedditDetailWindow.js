@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./RedditDetailWindow.module.css";
 import Comment from "../Comment/Comment";
 import { useParams, useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { epochToAgo } from "../../utils/utils";
+import {windowBarrierVar, redditDetailWindowVar} from "./redditDetailWindowFMVariants";
 
 
 
@@ -23,7 +25,7 @@ export default function RedditDetailWindow () {
 
     const handleCloseButtonClick = () => {
         dispatch(emptyComments());
-        navigate(-1);
+            navigate(-1);
     };
 
     const handleErrorCommentsReloadBtn = () => {
@@ -31,9 +33,31 @@ export default function RedditDetailWindow () {
     }
 
     return (
-<div id={redditId} className={`${styles.windowBarrier} ${styles.gb}`} role="presentation">
-    <section className={`${styles.redditDetailWindow} ${styles.gb}`} role="dialog" aria-label="reddit detail window">
-        <button onClick={handleCloseButtonClick} className={`${styles.closeBtn} ${styles.gb} ${styles.clearfix}`}>
+<AnimatePresence>
+<motion.div id={redditId} 
+    className={`${styles.windowBarrier} ${styles.gb}`} 
+    role="presentation"
+
+    variants={windowBarrierVar}
+    initial="hidden"
+    animate="visible"
+    exit="hidden"
+    
+    
+    >
+    <motion.section className={`${styles.redditDetailWindow} ${styles.gb}`} 
+            role="dialog" 
+            aria-label="reddit detail window"
+            
+            variants={redditDetailWindowVar}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            
+            
+            >
+        <button onClick={handleCloseButtonClick} 
+                className={`${styles.closeBtn} ${styles.gb} ${styles.clearfix}`}>
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496"/></svg>
         </button>
         <div className={styles.redditDetail} >
@@ -71,7 +95,8 @@ export default function RedditDetailWindow () {
 
             
         </div>
-    </section>
-</div>
+    </motion.section>
+</motion.div>
+</AnimatePresence>
     )
 }

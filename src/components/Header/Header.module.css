@@ -31,26 +31,7 @@
         margin-top: 0px;
     }
 }
-@keyframes shiftSearchForm {
-    0% {
-        margin-top: -30px;
-        opacity: 0;
-    }
-    100% {
-        margin-top: 0px;
-        opacity: 1;
-    }
-}
-@keyframes disappearSearchForm {
-    0% {
-        margin-top: 0px;
-        opacity: 1;
-    }
-    100% {
-        margin-top: -30px;
-        opacity: 0;
-    }
-}
+
 
 header {
     border-bottom-left-radius: 20px;
@@ -197,68 +178,6 @@ h1 span {
     transition: all 0.2s ease-in;
 }
 
-@media only screen and (max-width: 1070px) {
-    #middleCon {
-        width: 60%;
-    }
-}
-
-@media only screen and (max-width: 860px) {
-    #logo {
-        width: 40px;
-        height: 40px;
-    }
-    h1 {
-        font-size: 28px;
-    }
-    
-    h1 span {
-        font-size: 28px;
-    }
-    .searchBtn,.closeSearchBtn {
-        width: 40px;
-        height: 40px;
-     
-    }
-    
-}
-
-@media only screen and (max-width: 690px) {
-
-    #logo {
-        width: 30px;
-        height: 30px;
-    }
-    .mainLine {
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 0px;
-    }
-    .inactiveSubredditsManagerBtn,.activeSubredditsManagerBtn  {
-        position: absolute;
-        left: 8px;
-        top: 10px;
-        width: 30px;
-        height: 30px;
-        margin-right: 0px;
-    }
-    .searchBtn,.closeSearchBtn {
-        position: absolute;
-        right: 8px;
-        top: 10px;
-        width: 35px;
-        height: 35px;
-        margin-right: 0px;
-    }
-    #middleCon {
-        width: 100%;
-        padding-top: 12px;
-        padding-bottom: 6px;
-    }
-}
-
-
 
 /* FORM *//* FORM */
 /* FORM *//* FORM */
@@ -270,7 +189,6 @@ h1 span {
 .searchRedditsForm {
     padding: 20px;
     width: 100%;
-    animation: shiftSearchForm 0.5s ease-out forwards;
 }
 
 input[type="search"]:-webkit-autofill,
@@ -309,13 +227,77 @@ input[type="search"]:-webkit-autofill:active {
 
 
 
-@media only screen and (max-width: 560px) {
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1070px) {
+    #middleCon {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    #logo {
+        width: 30px;
+        height: 30px;
+    }
+    .mainLine {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0px;
+    }
+    .inactiveSubredditsManagerBtn,.activeSubredditsManagerBtn  {
+        position: absolute;
+        left: 8px;
+        top: 10px;
+        width: 30px;
+        height: 30px;
+        margin-right: 0px;
+    }
+    .searchBtn,.closeSearchBtn {
+        position: absolute;
+        right: 8px;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        margin-right: 0px;
+    }
+    #middleCon {
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 6px;
+    }
     .searchField {
         height: 30px;
         width: 98%;
     }
     .searchField::placeholder {
         text-align: center;
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    #logo {
+        width: 40px;
+        height: 40px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    
+    h1 span {
+        font-size: 28px;
     }
     
 }

@@ -5,8 +5,8 @@
     font-family: "Urbanist", sans-serif;
 }
 
-
-/*  .gb {
+/* 
+ .gb {
     border: 1px solid red;
 }    */
 
@@ -31,6 +31,8 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    overflow: hidden; /* Hides the overflowed text */
+
     
 }
 
@@ -57,18 +59,25 @@
 }
 
 .inactiveSubreddit h3 {
+    width: 100%;
     color: #DAF6FB;
     font-size: 14px;
     font-weight: 400;
-    word-break: break-all;
     text-align: center;
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Hides the overflowed text */
+    text-overflow: ellipsis; /* Adds the ellipsis */
+
 }
 .activeSubreddit h3{
+    width: 100%;
     color:  #FF6B6B;
     font-size: 14px;
     font-weight: 700;
-    word-break: break-all;
     text-align: center;
+    white-space: nowrap; /* Prevents text from wrapping to the next line */
+    overflow: hidden; /* Hides the overflowed text */
+    text-overflow: ellipsis; /* Adds the ellipsis */
 }
 
 #btnPrev,#btnNext {
@@ -164,7 +173,7 @@
 
 
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 900px) {
     .inactiveSubreddit figure,.activeSubreddit figure {
         width: 35px;
         height: 35px;
@@ -178,9 +187,6 @@
     }
 }
 
-@media only screen and (max-width: 690px) {
-
-}
 
 
 
