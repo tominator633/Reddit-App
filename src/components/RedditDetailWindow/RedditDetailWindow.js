@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./RedditDetailWindow.module.css";
 import Comment from "../Comment/Comment";
@@ -12,8 +12,10 @@ import {windowBarrierVar, redditDetailWindowVar} from "./redditDetailWindowFMVar
 
 
 
+
 export default function RedditDetailWindow () {
 
+    const [isVisible, setIsVisible] = useState(true); //everytime the component appears, it will be true
     let {redditId} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -24,8 +26,7 @@ export default function RedditDetailWindow () {
 
 
     const handleCloseButtonClick = () => {
-        dispatch(emptyComments());
-            navigate(-1);
+        setIsVisible(false); // Start the exit animation
     };
 
     const handleErrorCommentsReloadBtn = () => {
@@ -33,15 +34,20 @@ export default function RedditDetailWindow () {
     }
 
     return (
-<AnimatePresence>
-<motion.div id={redditId} 
-    className={`${styles.windowBarrier} ${styles.gb}`} 
-    role="presentation"
+<AnimatePresence onExitComplete={() => {
+            dispatch(emptyComments());
+            navigate(-1);
+        }}>
+    {
+    isVisible &&
+    <motion.div id={redditId} 
+                className={`${styles.windowBarrier} ${styles.gb}`} 
+                role="presentation"
 
-    variants={windowBarrierVar}
-    initial="hidden"
-    animate="visible"
-    exit="hidden"
+                variants={windowBarrierVar}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
     
     
     >
@@ -97,6 +103,9 @@ export default function RedditDetailWindow () {
         </div>
     </motion.section>
 </motion.div>
+    }
+    
+
 </AnimatePresence>
     )
 }
