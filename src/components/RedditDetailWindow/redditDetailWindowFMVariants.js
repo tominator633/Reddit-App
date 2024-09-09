@@ -1,6 +1,7 @@
 
 
 
+
 export const windowBarrierVar = {
     visible: {
         opacity: 1,
@@ -30,3 +31,4 @@ export const redditDetailWindowVar = {
         }
     },
     }
+

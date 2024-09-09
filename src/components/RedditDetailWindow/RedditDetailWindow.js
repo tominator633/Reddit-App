@@ -95,7 +95,9 @@ export default function RedditDetailWindow () {
             <p className={`${styles.noComments} ${styles.gb}`}>This post has no comments</p>
             :
             comments.map((content, index) => {
-                    return <Comment content={content} key={index}/>
+                    return <Comment content={content} 
+                                    key={index}
+                                    />
                 
             }) }
 
