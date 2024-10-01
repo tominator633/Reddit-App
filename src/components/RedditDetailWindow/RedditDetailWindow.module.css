@@ -55,10 +55,18 @@
     position: sticky;
     float: right;
     z-index: 2000;
+    scale: 1;
+    transition: scale 0.3s linear;
 }
 .closeBtn svg {
     width: 80%;
     height: 80%;
+}
+@media (hover: hover) {
+    .closeBtn:hover {
+        scale: 1.2;
+        transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 }
 .closeBtn:active {
     opacity: 50%;

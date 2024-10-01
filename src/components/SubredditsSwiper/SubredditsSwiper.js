@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, A11y, Mousewheel, FreeMode } from 'swiper/modules';
 import "swiper/css/bundle";
@@ -6,7 +6,7 @@ import styles from "./SubredditsSwiper.module.css";
 import { useSelector } from 'react-redux';
 import { NavLink} from 'react-router-dom';
 import { selectSwiperSubreddits} from "../../features/Subreddits/subredditsSlice";
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {swiperSubredditVar} from "./subredditsSwiperFMVariants";
 
 
@@ -57,10 +57,9 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
 
       <SwiperSlide className={`${styles.swiperSlide} ${styles.gb}`}>
             <motion.div
-            
             variants={swiperSubredditVar}
-            initial="initial"
-            whileHover="hover"
+            initial="hidden"
+            animate="visible"
             >
             <NavLink to="/popular" 
                       className={({isActive}) => isActive ? styles.activeSubreddit : styles.inactiveSubreddit}
@@ -76,18 +75,15 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
             </NavLink>
             </motion.div>
       </SwiperSlide>
-
-      {
-      swiperSubreddits.map((subreddit,index) => 
+      {swiperSubreddits.map((subreddit,index) => 
          (
           <SwiperSlide id={subreddit.id} 
                         key={index} 
                         className={`${styles.swiperSlide} ${styles.gb}`}>
             <motion.div
-            
             variants={swiperSubredditVar}
-            initial="initial"
-            whileHover="hover"
+            initial="hidden"
+            animate="visible"
             >
 
             <NavLink to={`${subreddit.name}`} 

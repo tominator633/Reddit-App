@@ -104,7 +104,20 @@
     width: 100%;
     height: 100%;
     color: #FF6B6B;
+    scale: 1;
+    transition: scale 0.3s linear;
 }
+/* The @media (hover: hover) query is used to apply hover 
+styles only on devices that support hovering (like desktops with a mouse). 
+Touchscreen devices typically have hover: none, meaning hover effects won't 
+apply there. */
+@media (hover: hover) {
+    .commentsButton svg:hover {
+        scale: 0.8;
+        transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+
 .commentsButton svg:active {
     opacity: 50%;
 }

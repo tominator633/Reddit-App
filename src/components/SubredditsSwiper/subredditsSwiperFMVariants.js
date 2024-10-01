@@ -3,19 +3,20 @@
 
 
 export const swiperSubredditVar = {
-    initial: {
+    visible: {
+        marginLeft: "0px",
         scale: 1,
         opacity: 1,
-        rotate: 0
+        transition: {
+            duration: 0.3
+        }
     },
-    hover: {
-       scale: 0.8,
-       opacity: 1,
-       rotate: 0
-    },
-    focus: {
+    hidden: {
+        marginLeft: "-60px",
+        opacity: 0,
         scale: 1,
-        opacity: 0.5,
-        rotate: 0
+        transition: {
+            duration: 0.3
+        }
     }
     }

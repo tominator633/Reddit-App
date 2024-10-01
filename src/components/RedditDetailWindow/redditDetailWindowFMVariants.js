@@ -1,7 +1,5 @@
 
 
-
-
 export const windowBarrierVar = {
     visible: {
         opacity: 1,

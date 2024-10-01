@@ -48,8 +48,6 @@ export default function RedditDetailWindow () {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-    
-    
     >
     <motion.section className={`${styles.redditDetailWindow} ${styles.gb}`} 
             role="dialog" 
@@ -59,8 +57,6 @@ export default function RedditDetailWindow () {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            
-            
             >
         <button onClick={handleCloseButtonClick} 
                 className={`${styles.closeBtn} ${styles.gb} ${styles.clearfix}`}>

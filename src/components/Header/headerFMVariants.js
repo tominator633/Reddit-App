@@ -1,4 +1,15 @@
 
+
+export const searchBtnVar = {
+  visible: {
+      opacity: 1,
+  },
+  hidden: { 
+    opacity: 0,
+    },
+  }
+
+
 export const searchRedditsFormVar = (isBelow900px) => ({
     visible: {
       marginTop: "0px",
@@ -23,5 +34,10 @@ visible: {
         delay: 0.1,
     }
 },
-hidden: { opacity: 0},
+hidden: {
+   opacity: 0,
+   transition: {
+    duration: 0.1,
+   }
+  },
 }

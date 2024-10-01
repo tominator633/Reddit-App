@@ -32,9 +32,21 @@
     justify-content: center;
     text-decoration: none;
     overflow: hidden; /* Hides the overflowed text */
-
-    
+    transition: scale 0.3s linear;
 }
+
+@media (hover: hover) {
+    .inactiveSubreddit:hover {
+        scale: 0.8;
+        transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+
+.inactiveSubreddit:active {
+    opacity: 50%;
+} 
+
+
 
 .activeSubreddit figure,.inactiveSubreddit figure {
     width: 45px;
@@ -96,9 +108,7 @@
 }
 
 
-.inactiveSubreddit:active {
-    opacity: 50%;
-} 
+
 
 
 

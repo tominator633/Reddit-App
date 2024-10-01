@@ -8,7 +8,7 @@
 
 /*  .gb {
     border: 1px solid red;
-}    */
+}     */
 
 @keyframes rotatingIcon {
     0% {
@@ -50,7 +50,7 @@ header {
 }
 
 
-/*HEADLINE COMPONENT */
+/*HEADLINE COMPONENT *//*HEADLINE COMPONENT *//*HEADLINE COMPONENT */
 #headline {
     display: flex;
     align-items: center;
@@ -66,8 +66,6 @@ header {
     width: 100%;
     height: 100%;
 }
-
-
 h1 {
     font-family: "Zain", sans-serif;
     padding: 5px;
@@ -75,7 +73,6 @@ h1 {
     color: white;
     text-align: right;
 }
-
 h1 span {
     font-family: "Zain", sans-serif;
     color: #FF6B6B;
@@ -93,7 +90,15 @@ h1 span {
     justify-content: center;
 }
 
+.rightCon {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 .inactiveSubredditsManagerBtn,.activeSubredditsManagerBtn {
+    margin-left: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,6 +108,7 @@ h1 span {
     cursor: pointer;
     border: none;
     border-radius: 50%;
+    transition: all 0.5s ease;
     
 }
 .inactiveSubredditsManagerBtn svg,.activeSubredditsManagerBtn svg {
@@ -128,8 +134,7 @@ h1 span {
 }
 
 
-/* SEARCH COMPONENT */
-
+/* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON */
 .searchBtn {
     width: 45px;
     height: 45px;
@@ -141,20 +146,34 @@ h1 span {
     background-color: #005792;
     outline: none;
     border: none;
-    margin-right: 10px;
-}
-.searchBtn:active {
-    opacity: 50%;
+    margin-left: 30px;
 }
 .searchBtn svg {
     width: 100%;
     height: 100%;
     color: #FF6B6B;
-}
-.searchBtn svg:hover {
-    color: #DAF6FB;
     transition: all 0.2s ease-in;
 }
+@media (hover: hover) {
+    .searchBtn svg:hover {
+        color: #DAF6FB;
+        transition: all 0.2s ease-in;
+    }
+}
+.searchBtn svg:active {
+    opacity: 50%;
+}
+
+.searchBtnPlaceholder {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+
+/* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON */
 .closeSearchBtn {
     width: 45px;
     height: 45px;
@@ -163,20 +182,27 @@ h1 span {
     background-color: #005792;
     outline: none;
     border: none;
-    margin-right: 10px;
-}
-.closeSearchBtn:active {
-    opacity: 50%;
+    margin-left: 30px;
 }
 .closeSearchBtn svg {
     width: 100%;
     height: 100%;
     color: #FF6B6B;
-}
-.closeSearchBtn svg:hover {
-    color: #DAF6FB;
     transition: all 0.2s ease-in;
 }
+@media (hover: hover) {
+    .closeSearchBtn svg:hover {
+        color: #DAF6FB;
+        transition: all 0.2s ease-in;
+    }
+}
+.closeSearchBtn svg:active {
+    opacity: 50%;
+}
+
+
+
+
 
 
 /* FORM *//* FORM */
@@ -239,13 +265,13 @@ input[type="search"]:-webkit-autofill:active {
 
 
 
-@media only screen and (max-width: 1070px) {
+@media only screen and (max-width: 1230px) {
     #middleCon {
         width: 60%;
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 940px) {
 
     #logo {
         width: 30px;
@@ -263,7 +289,7 @@ input[type="search"]:-webkit-autofill:active {
         top: 10px;
         width: 30px;
         height: 30px;
-        margin-right: 0px;
+        margin-left: 0px;
     }
     .searchBtn,.closeSearchBtn {
         position: absolute;
@@ -271,7 +297,10 @@ input[type="search"]:-webkit-autofill:active {
         top: 10px;
         width: 40px;
         height: 40px;
-        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .searchBtnPlaceholder {
+        display: none;
     }
     #middleCon {
         width: 100%;
