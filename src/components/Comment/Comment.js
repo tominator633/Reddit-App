@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./Comment.module.css";
 import ReplyComment from "../ReplyComment/ReplyComment";
 import { epochToAgo } from "../../utils/utils";
+import { motion, AnimatePresence } from 'framer-motion';
+import {replyCommentVar} from "./commentFMVariants";
 
 
 export default function Comment ({content}) {
@@ -10,6 +12,7 @@ export default function Comment ({content}) {
     const handleRepliesButtonClick = () => {
         setRepliesButton(!repliesButton);
     }
+/*     const MotionReplyComment = motion(ReplyComment); */
 
     return (
         <div className={`${styles.comment} ${styles.gb}`}
@@ -36,11 +39,20 @@ export default function Comment ({content}) {
                                                 
                                             </button>}
             </div>
+            <AnimatePresence>
             {repliesButton &&
             content.replies.map((reply, index) => {
-                    return <ReplyComment replyContent={reply} key={index}/>
+                return <motion.div variants={replyCommentVar}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="hidden">
+            
+                                    <ReplyComment replyContent={reply} 
+                                                    key={index}/>
+                        </motion.div>
             }) 
             }
+            </AnimatePresence>
         </div>
     )
 }

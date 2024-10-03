@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { epochToAgo } from "../../utils/utils";
-import {windowBarrierVar, redditDetailWindowVar} from "./redditDetailWindowFMVariants";
+import {windowBarrierVar, redditDetailWindowVar, commentVar} from "./redditDetailWindowFMVariants";
 
 
 
@@ -80,6 +80,7 @@ export default function RedditDetailWindow () {
         </div>
         <h2 className={`${styles.commentsH2} ${styles.gb}`}>{`Comments (${comments.length})`}</h2>
         <div className={`${styles.commentsSection} ${styles.gb}`}>
+            <AnimatePresence>
             {isCommentsLoading ? 
             <Loading loadingText="Loading comments..."/> 
             :
@@ -91,12 +92,17 @@ export default function RedditDetailWindow () {
             <p className={`${styles.noComments} ${styles.gb}`}>This post has no comments</p>
             :
             comments.map((content, index) => {
-                    return <Comment content={content} 
-                                    key={index}
-                                    />
-                
+                    return <motion.div  variants={commentVar}
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit="hidden" >
+                    
+                                    <Comment content={content} 
+                                            key={index}
+                                                />
+                            </motion.div>
             }) }
-
+            </AnimatePresence>
             
         </div>
     </motion.section>

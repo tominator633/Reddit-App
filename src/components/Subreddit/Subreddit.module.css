@@ -29,8 +29,8 @@
     flex-direction: column;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    top: -50px; /* Start position above the original position */
-    animation: blendShift 0.5s ease-out forwards;
+  /*   top: -50px; */ /* Start position above the original position */
+  /*   animation: blendShift 0.5s ease-out forwards; */
 }
 
 .srBanner {
@@ -106,6 +106,13 @@
     background-color: transparent;
     cursor: pointer;
     border: none;
+    transition: scale 0.3s linear;
+}
+@media (hover: hover) {
+    .srDetail:hover,.srDeleteOrAdd:hover {
+        scale: 1.2;
+        transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 }
 .srDetail:active,.srDeleteOrAdd:active {
     opacity: 50%;

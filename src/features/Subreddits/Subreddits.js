@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import styles from "./Subreddits.module.css";
-import { motion, AnimatePresence } from 'framer-motion';
-import {submitBtnVar} from "./subredditsFMVariants";
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import {submitBtnVar, subredditVar} from "./subredditsFMVariants";
 import Subreddit from "../../components/Subreddit/Subreddit";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -51,18 +51,31 @@ export default function Subreddits () {
             <section className={`${styles.mySubredditsCon} ${styles.gb}`}>
                 <h2 className={`${styles.mySubredditsH2} ${styles.gb}`}>My Subreddits selection</h2>
                 <div className={`${styles.mySubreddits} ${styles.gb}`}>
+                <AnimatePresence> 
                     {swiperSubreddits.length > 0 ?
-                    swiperSubreddits.map((subreddit, index) => {
+                    swiperSubreddits.map((subreddit) => {
                     return    (
+                        <LayoutGroup>
+                        <motion.div variants={subredditVar}
+                        layout
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        transition={{ duration: 0.3 }}
+                        >
                         <Subreddit content={subreddit} 
-                                    key={index}
-                                    isSwiperSubreddit={true}/>
+                                    key={subreddit.id}
+                                    isSwiperSubreddit={true}
+                                    />
+                        </motion.div>
+                        </LayoutGroup>
                         )
                         } 
                     )
                     :
                     <ErrorMessage message="You have no subreddits in your selection." />
                     }
+                </AnimatePresence>
                 </div>
             </section>
             <section className={`${styles.searchSubredditsCon} ${styles.gb}`}>

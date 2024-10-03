@@ -30,3 +30,20 @@ export const redditDetailWindowVar = {
     },
     }
 
+
+    export const commentVar = {
+        visible: {
+            opacity: 1,
+            marginTop: "10px",
+            transition: {
+                duration: 0.3,
+              },
+        },
+        hidden: { 
+          opacity: 0,
+          marginTop: "-60px",
+          transition: {
+            duration: 0.3,
+          },
+          },
+        }
