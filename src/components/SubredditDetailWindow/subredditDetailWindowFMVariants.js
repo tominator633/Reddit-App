@@ -29,3 +29,15 @@ export const subredditDetailWindowVar = {
         }
     },
     }
+
+
+export const subredditAddedMessageVar = {
+        visible: {
+            opacity: 1,
+            marginTop: "0px",
+        },
+        hidden: {
+            opacity: 0,
+            marginTop: "60px",
+        },
+        }

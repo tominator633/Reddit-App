@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { selectCurrentSubreddit } from "../../features/Subreddits/subredditsSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { addSubreddit, selectSwiperSubreddits} from "../../features/Subreddits/subredditsSlice";
-import {windowBarrierVar, subredditDetailWindowVar} from "./subredditDetailWindowFMVariants";
+import {windowBarrierVar, subredditDetailWindowVar, subredditAddedMessageVar} from "./subredditDetailWindowFMVariants";
 
 
 
@@ -14,6 +14,7 @@ import {windowBarrierVar, subredditDetailWindowVar} from "./subredditDetailWindo
 export default function SubredditDetailWindow () {
 
     const [isVisible, setIsVisible] = useState(true); //everytime the component appears, it will be true
+    const [isAddToSelectionBtnClicked, setIsAddToSelectionBtnClicked] = useState(false);
     let {subredditId} = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -28,8 +29,9 @@ export default function SubredditDetailWindow () {
 
     const handleAddSubredditClick = () => {
         dispatch(addSubreddit(currentSubreddit));
-        document.getElementById("SubredditDetailPlusBtn").style.display="none"
-        document.getElementById("subredditAddedMessage").style.display="flex";
+        setIsAddToSelectionBtnClicked(true);
+       /*  document.getElementById("SubredditDetailPlusBtn").style.display="none"
+        document.getElementById("subredditAddedMessage").style.display="flex"; */
     }
 
     return (
@@ -90,15 +92,23 @@ export default function SubredditDetailWindow () {
 
                 <p className={`${styles.subredditPublicDescription} ${styles.gb}`}>{currentSubreddit.publicDescription}</p>
                 <p className={`${styles.subredditSubscribers} ${styles.gb}`}>{`Subscribers: ${currentSubreddit.subscribers}`}</p>
-                { !isSwiperSubreddit && 
+
+                {!isSwiperSubreddit && !isAddToSelectionBtnClicked ?
                 <button className={`${styles.addThisSubredditToYourSelectionBtn} ${styles.gb}`}
                         id="SubredditDetailPlusBtn"
                         onClick={handleAddSubredditClick}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48"><defs><mask id="ipSAddOne0"><g fill="none" stroke-linejoin="round" stroke-width="4"><path fill="#fff" stroke="#fff" d="M24 44c11.046 0 20-8.954 20-20S35.046 4 24 4S4 12.954 4 24s8.954 20 20 20Z"/><path stroke="#000" stroke-linecap="round" d="M24 16v16m-8-8h16"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#ipSAddOne0)"/></svg>
                 </button>
+                :
+                <motion.p className={`${styles.subredditAddedMessage} ${styles.gb}`}
+                    id="subredditAddedMessage"
+
+                    variants={subredditAddedMessageVar}
+                    initial="hidden"
+                    animate="visible"
+                    >Subreddit added to your selection</motion.p>
                 }
-                <p className={`${styles.subredditAddedMessage} ${styles.gb}`}
-                    id="subredditAddedMessage">Subreddit added to your selection</p>
+                
 
             </div>
         </motion.section>

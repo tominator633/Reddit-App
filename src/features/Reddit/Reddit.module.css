@@ -174,7 +174,7 @@ apply there. */
 @media only screen and (max-width: 740px) {
     .reddit {
         width: 95%;
-        margin-top: 15px;
+        margin-top: 13px;
     }
 }
 @media only screen and (max-width: 640px) {

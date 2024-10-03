@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const baseUrl = "https://www.reddit.com";
+const baseUrl = "https://api.reddit.com";
 
  export const loadComments = createAsyncThunk(
     "reddit/loadComments",
