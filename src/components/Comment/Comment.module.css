@@ -56,6 +56,9 @@
     font-size: 13px;
     color: #80abc9;
 }
+.commentContent {
+    word-break: break-word;
+}
 .infoLine {
     width: 100%;
     height: 30px;
