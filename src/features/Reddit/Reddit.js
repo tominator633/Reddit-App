@@ -52,7 +52,9 @@ export default function Reddit ({content}) {
                         {content.imgSrc && 
                             <a className={`${styles.imgContent} ${styles.gb}`}
                                 href={content.imgSrc}
-                                target="_blank">
+                                target="_blank"
+                                rel="noreferrer noopener" 
+                                >
                                 <img src={content.imgSrc} alt={content.title}/>
                             </a>
                             }
