@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Urbanist", sans-serif;
+    line-height: 1.4;
 }
 
 /*  .gb {
@@ -38,8 +39,19 @@
 }
 .commentUser {
     font-weight: 700;
-    color:#005792;
     font-size: 14px;
+    text-decoration: none;
+    color: #FF6B6B;
+    transition: opacity 0.3s linear;
+}
+@media (hover: hover) {
+    .commentUser:hover {
+        opacity: 70%;
+        transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+.commentUser:active {
+    opacity: 50%;
 }
 .commentTimePosted {
     font-weight: 400;

@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Urbanist", sans-serif;
+    line-height: 1.4;
 }
 
 /*   .gb {
@@ -116,11 +117,23 @@
 }
 
 .redditUser {
+    display: block;
+    text-decoration: none;
     font-weight: 700;
-    color: #DAF6FB;
+    color: #FF6B6B;
     font-size: 25px;
     margin-left: 30px;
     margin-right: 30px;
+    transition: opacity 0.3s linear;
+}
+@media (hover: hover) {
+    .redditUser:hover {
+        opacity: 70%;
+        transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+.redditUser:active {
+    opacity: 50%;
 }
 .redditTimePosted {
     font-weight: 400;

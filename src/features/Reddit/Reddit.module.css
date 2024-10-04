@@ -3,11 +3,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Urbanist", sans-serif;
+    line-height: 1.4;
 }
 
-/*    .gb {
+/*   .gb {
     border: 1px solid red;
-}   */
+}    */
 
 @keyframes blendShift {
     0% {
@@ -74,7 +75,9 @@
 }
 
 
-
+.redditTitle {
+    color: #005792;
+}
 
 .redditInfo {
     display: flex;
@@ -83,8 +86,21 @@
     height: 40px;
 }
 .redditUser {
+    display: block;
+    text-decoration: none;
     font-weight: 700;
-    color:#005792;
+   /*  color:#005792; */
+    color: #FF6B6B;
+    transition: opacity 0.3s linear;
+}
+@media (hover: hover) {
+    .redditUser:hover {
+        opacity: 70%;
+        transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+.redditUser:active {
+    opacity: 50%;
 }
 .redditTimePosted {
     font-weight: 400;
@@ -121,8 +137,34 @@ apply there. */
 .commentsButton svg:active {
     opacity: 50%;
 }
+.redditLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.redditLink svg {
+    width: 80%;
+    height: 80%;
+    color: #FF6B6B;
+    scale: 1;
+    transition: scale 0.3s linear;
+}
+@media (hover: hover) {
+    .redditLink svg:hover {
+        scale: 1.2;
+        transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
 
-
+.redditLink svg:active {
+    opacity: 50%;
+}
 .selftextContent {
     margin-top: 10px;
 }
@@ -138,7 +180,17 @@ apply there. */
     background-color: #FEE;
     border-radius: 20px;
     color: #005792;
-    word-break: break-word; 
+    word-break: break-word;
+    transition: scale 0.3s linear;
+}
+@media (hover: hover) {
+    .externalContent:hover {
+        scale: 0.95;
+        transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+}
+.externalContent:active {
+    opacity: 50%;
 }
 .externalContent p {
     font-size: 14px;
@@ -156,10 +208,14 @@ apply there. */
 .imgContent {
     width: 100%;
     padding-top: 10px;
+    display: block;
+}
+.imgContent:active {
+    opacity: 50%;
 }
 .imgContent img {
     max-width: 100%;
-    max-height: 90svh;
+    max-height: 70svh;
     border-radius: 10px;
 }
 .videoContent {
@@ -191,6 +247,10 @@ apply there. */
         width: 30px;
         height: 30px;
 
+    }
+    .redditLink {
+        width: 30px;
+        height: 30px;
     }
     .redditTimePosted {
         font-size: 9px;

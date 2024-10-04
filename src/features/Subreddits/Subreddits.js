@@ -1,7 +1,7 @@
 import React, {useState, useRef} from "react";
 import styles from "./Subreddits.module.css";
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
-import {submitBtnVar, subredditVar} from "./subredditsFMVariants";
+import {submitBtnVar, mySubredditVar, searchedSubredditVar} from "./subredditsFMVariants";
 import Subreddit from "../../components/Subreddit/Subreddit";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -55,19 +55,17 @@ export default function Subreddits () {
                     {swiperSubreddits.length > 0 ?
                     swiperSubreddits.map((subreddit) => {
                     return    (
-                        <LayoutGroup>
-                        <motion.div variants={subredditVar}
-                        layout
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
-                        transition={{ duration: 0.3 }}
-                        >
-                        <Subreddit content={subreddit} 
-                                    key={subreddit.id}
-                                    isSwiperSubreddit={true}
-                                    />
-                        </motion.div>
+                        <LayoutGroup key={subreddit.id}>
+                            <motion.div variants={mySubredditVar}
+                                        layout
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit="exit"
+                                        transition={{ duration: 0.2 }}>
+                                <Subreddit content={subreddit} 
+                                            key={subreddit.id}
+                                            isSwiperSubreddit={true}/>
+                            </motion.div>
                         </LayoutGroup>
                         )
                         } 
@@ -105,6 +103,7 @@ export default function Subreddits () {
                 }
                 </AnimatePresence>
                 <div className={`${styles.searchedSubreddits} ${styles.gb}`}>
+                <AnimatePresence> 
                     {isSearchSubredditsLoading ?
                     <Loading loadingText="Loading subreddits..."/>
                     : hasSearchSubredditsError ?
@@ -113,14 +112,24 @@ export default function Subreddits () {
                     : searchedSubreddits.length === 0 ?
                     <ErrorMessage message="No subreddits found" />
                     :
-                    searchedSubreddits.map((subreddit, index) => {
+                    searchedSubreddits.map((subreddit) => {
                     return (
-                        <Subreddit content={subreddit} 
-                                    key={index}
-                                    isSwiperSubreddit={false}/>
+                        <LayoutGroup key={subreddit.id}>
+                            <motion.div variants={searchedSubredditVar}
+                                        layout
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit="exit"
+                                        transition={{ duration: 0.2 }}>
+                                <Subreddit content={subreddit} 
+                                            key={subreddit.id}
+                                            isSwiperSubreddit={false}/>
+                            </motion.div>
+                        </LayoutGroup>
                     )
                     })
                     }
+                </AnimatePresence>
                 </div>
                 
                 

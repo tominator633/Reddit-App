@@ -18,11 +18,13 @@ export default function Comment ({content}) {
         <div className={`${styles.comment} ${styles.gb}`}
                 style={repliesButton ? {backgroundColor: "#FEE"} : {backgroundColor: "white"}}>
             <div className={`${styles.commentInfo} ${styles.gb}`}>
-                <p className={`${styles.commentUser} ${styles.gb}`}>{content.author}</p>
+                <a className={`${styles.commentUser} ${styles.gb}`}
+                    target="_blank"
+                    href={`https://www.reddit.com/user/${content.author}/`}>{content.author}</a>
                 <p className={`${styles.commentTimePosted} ${styles.gb}`}>{epochToAgo(content.created)}</p>
             </div>
             <div className={`${styles.commentContent} ${styles.gb}`}>
-                <p className={styles.gb}>{content.body}</p>
+                <p className={`${styles.commentText} ${styles.gb}`}>{content.body}</p>
             </div>
             <div className={`${styles.infoLine} ${styles.gb}`}>
                 <figure className={`${styles.arrowUp} ${styles.gb}`}>
