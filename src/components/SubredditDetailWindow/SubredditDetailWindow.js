@@ -6,6 +6,7 @@ import { selectCurrentSubreddit } from "../../features/Subreddits/subredditsSlic
 import { useSelector, useDispatch } from 'react-redux';
 import { addSubreddit, selectSwiperSubreddits} from "../../features/Subreddits/subredditsSlice";
 import {windowBarrierVar, subredditDetailWindowVar, subredditAddedMessageVar} from "./subredditDetailWindowFMVariants";
+import {  formatNumberWithSpaces } from "../../utils/utils";
 
 
 
@@ -91,7 +92,7 @@ export default function SubredditDetailWindow () {
                 <p className={`${styles.subredditHeaderTitle} ${styles.gb}`}>{currentSubreddit.headerTitle}</p>}
 
                 <p className={`${styles.subredditPublicDescription} ${styles.gb}`}>{currentSubreddit.publicDescription}</p>
-                <p className={`${styles.subredditSubscribers} ${styles.gb}`}>{`Subscribers: ${currentSubreddit.subscribers}`}</p>
+                <p className={`${styles.subredditSubscribers} ${styles.gb}`}>{`Subscribers: ${formatNumberWithSpaces(currentSubreddit.subscribers)}`}</p>
 
                 {!isSwiperSubreddit && !isAddToSelectionBtnClicked ?
                 <button className={`${styles.addThisSubredditToYourSelectionBtn} ${styles.gb}`}

@@ -26,3 +26,9 @@ export const epochToAgo = (epochTime) => {
         return `${timeDifferenceS} s ago`;
     }
 }
+
+export const formatNumberWithSpaces = (number) => {
+    const numStr = number.toString();
+    const formattedNumber = numStr.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return formattedNumber;
+}

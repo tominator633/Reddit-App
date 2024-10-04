@@ -3,7 +3,7 @@ import styles from "./Reddit.module.css";
 import { Link } from "react-router-dom";
 import { setCurrentReddit, loadComments } from "./redditSlice";
 import { useDispatch } from 'react-redux';
-import { epochToAgo } from "../../utils/utils";
+import { epochToAgo, formatNumberWithSpaces } from "../../utils/utils";
 import dashjs from 'dashjs';  // Import dash.js
 import MarkdownIt from 'markdown-it';  // Import markdown-it
 import DOMPurify from 'dompurify';  // Import DOMPurify
@@ -52,7 +52,8 @@ export default function Reddit ({content}) {
                 <figure className={`${styles.arrowUp} ${styles.gb}`} >
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"></path></svg>
                 </figure>
-                <p className={`${styles.votes} ${styles.gb}`} aria-label={`The score of this reddit is ${content.score}`}>{content.score}</p>
+                <p className={`${styles.votes} ${styles.gb}`} 
+                    aria-label={`The score of this reddit is ${content.score}`}>{formatNumberWithSpaces(content.score)}</p>
             </div>
 
             <div className={`${styles.redditColumn} ${styles.gb}`} 
