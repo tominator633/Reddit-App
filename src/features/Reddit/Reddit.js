@@ -24,6 +24,7 @@ export default function Reddit ({content}) {
 
         // Cleanup Dash.js player when the component unmounts
         return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             if (videoRef.current) {
                 const player = dashjs.MediaPlayer().create();
                 player.reset();
