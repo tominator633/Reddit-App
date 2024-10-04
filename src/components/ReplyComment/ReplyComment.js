@@ -1,8 +1,22 @@
 import React from "react";
 import styles from "./ReplyComment.module.css";
 import { epochToAgo } from "../../utils/utils";
+import MarkdownIt from 'markdown-it';  // Import markdown-it
+import DOMPurify from 'dompurify';  // Import DOMPurify
+
+const md = new MarkdownIt();  // Initialize markdown-it
 
 export default function ReplyComment ({replyContent}) {
+
+
+    // Sanitize and convert selftext markdown to HTML
+    const renderSelfText = () => {
+        if (replyContent.rBody) {
+                const sanitizedHtml = DOMPurify.sanitize(md.render(replyContent.rBody));
+                return { __html: sanitizedHtml };  // Return HTML object
+            }
+            return null;
+        };
     return (
         <div className={`${styles.comment} ${styles.gb}`}>
             <div className={`${styles.commentInfo} ${styles.gb}`}>
@@ -13,7 +27,9 @@ export default function ReplyComment ({replyContent}) {
                 <p className={`${styles.commentTimePosted} ${styles.gb}`}>{epochToAgo(replyContent.rCreated)}</p>
             </div>
             <div className={`${styles.commentContent} ${styles.gb}`}>
-                <p className={styles.gb}>{replyContent.rBody}</p>
+                <p  className={`${styles.replyCommentText} ${styles.gb}`}
+                    dangerouslySetInnerHTML={renderSelfText()}  // Use the renderSelfText method
+                    />
             </div>
             <div className={`${styles.infoLine} ${styles.gb}`}>
                 <figure className={`${styles.arrowUp} ${styles.gb}`}>

@@ -4,6 +4,11 @@ import ReplyComment from "../ReplyComment/ReplyComment";
 import { epochToAgo } from "../../utils/utils";
 import { motion, AnimatePresence } from 'framer-motion';
 import {replyCommentVar} from "./commentFMVariants";
+import MarkdownIt from 'markdown-it';  // Import markdown-it
+import DOMPurify from 'dompurify';  // Import DOMPurify
+
+const md = new MarkdownIt();  // Initialize markdown-it
+
 
 
 export default function Comment ({content}) {
@@ -12,7 +17,18 @@ export default function Comment ({content}) {
     const handleRepliesButtonClick = () => {
         setRepliesButton(!repliesButton);
     }
-/*     const MotionReplyComment = motion(ReplyComment); */
+
+
+    // Sanitize and convert selftext markdown to HTML
+    const renderSelfText = () => {
+            if (content.body) {
+                const sanitizedHtml = DOMPurify.sanitize(md.render(content.body));
+                return { __html: sanitizedHtml };  // Return HTML object
+            }
+            return null;
+        };
+
+
 
     return (
         <div className={`${styles.comment} ${styles.gb}`}
@@ -25,7 +41,9 @@ export default function Comment ({content}) {
                 <p className={`${styles.commentTimePosted} ${styles.gb}`}>{epochToAgo(content.created)}</p>
             </div>
             <div className={`${styles.commentContent} ${styles.gb}`}>
-                <p className={`${styles.commentText} ${styles.gb}`}>{content.body}</p>
+                <p  className={`${styles.commentText} ${styles.gb}`}
+                    dangerouslySetInnerHTML={renderSelfText()}  // Use the renderSelfText method
+                    />
             </div>
             <div className={`${styles.infoLine} ${styles.gb}`}>
                 <figure className={`${styles.arrowUp} ${styles.gb}`}>

@@ -5,6 +5,10 @@ import { setCurrentReddit, loadComments } from "./redditSlice";
 import { useDispatch } from 'react-redux';
 import { epochToAgo } from "../../utils/utils";
 import dashjs from 'dashjs';  // Import dash.js
+import MarkdownIt from 'markdown-it';  // Import markdown-it
+import DOMPurify from 'dompurify';  // Import DOMPurify
+
+const md = new MarkdownIt();  // Initialize markdown-it
 
 export default function Reddit ({content}) {
     const dispatch = useDispatch();
@@ -32,6 +36,15 @@ export default function Reddit ({content}) {
         };
     }, [content.videoDashUrl]);
 
+        // Sanitize and convert selftext markdown to HTML
+        const renderSelfText = () => {
+            if (content.text) {
+                const sanitizedHtml = DOMPurify.sanitize(md.render(content.text));
+                return { __html: sanitizedHtml };  // Return HTML object
+            }
+            return null;
+        };
+
     return (
         <div className={styles.reddit} 
             id={content.id} >
@@ -57,7 +70,12 @@ export default function Reddit ({content}) {
                     <h4 className={`${styles.redditTitle} ${styles.gb}`}>{content.title}</h4>
 
                     {/* content has selftext */}
-                    {content.text && <p className={`${styles.selftextContent} ${styles.gb}`}>{content.text}</p>}
+                    {content.text && (
+                        <p
+                            className={`${styles.selftextContent} ${styles.gb}`}
+                            dangerouslySetInnerHTML={renderSelfText()}  // Use the renderSelfText method
+                        />
+                    )}
 
                     {/* content is external URL */}
                     {(!content.isSelfpost && !content.isVideo && !content.imgSrc) ? 
