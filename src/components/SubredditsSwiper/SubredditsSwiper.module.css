@@ -52,6 +52,7 @@
     width: 45px;
     height: 45px;
     border-radius: 50%;
+    border: 0.2px solid rgba(218, 246, 251, 0.2);
 }
 
 #iconPopular svg {

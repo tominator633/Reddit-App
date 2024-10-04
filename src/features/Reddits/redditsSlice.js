@@ -29,10 +29,13 @@ export const loadReddits = createAsyncThunk(
                 };
 
                 let videoUrl;
+                let videoDashUrl;
                 if (post.data.is_video) {
                     videoUrl = post.data.media.reddit_video.fallback_url;
+                    videoDashUrl = post.data.media.reddit_video.dash_url;
                 } else {
                     videoUrl = null;
+                    videoDashUrl = null;
                 };
         
                 return {
@@ -45,6 +48,7 @@ export const loadReddits = createAsyncThunk(
                     imgSrc: imgUrl,
                     isVideo: post.data.is_video,
                     videoSrc: videoUrl,
+                    videoDashUrl: videoDashUrl,
                     score: post.data.score,
                     thumbnail: imgThumbnail,
                     url: post.data.url,
@@ -53,6 +57,7 @@ export const loadReddits = createAsyncThunk(
                     
                 }
             });
+            console.log(jsonResponse);
             return redditsArr;
         }
     }
