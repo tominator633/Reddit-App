@@ -27,19 +27,24 @@
 }
 
 
+
 .subredditDetailWindow {
     width: 700px;
     height: 90%;
     background-color: #005792;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    overflow: scroll;
+    
+    /* Allow scrolling without scrollbars */
+    overflow-y: scroll; /* Enable scrolling */
     -ms-overflow-style: none; /* for Internet Explorer, Edge */
     scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll;
-    margin-top: 100%; /* Start position above the original position */
-}
 
+    /* For Safari */
+    &::-webkit-scrollbar {
+        display: none; /* Safari */
+    }
+}
 .closeBtn {
     width: 40px;
     height: 40px;
