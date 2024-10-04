@@ -27,6 +27,7 @@ export default function Reddit ({content}) {
                     <div className={`${styles.redditInfo} ${styles.gb}`} role="presentation">
                         <a className={`${styles.redditUser} ${styles.gb}`}
                             target="_blank"
+                            rel="noreferrer noopener"
                             href={`https://www.reddit.com/user/${content.user}/`}>{content.user}</a>
                         <p className={`${styles.redditTimePosted} ${styles.gb}`}>{epochToAgo(content.created)}</p>
                     </div>
@@ -83,6 +84,7 @@ export default function Reddit ({content}) {
                     <a  className={`${styles.redditLink} ${styles.gb}`}
                         href={content.url}
                         target="_blank"
+                        rel="noreferrer noopener" 
                         >
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 10.5L21 3m-5 0h5v5m0 6v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>

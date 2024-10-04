@@ -8,6 +8,7 @@ export default function ReplyComment ({replyContent}) {
             <div className={`${styles.commentInfo} ${styles.gb}`}>
                 <a className={`${styles.commentUser} ${styles.gb}`}
                     target="_blank"
+                    rel="noreferrer noopener" 
                     href={`https://www.reddit.com/user/${replyContent.rAuthor}/`}>{replyContent.rAuthor}</a>
                 <p className={`${styles.commentTimePosted} ${styles.gb}`}>{epochToAgo(replyContent.rCreated)}</p>
             </div>

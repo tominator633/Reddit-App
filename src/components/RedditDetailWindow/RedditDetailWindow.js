@@ -73,6 +73,7 @@ export default function RedditDetailWindow () {
                 </div>
                 <a className={`${styles.redditUser} ${styles.gb}`}
                     target="_blank"
+                    rel="noreferrer noopener" 
                     href={`https://www.reddit.com/user/${currentReddit.user}/`}>{currentReddit.user}</a>
                 <p className={`${styles.redditTimePosted} ${styles.gb}`}>{epochToAgo(currentReddit.created)}</p>
 

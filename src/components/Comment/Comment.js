@@ -20,6 +20,7 @@ export default function Comment ({content}) {
             <div className={`${styles.commentInfo} ${styles.gb}`}>
                 <a className={`${styles.commentUser} ${styles.gb}`}
                     target="_blank"
+                    rel="noreferrer noopener" 
                     href={`https://www.reddit.com/user/${content.author}/`}>{content.author}</a>
                 <p className={`${styles.commentTimePosted} ${styles.gb}`}>{epochToAgo(content.created)}</p>
             </div>
