@@ -21,30 +21,45 @@ export default function Subreddits () {
     const [searchInput, setSearchInput] = useState("");
     const searchInputRef = useRef(null);
 
+    const sanitizeInput = (input) => {
+        const tempElement = document.createElement('div');
+        tempElement.textContent = input; // Sanitizes input
+        return tempElement.innerHTML;
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
     }
+    const handleSearchFieldChange = ({ target }) => {
+        const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\sěščřžůú]*$/;
+        if (regex.test(target.value)) {
+            setSearchInput(target.value); 
+        } else {
+            alert("Invalid input. Only alphanumeric characters, specific diacritics and spaces are allowed.");
+        }
+    };
 
-
-    const handleSearchFieldChange = ({target}) => {
-        setSearchInput(target.value);
-    }
 
     const handleSubmitSearchSubredditsBtnClick = () => {
-        dispatch(searchSubreddits(searchInput));
-    }
+        const sanitizedInput = sanitizeInput(searchInput);
+        const encodedInput = encodeURIComponent(sanitizedInput);  // Encode input
+        dispatch(searchSubreddits(encodedInput));
+    };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter' && searchInput) {
             event.preventDefault();
-            dispatch(searchSubreddits(searchInput));
+            const sanitizedInput = sanitizeInput(searchInput);
+            const encodedInput = encodeURIComponent(sanitizedInput);
+            dispatch(searchSubreddits(encodedInput));
         }
-    }
+    };
 
     const handleErrorSearchSubmitReloadClick = () => {
-        dispatch(searchSubreddits(searchInput));
-    }
-
+        const sanitizedInput = sanitizeInput(searchInput);
+        const encodedInput = encodeURIComponent(sanitizedInput);  // Encode the sanitized input
+        dispatch(searchSubreddits(encodedInput));  // Dispatch the encoded input
+    };
     return (
         <>
         <div className={`${styles.srManagerCon} ${styles.gb}`}>
@@ -85,7 +100,10 @@ export default function Subreddits () {
                             id="searchSubredditsField"
                             value={searchInput}
                             ref={searchInputRef}
-                            placeholder="Search subreddits here"/>
+                            placeholder="Search subreddits here"
+                            maxLength="60"
+                            pattern="[A-Za-z0-9\s]+"
+                            title="Alphanumeric characters only"/>
                 </form>
                 <AnimatePresence>
                 {searchInput &&

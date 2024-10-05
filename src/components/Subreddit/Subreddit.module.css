@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   /*   top: -50px; */ /* Start position above the original position */
   /*   animation: blendShift 0.5s ease-out forwards; */
 }
@@ -43,7 +43,7 @@
     overflow: hidden;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: #FEE;
+    background-color: #005792;
 }
 
 .srBanner img {
@@ -131,6 +131,9 @@
         height: 120px;
         border-radius: 20px;
     }
+    .srInfo {
+        margin-top: -17px;
+    }
     .srIcon {
         width: 30px;
         height: 30px;
@@ -143,3 +146,24 @@
         font-size: 13px;
     }
 }
+ @media only screen and (max-width: 410px) {
+    .srCon {
+        width: 97px;
+        height: 97px;
+        border-radius: 20px;
+    }
+    .srInfo {
+        margin-top: -15px;
+    }
+    .srIcon {
+        width: 28px;
+        height: 28px;
+    }
+    .srDetail,.srDeleteOrAdd {
+        width: 20px;
+        height: 20px;
+    }
+    .srName {
+        font-size: 10px;
+    }
+} 

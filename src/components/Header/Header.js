@@ -138,6 +138,9 @@ export default function Header () {
                 value={searchInput}
                 ref={searchInputRef}
                 placeholder="Search reddits"
+                maxLength="60"
+                pattern="[A-Za-z0-9\s]+"
+                title="Alphanumeric characters only"
 
                 variants={searchRedditsFieldVar}
                 initial="hidden"

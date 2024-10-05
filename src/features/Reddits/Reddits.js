@@ -48,7 +48,8 @@ export default function Reddits () {
                 {
                 redditsToRender.length > 0 ?
                 redditsToRender.map((content) => (
-                    <Reddit content={content} key={content.id} />
+                    <Reddit content={content} 
+                            key={content.id} />
                 ))
                 :
                 <ErrorMessage message="No results" />
