@@ -106,48 +106,33 @@
     font-size: 13px;
     color: #80abc9;
 }
-
+/* COMMENTS BTN *//* COMMENTS BTN *//* COMMENTS BTN *//* COMMENTS BTN */
+/* REDDIT LINK BTN *//* REDDIT LINK BTN *//* REDDIT LINK BTN *//* REDDIT LINK BTN */
+/* SAVE REDDIT BTN *//* SAVE REDDIT BTN *//* SAVE REDDIT BTN *//* SAVE REDDIT BTN */
 .commentsButton {
-    margin-top: 10px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-}
-.commentsButton svg {
-    width: 100%;
-    height: 100%;
-    color: #FF6B6B;
-    scale: 1;
-    transition: scale 0.3s linear;
-}
-/* The @media (hover: hover) query is used to apply hover 
-styles only on devices that support hovering (like desktops with a mouse). 
-Touchscreen devices typically have hover: none, meaning hover effects won't 
-apply there. */
-@media (hover: hover) {
-    .commentsButton svg:hover {
-        scale: 1.2;
-        transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-}
-
-.commentsButton svg:active {
-    opacity: 50%;
+    margin-top: 5px;
+    width: 45px;
+    height: 45px;
 }
 .redditLink {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 20px;
     width: 40px;
     height: 40px;
+}
+.saveRedditBtn {
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+}
+.redditRightColumnBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     background-color: transparent;
     border: none;
 }
-.redditLink svg {
+.redditRightColumnBtn svg {
     width: 80%;
     height: 80%;
     color: #FF6B6B;
@@ -155,15 +140,22 @@ apply there. */
     transition: scale 0.3s linear;
 }
 @media (hover: hover) {
-    .redditLink svg:hover {
+    .redditRightColumnBtn svg:hover {
         scale: 1.2;
         transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 }
 
-.redditLink svg:active {
+.redditRightColumnBtn svg:active {
     opacity: 50%;
 }
+
+
+
+
+
+
+
 .selftextContent {
     margin-top: 10px;
 }
@@ -226,6 +218,15 @@ apply there. */
 
 
 
+
+
+
+
+
+
+
+
+
 @media only screen and (max-width: 840px) {
     .reddit {
         width: 95%;
@@ -243,11 +244,16 @@ apply there. */
         font-size: 12px;
     }
     .commentsButton {
-        width: 30px;
-        height: 30px;
-
+        width: 35px;
+        height: 35px;
     }
     .redditLink {
+        margin-top: 10px;
+        width: 30px;
+        height: 30px;
+    }
+    .saveRedditBtn {
+        margin-top: 10px;
         width: 30px;
         height: 30px;
     }

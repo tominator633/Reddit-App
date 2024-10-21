@@ -1,30 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {initialSubredditsSelection} from "../../utils/utils";
+
 const baseUrl = "https://www.reddit.com";
-
-
-/* export const loadInitialSwiperSubreddit = createAsyncThunk(
-    "subreddits/loadInitialSwiperSubreddit",
-    async (subreddit) => {
-        const searchEndpoint = `/r/${subreddit}/about.json`;
-        const response = await fetch(baseUrl + searchEndpoint);
-        if (response.ok) {
-            const jsonResponse = await response.json();
-            const subredditData = jsonResponse.data;
-            return {
-                name: subredditData.display_name,
-                id: subredditData.id,
-                subscribers: subredditData.subscribers,
-                url: subredditData.url,
-                headerTitle: subredditData.header_title,
-                iconImg: subredditData.icon_img,
-                headerImg: subredditData.header_img,
-                bannerImg: subredditData.banner_img,
-                publicDescription: subredditData.public_description,
-            }
-        }
-    }
-);  */
-
 
 export const searchSubreddits = createAsyncThunk(
     "subreddits/searchSubreddits",
@@ -46,6 +23,7 @@ export const searchSubreddits = createAsyncThunk(
                     publicDescription: subreddit.data.public_description,
                 }
             });
+            console.log(searchedSubredditsArr);
             return searchedSubredditsArr;
         }
     }
@@ -55,7 +33,7 @@ export const searchSubreddits = createAsyncThunk(
 export const subredditsSlice = createSlice({
     name: "subreddits",
     initialState: {
-        swiperSubreddits: [],
+        swiperSubreddits: initialSubredditsSelection,
         searchedSubreddits: [],
         isSearchSubredditsLoading: false,
         hasSearchSubredditsError: false,
@@ -79,24 +57,6 @@ export const subredditsSlice = createSlice({
         }
     },
     extraReducers: {
-/*         [loadInitialSwiperSubreddit.pending]: (state) => {
-            state.isLoadInitialSwiperSubredditLoading = true;
-            state.hasLoadInitialSwiperSubredditError = false;
-        },
-        [loadInitialSwiperSubreddit.rejected]: (state) => {
-            state.isLoadInitialSwiperSubredditLoading = false;
-            state.hasLoadInitialSwiperSubredditError = true;
-        },
-        [loadInitialSwiperSubreddit.fulfilled]: (state, action) => {
-            state.isLoadInitialSwiperSubredditLoading = false;
-            state.hasLoadInitialSwiperSubredditError = false;
-            state.swiperSubreddits.forEach((subreddit, index) => {
-            if (subreddit === action.payload.name) {
-              state.swiperSubreddits[index] = action.payload;
-            }
-            });
-          //forEach is mutable. Immutable version would include map method and returning a new array
-        }, */
         [searchSubreddits.pending]: (state) => {
             state.isSearchSubredditsLoading = true;
             state.hasSearchSubredditsError = false;
@@ -115,9 +75,6 @@ export const subredditsSlice = createSlice({
 });
 
 export const selectSwiperSubreddits = (state) => state.subreddits.swiperSubreddits;
-/* export const selectIsLoadInitialSwiperSubredditLoading = (state) => state.subreddits.isLoadInitialSwiperSubredditLoading;
-export const selectHasLoadInitialSwiperSubredditError = (state) => state.subreddits.hasLoadInitialSwiperSubredditError; */
-
 export const selectSearchedSubreddits = (state) => state.subreddits.searchedSubreddits;
 export const selectIsSearchSubredditsLoading = (state) => state.subreddits.isSearchSubredditsLoading;
 export const selectHasSearchSubredditsError = (state) => state.subreddits.hasSearchSubredditsError;

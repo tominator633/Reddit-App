@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Reddit.module.css";
 import { Link } from "react-router-dom";
 import { setCurrentReddit, loadComments } from "./redditSlice";
+import { saveReddit} from "../Reddits/redditsSlice";
 import { useDispatch } from 'react-redux';
 import { epochToAgo, formatNumberWithSpaces } from "../../utils/utils";
 import dashjs from 'dashjs';  // Import dash.js
@@ -17,6 +18,9 @@ export default function Reddit ({content}) {
     const handleDetailsClick = () => {
         dispatch(setCurrentReddit(content));
         dispatch(loadComments(content.permalink));
+    }
+    const handleSaveRedditBtnClick = () => {
+        dispatch(saveReddit(content));
     }
 
     useEffect(() => {
@@ -118,14 +122,14 @@ export default function Reddit ({content}) {
             <div className={`${styles.rightColumn} ${styles.gb}`} role="presentation">
                 <Link to={`${content.id}`}  
                       onClick={handleDetailsClick}  
-                      className={`${styles.commentsButton} ${styles.gb}`} 
+                      className={`${styles.commentsButton} ${styles.redditRightColumnBtn}`}
                       aria-label="comments section">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
                         <path fill="currentColor" d="M16 11.1c0-1.5-1.5-2.8-3.2-3.3c-1.3 1.5-3.9 2.4-6.4 2.4h-.5c-.1.3-.1.5-.1.8c0 2 2.2 3.6 5 3.6h.6c.4.5 1.7 1.4 3.4 1.4c0 0-.8-.4-.8-1.8c0-.6 2-1.8 2-3.1"></path>
                         <path fill="currentColor" d="M13 4.6C13 2.1 10.2 0 6.6 0S0 2.1 0 4.6c0 1.7 2 3.2 3 4C3 10.4 1.6 11 1.6 11c2.3 0 3.6-1.1 4.2-1.8h.8c3.5.1 6.4-2 6.4-4.6"></path>
                     </svg>
                 </Link>
-                <a className={`${styles.redditLink} ${styles.gb}`}
+                <a className={`${styles.redditLink} ${styles.redditRightColumnBtn}`}
                    href={content.url}
                    target="_blank"
                    rel="noreferrer noopener" >
@@ -133,6 +137,10 @@ export default function Reddit ({content}) {
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 10.5L21 3m-5 0h5v5m0 6v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/>
                     </svg>
                 </a>
+                <button className={`${styles.saveRedditBtn} ${styles.redditRightColumnBtn}`}
+                        onClick={handleSaveRedditBtnClick}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="#FF6B6B" d="M410.9 0H85.1C72.3 0 61.8 10.4 61.8 23.3V512L248 325.8L434.2 512V23.3c0-12.9-10.4-23.3-23.3-23.3"/></svg>
+                </button>
             </div>
         </div>
     );

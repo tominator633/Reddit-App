@@ -1,20 +1,27 @@
 import React, {useState, useRef, useEffect} from "react";
+import { useSelector } from 'react-redux';
 import { useMediaQuery } from "react-responsive"; //needs to be installed
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./Header.module.css";
 import SubredditsSwiper from "../SubredditsSwiper/SubredditsSwiper";
-import { useNavigate, createSearchParams, useParams, NavLink,  useSearchParams } from 'react-router-dom';
+import { useNavigate, createSearchParams, useParams, NavLink,  useSearchParams, useLocation } from 'react-router-dom';
 import {searchBtnVar, searchRedditsFormVar, searchRedditsFieldVar} from "./headerFMVariants";
+import { selectSavedReddits} from "../../features/Reddits/redditsSlice";
 
 
 
 
 
 export default function Header () {
+
     const isBelow900px = useMediaQuery({ query: "(max-width: 900px)" });
+
+    const savedReddits = useSelector(selectSavedReddits);
     
     const navigate = useNavigate();
     let {subredditName} = useParams();
+    const location = useLocation();
+    const path = location.pathname;
 
     const [searchBtn, setSearchBtn] = useState(false);
     const [searchInput, setSearchInput] = useState("");
@@ -87,10 +94,15 @@ export default function Header () {
                       >
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.5 12c0-.23-.01-.45-.03-.68l1.86-1.41c.4-.3.51-.86.26-1.3l-1.87-3.23a.987.987 0 0 0-1.25-.42l-2.15.91c-.37-.26-.76-.49-1.17-.68l-.29-2.31c-.06-.5-.49-.88-.99-.88h-3.73c-.51 0-.94.38-1 .88l-.29 2.31c-.41.19-.8.42-1.17.68l-2.15-.91c-.46-.2-1-.02-1.25.42L2.41 8.62c-.25.44-.14.99.26 1.3l1.86 1.41a7.3 7.3 0 0 0 0 1.35l-1.86 1.41c-.4.3-.51.86-.26 1.3l1.87 3.23c.25.44.79.62 1.25.42l2.15-.91c.37.26.76.49 1.17.68l.29 2.31c.06.5.49.88.99.88h3.73c.5 0 .93-.38.99-.88l.29-2.31c.41-.19.8-.42 1.17-.68l2.15.91c.46.2 1 .02 1.25-.42l1.87-3.23c.25-.44.14-.99-.26-1.3l-1.86-1.41c.03-.23.04-.45.04-.68m-7.46 3.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5"/></svg>            
         </NavLink>
+        <NavLink to="/saved" 
+                className={({isActive}) => isActive ? styles.activeSavedRedditsBtn : styles.inactiveSavedRedditsBtn}
+                      >
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="#FF6B6B" d="M410.9 0H85.1C72.3 0 61.8 10.4 61.8 23.3V512L248 325.8L434.2 512V23.3c0-12.9-10.4-23.3-23.3-23.3"/></svg>
+        </NavLink>
         <AnimatePresence>
-        {searchBtn && subredditName ? 
+        {searchBtn && (subredditName || path === "/saved") ? 
         <motion.button  onClick={handleCloseSearchBtnClick} 
-                className={`${styles.closeSearchBtn} ${styles.gb}`}
+                className={styles.closeSearchBtn}
 
                 variants={searchBtnVar}
                 initial="hidden"
@@ -99,8 +111,8 @@ export default function Header () {
                 >
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-4.99-5.58-5.34A6.49 6.49 0 0 0 3.03 9h2.02c.24-2.12 1.92-3.8 4.06-3.98C11.65 4.8 14 6.95 14 9.5c0 2.49-2.01 4.5-4.5 4.5c-.17 0-.33-.03-.5-.05v2.02l.01.01c1.8.13 3.47-.47 4.72-1.55l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0s.41-1.08 0-1.49z"/><path fill="currentColor" d="M6.12 11.17L4 13.29l-2.12-2.12c-.2-.2-.51-.2-.71 0s-.2.51 0 .71L3.29 14l-2.12 2.12c-.2.2-.2.51 0 .71s.51.2.71 0L4 14.71l2.12 2.12c.2.2.51.2.71 0s.2-.51 0-.71L4.71 14l2.12-2.12c.2-.2.2-.51 0-.71a.513.513 0 0 0-.71 0"/></svg>        
         </motion.button>
-        : subredditName ?
-        <motion.button className={`${styles.searchBtn} ${styles.gb}`}
+        : subredditName || (path === "/saved" && savedReddits.length > 0) ?
+        <motion.button className={styles.searchBtn}
                 onClick={handleSearchBtnClick}
                 aria-label="search section"
                 

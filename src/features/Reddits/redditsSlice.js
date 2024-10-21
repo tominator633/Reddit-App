@@ -69,7 +69,15 @@ export const redditsSlice = createSlice({
     initialState: {
         resultReddits: [],
         isLoading: false,
-        hasError: false
+        hasError: false,
+        savedReddits: [],
+    },
+    reducers: {
+        saveReddit: (state, action) => {
+            if (!state.savedReddits.some(reddit => reddit.id === action.payload.id)) {
+                state.savedReddits.push(action.payload);
+            }
+        }
     },
     extraReducers: {
         [loadReddits.pending]: (state,action) => {
@@ -94,14 +102,13 @@ export const redditsSlice = createSlice({
 export const selectResultReddits = (state) => state.reddits.resultReddits;
 export const selectIsLoading = (state) => state.reddits.isLoading;
 export const selectHasError = (state) => state.reddits.hasError;
+export const selectSavedReddits = (state) => state.reddits.savedReddits;
 
 export const filterReddits = (query, reddits) => {
     return reddits.filter(reddit => reddit.title.toLowerCase().includes(query.toLowerCase()));
 }
 
-
-
-
+export const {saveReddit} = redditsSlice.actions;
 
 
 export default redditsSlice.reducer;
