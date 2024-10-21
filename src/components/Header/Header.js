@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from "react";
-import { useMediaQuery } from "react-responsive"; //first npm install react-responsive, then define media queries
+import { useMediaQuery } from "react-responsive"; //needs to be installed
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./Header.module.css";
 import SubredditsSwiper from "../SubredditsSwiper/SubredditsSwiper";
