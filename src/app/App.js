@@ -19,7 +19,9 @@ const appRouter = createBrowserRouter(createRoutesFromElements(
       <Route path='subreddits' element={<Subreddits/>}>
         <Route path=':subredditId' element={<SubredditDetailWindow/>} />
       </Route>
-      <Route path='saved' element={<SavedReddits/>} />
+      <Route path='saved' element={<SavedReddits/>}>
+        <Route path=':redditId' element={<RedditDetailWindow/>}/>
+      </Route>
   </Route>
 ));
 

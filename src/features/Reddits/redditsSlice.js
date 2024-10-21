@@ -77,6 +77,10 @@ export const redditsSlice = createSlice({
             if (!state.savedReddits.some(reddit => reddit.id === action.payload.id)) {
                 state.savedReddits.push(action.payload);
             }
+        },
+        unsaveReddit: (state, action) => {
+                const updatedSavedRedditsArr = state.savedReddits.filter(reddit => reddit.id !== action.payload.id);
+                state.savedReddits = updatedSavedRedditsArr;
         }
     },
     extraReducers: {
@@ -108,7 +112,7 @@ export const filterReddits = (query, reddits) => {
     return reddits.filter(reddit => reddit.title.toLowerCase().includes(query.toLowerCase()));
 }
 
-export const {saveReddit} = redditsSlice.actions;
+export const {saveReddit, unsaveReddit} = redditsSlice.actions;
 
 
 export default redditsSlice.reducer;

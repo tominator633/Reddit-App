@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./SavedReddits.module.css";
 import { useSelector } from 'react-redux';
 import { selectSavedReddits} from "../../features/Reddits/redditsSlice";
+import { Outlet } from 'react-router-dom';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Reddit from "../../features/Reddit/Reddit";
 
@@ -23,6 +24,7 @@ export default function SavedReddits () {
             <ErrorMessage message="No saved reddits" />
             }
         </section>
+        <Outlet/>
         </>
     )
 }
