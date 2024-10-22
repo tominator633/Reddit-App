@@ -102,7 +102,7 @@ export default function Header () {
         </NavLink>
         
         <AnimatePresence>
-        {searchBtn && (subredditName || (path === "/saved" && savedReddits.length > 0)) ? 
+        {searchBtn && (subredditName || path === "/saved" ) ? 
         <motion.button  onClick={handleCloseSearchBtnClick} 
                 className={styles.closeSearchBtn}
 
