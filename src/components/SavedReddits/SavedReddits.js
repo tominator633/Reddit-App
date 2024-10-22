@@ -11,6 +11,7 @@ import {savedRedditVar} from "./savedRedditsFMVariants";
 
 export default function SavedReddits () {
 
+
     const savedReddits = useSelector(selectSavedReddits);
     const [searchParams] = useSearchParams();
     const title = searchParams.get("title");
@@ -27,7 +28,8 @@ export default function SavedReddits () {
             redditsToRender.map((content) => {
                 return (
                     <LayoutGroup key={content.id}>
-                        <motion.div variants={savedRedditVar}
+                        <motion.div className={styles.savedRedditWrapper}
+                                    variants={savedRedditVar}
                                     layout
                                     exit="exit"
                                     transition={{ duration: 0.2 }}>
