@@ -78,7 +78,7 @@ export default function Header () {
         if (path === "/saved" && savedReddits.length === 0) {
             setSearchBtn(false);
         } 
-    },[savedReddits.length])
+    },[path,savedReddits.length])
     
     useEffect(() => {
         if (searchBtn && searchInputRef.current) {
