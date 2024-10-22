@@ -7,9 +7,9 @@
 }
 
 
-/*  .gb {
+/*   .gb {
     border: 1px solid red;
-}     */
+}  */
 
 @keyframes rotatingIcon {
     0% {
@@ -92,33 +92,34 @@ h1 span {
 }
 
 .rightCon {
-    width: 200px;
+    width: 190px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
 
-
-
-/* SUBREDDITS MANAGER BTN *//* SUBREDDITS MANAGER BTN *//* SUBREDDITS MANAGER BTN *//* SUBREDDITS MANAGER BTN */
-.inactiveSubredditsManagerBtn,.activeSubredditsManagerBtn {
-    margin-left: 30px;
+.inactiveSubredditsManagerBtn,.activeSubredditsManagerBtn,
+.inactiveSavedRedditsBtn,.activeSavedRedditsBtn,
+.searchBtn,.closeSearchBtn {
+    margin-left: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
+    width: 45px;
+    height: 45px;
     background-color: transparent;
     cursor: pointer;
-    border: none;
+    border: 1px solid rgba(218, 246, 251, 0.2);
     border-radius: 50%;
     transition: all 0.5s ease;
-    
 }
+
+/* SUBREDDITS MANAGER BTN *//* SUBREDDITS MANAGER BTN *//* SUBREDDITS MANAGER BTN *//* SUBREDDITS MANAGER BTN */
+
 .inactiveSubredditsManagerBtn svg,.activeSubredditsManagerBtn svg {
-    width: 100%;
-    height: 100%;
-    color: #FF6B6B;
+    width: 85%;
+    height: 85%;
+    color: #DAF6FB;
 }
 @media (hover: hover) {
     .inactiveSubredditsManagerBtn:hover {
@@ -132,36 +133,18 @@ h1 span {
 }
 
 .activeSubredditsManagerBtn {
-    background-color: #FEE;
+  background-color: rgba(218, 246, 251, 0.2);
 }
 .activeSubredditsManagerBtn svg {
-    width: 70%;
-    height: 70%;
-    color: #005792;
-}
-
-
+    color: #FF6B6B;
+  }
 
 /* SAVED REDDITS BTN *//* SAVED REDDITS BTN *//* SAVED REDDITS BTN *//* SAVED REDDITS BTN */
 
-.inactiveSavedRedditsBtn,.activeSavedRedditsBtn {
-    margin-left: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    background-color: transparent;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    transition: all 0.5s ease;
-    
-}
 .inactiveSavedRedditsBtn svg,.activeSavedRedditsBtn svg {
-    width: 100%;
-    height: 100%;
-    color: #FF6B6B;
+    width: 65%;
+    height: 65%;
+    color: #DAF6FB;
 }
 @media (hover: hover) {
     .inactiveSavedRedditsBtn:hover {
@@ -173,41 +156,17 @@ h1 span {
 .inactiveSavedRedditsBtn:active {
     opacity: 50%;
 }
-
 .activeSavedRedditsBtn {
-    background-color: #FEE;
-}
+    background-color: rgba(218, 246, 251, 0.2);
+  }
 .activeSavedRedditsBtn svg {
-    width: 70%;
-    height: 70%;
-    color: #005792;
-}
+      color: #FF6B6B;
+    }
 
 
 
+/* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON */
 
-
-
-
-
-
-
-
-/* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON *//* SEARCH BUTTON */
-.searchBtn {
-    width: 45px;
-    height: 45px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #005792;
-    outline: none;
-    border: none;
-    margin-left: 30px;
-    transition: scale 0.2s ease-in;
-}
 @media (hover: hover) {
     .searchBtn:hover {
         scale: 1.2;
@@ -215,38 +174,22 @@ h1 span {
     }
 }
 .searchBtn svg {
-    width: 100%;
-    height: 100%;
-    color: #FF6B6B; 
+    width: 90%;
+    height: 90%;
+    color: #DAF6FB;
 }
 .searchBtn svg:active {
     opacity: 50%;
 }
 
-.searchBtnPlaceholder {
-    display: block;
-    width: 45px;
-    height: 45px;
-    margin-right: 10px;
-    border-radius: 50%;
-}
 
-
-/* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON */
+/* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON *//* CLOSE SEARCH BUTTON */
 .closeSearchBtn {
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #005792;
-    outline: none;
-    border: none;
-    margin-left: 30px;
-    transition: scale 0.2s ease-in;
+    background-color: rgba(218, 246, 251, 0.2);
 }
 .closeSearchBtn svg {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     color: #FF6B6B;
 }
 @media (hover: hover) {
@@ -264,7 +207,7 @@ h1 span {
 
 
 
-/* FORM *//* FORM */
+/* FORM *//* FORM *//* FORM *//* FORM *//* FORM *//* FORM *//* FORM *//* FORM *//* FORM *//* FORM *//* FORM *//* FORM */
 /* FORM *//* FORM */
 /* FORM *//* FORM */
 /* FORM *//* FORM */
@@ -333,42 +276,37 @@ input[type="search"]:-webkit-autofill:active {
 @media only screen and (max-width: 940px) {
 
     #logo {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+    
+    h1 span {
+        font-size: 28px;
     }
     .mainLine {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
         padding: 0px;
     }
-    .inactiveSubredditsManagerBtn,.activeSubredditsManagerBtn  {
+    .rightCon {
+        width: 150px;
         position: absolute;
-        left: 8px;
+        right: 10px;
         top: 10px;
-        width: 30px;
-        height: 30px;
-        margin-left: 0px;
     }
-    .inactiveSavedRedditsBtn,.activeSavedRedditsBtn  {
-        position: absolute;
-        left: 50px;
-        top: 13px;
-        width: 23px;
-        height: 23px;
-        margin-left: 0px;
-    }
+    .inactiveSubredditsManagerBtn,.activeSubredditsManagerBtn,
+    .inactiveSavedRedditsBtn,.activeSavedRedditsBtn,
     .searchBtn,.closeSearchBtn {
-        position: absolute;
-        right: 8px;
-        top: 9px;
-        width: 40px;
-        height: 40px;
-        margin-left: 0px;
+        margin-left: 15px;
+        width: 35px;
+        height: 35px;
     }
-    .searchBtnPlaceholder {
-        display: none;
-    }
+
     #middleCon {
         width: 100%;
         padding-top: 12px;
@@ -383,17 +321,21 @@ input[type="search"]:-webkit-autofill:active {
     }
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 380px) {
     #logo {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
+        margin-left: 10px;
     }
     h1 {
-        font-size: 28px;
+        font-size: 24px;
     }
     
     h1 span {
-        font-size: 28px;
+        font-size: 24px;
     }
-    
+    .rightCon {
+        top: 7px;
+    }
+
 }

@@ -96,11 +96,13 @@ export default function Header () {
         </NavLink>
         <NavLink to="/saved" 
                 className={({isActive}) => isActive ? styles.activeSavedRedditsBtn : styles.inactiveSavedRedditsBtn}
+                onClick={() => savedReddits.length === 0 && setSearchBtn(false)}
                       >
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="#FF6B6B" d="M410.9 0H85.1C72.3 0 61.8 10.4 61.8 23.3V512L248 325.8L434.2 512V23.3c0-12.9-10.4-23.3-23.3-23.3"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M410.9 0H85.1C72.3 0 61.8 10.4 61.8 23.3V512L248 325.8L434.2 512V23.3c0-12.9-10.4-23.3-23.3-23.3"/></svg>
         </NavLink>
+        
         <AnimatePresence>
-        {searchBtn && (subredditName || path === "/saved") ? 
+        {searchBtn && (subredditName || (path === "/saved" && savedReddits.length > 0)) ? 
         <motion.button  onClick={handleCloseSearchBtnClick} 
                 className={styles.closeSearchBtn}
 
