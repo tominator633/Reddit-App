@@ -114,16 +114,35 @@
     width: 45px;
     height: 45px;
 }
+.commentsButton svg {
+    color: #FF6B6B;
+}
 .redditLink {
     margin-top: 20px;
     width: 40px;
     height: 40px;
+}
+.redditLink svg {
+    color: #FF6B6B;
 }
 .saveRedditBtn {
     margin-top: 20px;
     width: 40px;
     height: 40px;
 }
+.saveRedditBtn svg {
+    color: #FF6B6B;
+}
+.unsaveRedditBtn {
+    margin-top: 20px;
+    width: 40px;
+    height: 40px;
+}
+.unsaveRedditBtn svg {
+    color: #005792;
+}
+
+
 .redditRightColumnBtn {
     display: flex;
     align-items: center;
@@ -135,7 +154,6 @@
 .redditRightColumnBtn svg {
     width: 80%;
     height: 80%;
-    color: #FF6B6B;
     scale: 1;
     transition: scale 0.3s linear;
 }
@@ -252,7 +270,7 @@
         width: 30px;
         height: 30px;
     }
-    .saveRedditBtn {
+    .saveRedditBtn,.unsaveRedditBtn {
         margin-top: 10px;
         width: 30px;
         height: 30px;

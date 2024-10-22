@@ -7,7 +7,7 @@ export const searchBtnVar = {
   },
   hidden: { 
     opacity: 0,
-    x: 50
+    x: 40
     }
   }
 

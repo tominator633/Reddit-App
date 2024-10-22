@@ -58,6 +58,7 @@ export default function Header () {
         setSearchBtn(!searchBtn);
         setSearchInput("");
         subredditName && navigate(subredditName);
+        path === "/saved" && navigate("/saved");
     }
 
     const handleSubmit = (event) => {
@@ -121,10 +122,11 @@ export default function Header () {
                 onClick={handleSavedRedditsBtnClick}
                       >
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M410.9 0H85.1C72.3 0 61.8 10.4 61.8 23.3V512L248 325.8L434.2 512V23.3c0-12.9-10.4-23.3-23.3-23.3"/></svg>
+            <p className={styles.savedBtnNum}>{savedReddits.length}</p>
         </NavLink>
         
         <AnimatePresence>
-        {searchBtn && (subredditName || path === "/saved" ) ? 
+        {searchBtn ? 
         <motion.button  onClick={handleCloseSearchBtnClick} 
                 className={styles.closeSearchBtn}
 

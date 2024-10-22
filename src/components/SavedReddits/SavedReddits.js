@@ -5,6 +5,8 @@ import { selectSavedReddits, filterReddits} from "../../features/Reddits/reddits
 import { Outlet, useSearchParams } from 'react-router-dom';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Reddit from "../../features/Reddit/Reddit";
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import {savedRedditVar} from "./savedRedditsFMVariants";
 
 
 export default function SavedReddits () {
@@ -19,17 +21,56 @@ export default function SavedReddits () {
         <>
         <h2 className={styles.savedRedditsH2}>{`Saved reddits (${savedReddits.length})`}</h2>
         <section className={styles.savedReddits}>
+            <AnimatePresence> 
             {
             redditsToRender.length > 0 ?
-            redditsToRender.map((content) => (
-                <Reddit content={content} 
-                        key={content.id} />
-            ))
+            redditsToRender.map((content) => {
+                return (
+                    <LayoutGroup key={content.id}>
+                        <motion.div variants={savedRedditVar}
+                                    layout
+                                    exit="exit"
+                                    transition={{ duration: 0.2 }}>
+                            <Reddit content={content} 
+                                    key={content.id} />
+                        </motion.div>
+                            
+                    </LayoutGroup>
+                )
+            } )
             :
-            <ErrorMessage message="No saved reddits" />
+            <ErrorMessage message={title ? "No reddits found for the given input" : "No reddits saved"} />
             }
+            </AnimatePresence> 
         </section>
         <Outlet/>
         </>
     )
 }
+
+
+/* <div className={`${styles.mySubreddits} ${styles.gb}`}>
+                <AnimatePresence> 
+                    {swiperSubreddits.length > 0 ?
+                    swiperSubreddits.map((subreddit) => {
+                    return    (
+                        <LayoutGroup key={subreddit.id}>
+                            <motion.div variants={mySubredditVar}
+                                        layout
+                                        initial="hidden"
+                                        animate="visible"
+                                        exit="exit"
+                                        transition={{ duration: 0.2 }}>
+                                <Subreddit content={subreddit} 
+                                            key={subreddit.id}
+                                            isSwiperSubreddit={true}/>
+                            </motion.div>
+                        </LayoutGroup>
+                        )
+                        } 
+                    )
+                    :
+                    <ErrorMessage message="You have no subreddits in your selection." />
+                    }
+                </AnimatePresence>
+                </div> */
