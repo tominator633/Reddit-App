@@ -28,6 +28,10 @@ export default function Header () {
     const [, setSearchParams ] = useSearchParams();
     const searchInputRef = useRef(null);
 
+    const handleSavedRedditsBtnClick = () => {
+        setSearchBtn(false);
+        setSearchInput("");
+    }
 
     const handleSearchBtnClick = () => {
         setSearchBtn(!searchBtn);
@@ -35,16 +39,25 @@ export default function Header () {
             title: ""
         };
         const queryString = createSearchParams(query);
-        navigate({
-            pathname: `/${subredditName}`,
-            search: `?${queryString}`
-        });
+        if (subredditName) {
+            navigate({
+                pathname: `/${subredditName}`,
+                search: `?${queryString}`
+            });
+        }
+        if (path === "/saved") {
+            navigate({
+                pathname: `/saved`,
+                search: `?${queryString}`
+            });
+        }
+        
     }
 
     const handleCloseSearchBtnClick = () => {
         setSearchBtn(!searchBtn);
         setSearchInput("");
-        navigate(subredditName);
+        subredditName && navigate(subredditName);
     }
 
     const handleSubmit = (event) => {
@@ -54,9 +67,18 @@ export default function Header () {
     const handleSearchFieldChange = ({target}) => {
         setSearchInput(target.value);
         setSearchParams( {title: target.value} );
-        !target.value && navigate(subredditName);
+        if (subredditName) {
+            !target.value && navigate(subredditName);
+        }
+        if (path === "/saved") {
+            !target.value && navigate("/saved");
+        }   
     }
-
+    useEffect(() => {
+        if (path === "/saved" && savedReddits.length === 0) {
+            setSearchBtn(false);
+        } 
+    },[savedReddits.length])
     
     useEffect(() => {
         if (searchBtn && searchInputRef.current) {
@@ -96,7 +118,7 @@ export default function Header () {
         </NavLink>
         <NavLink to="/saved" 
                 className={({isActive}) => isActive ? styles.activeSavedRedditsBtn : styles.inactiveSavedRedditsBtn}
-                onClick={() => savedReddits.length === 0 && setSearchBtn(false)}
+                onClick={handleSavedRedditsBtnClick}
                       >
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512"><path fill="currentColor" d="M410.9 0H85.1C72.3 0 61.8 10.4 61.8 23.3V512L248 325.8L434.2 512V23.3c0-12.9-10.4-23.3-23.3-23.3"/></svg>
         </NavLink>
