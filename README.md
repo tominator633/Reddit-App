@@ -37,14 +37,48 @@ Subreddits displayed in SWIPER can be changed depending on user`s interests. Cli
 #### Explore subreddits
 ![Explore subreddits structure](./public/readme-img/explore-subreddits.png)
 
-* renders subreddit boxes
-* each box includes a subreddit name, an icon (if available), a banner (if available) and 2 buttons
-* left button displays a window with more details about a subreddit, such as its description or the number of subscribers
-* right button removes the subreddit from My Subreddits selection, subreddit is than displaced to Explore subreddits page section
-* 7 subreddits are initially preselected as default and can be removed: pics, funny, AskReddit, gaming, worldnews, aww, Music.
-* SWIPER subreddits buttons in the header of the app always correspond to the subreddits in My Subreddits selection
+* This section has a search input field to search subreddits in Reddit database based on one or more given keywords
+* A rounded search-submit-button with magnifier icon only appears when the search input field is not empty
+* After inputting a search query and clicking search submit button, a request is for subreddits is send and results appear below.
+* Subreddit boxes in search results can be added to My Subreddits selection by clicking their plus button, located on the same place as delete button of already added subreddits
 
+### Browsing Rreddit posts
 
+Reddit posts (Reddits) for various topics show up after clicking on different subreddits on the swiper next to the app logo. 
+Popular is the first navigation link on the swiper, serves to display the most popular current reddits worldwide and cannot be removed.
+The next links are subreddits from My Subreddits selection and serve to render reddits of various topics accordingly.
+
+#### Reddit
+
+Each Reddit is composed of 3 columns. 
+
+* The left column shows the number of votes it received from registered users on Reddit social network.
+* The middle column displays 
+the author of the post with a hyperlink to their profile on Reddit.com.
+The relative timestamp of when the post was created.
+The title of the post
+The content of the post, such as text, a picture, a video or a link.
+* The right column involves 3 buttons:
+    - Comments section button
+    - Hyperlink to the post on Reddit.com
+    - Save button
+
+### Displaying comments for a particular reddit
+
+After clicking the comment section button in the right column of a Reddit post, a Comments window appears, with basic information about the posts and the comments. Each comments has its votes and can also have replies, which are rendered after clicking on the replies button.
+
+### Saving reddits
+
+Each Reddit can be saved by clicking its save button located in the right column
+Those reddits are then added to Saved Reddits section of the app, accessed by the respective button on the right side of the app header.
+The number within the button's icon represents the amount of currently saved Reddits.
+Everytime a reddit is saved, its save button changes to a blue unsave button.
+
+### Searching in current reddits
+
+Everytime some reddits are displayed in the app, the search button located on the right side of the app header can be used to search those reddits.
+The search bar appears after clicking the search button and accepts one or more keywords. Those keywords are analyzed only for the reddit TITLES, not for the selftext or authors.
+The search button disappears everytime the subreddits manager is accessed or when the Saved reddits section is accessed without any reddits saved.
 
 ## Utilized technologies
 * React JS - Reddit.to.read is a single-page react application with function components as the main building elements. React router manages the navigation and URL structures
