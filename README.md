@@ -1,46 +1,79 @@
-# Getting Started with Create React App and Redux
+# Reddit.to.read
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+[Reddit.to.read](https://reddittoread.netlify.app) is a web-based application allowing user to browse posts based on subreddits from Reddit social network without having to create a Reddit account.
 
-## Available Scripts
+>[Reddit](https://www.reddit.com/) is a social media platform where users can share, discuss, and vote on content in the form of posts, links, and comments. It’s organized into subreddits, which are individual communities focused on specific topics, such as news, hobbies, entertainment, or niche interests. Each subreddit has its own rules and moderators, allowing for diverse conversations and content tailored to its subject matter.
 
-In the project directory, you can run:
+I built this app as a required project at [Codecademy](https://www.codecademy.com/) learning platform. My goal was to create a cleaner version of Reddit, where the user can only READ the content based on their preferred subreddits.
+Therefore, [Reddit JSON API](https://github.com/reddit-archive/reddit/wiki/json)
+has been used to obtain data and only GET requests are executed when using Reddit.to.read app.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Initial setup
+Reddit.to.read can be found under this [LINK](https://reddittoread.netlify.app).
+After opening the link , the application is ready to be used. The feed of popular reddits is displayed initially.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App layout
+The app is structured as follows:
+![Reddit.to.read app structure](./public/readme-img/reddit-app-structure.png)
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Subreddits management
+Subreddits displayed in SWIPER can be changed depending on user`s interests. Clicking SUBREDDIT MANAGER BUTTON launches subreddit manager, where 2 page sections are present:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### My Subreddits selection
+![My subreddits selection structure](./public/readme-img/my-subreddits-selection.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* renders subreddit boxes
+* each box includes a subreddit name, an icon (if available), a banner (if available) and 2 buttons
+* left button displays a window with more details about a subreddit, such as its description or the number of subscribers
+* right button removes the subreddit from My Subreddits selection, subreddit is than displaced to Explore subreddits page section
+* 7 subreddits are initially preselected as default and can be removed: pics, funny, AskReddit, gaming, worldnews, aww, Music.
+* SWIPER subreddits buttons in the header of the app always correspond to the subreddits in My Subreddits selection
 
-### `npm run eject`
+#### Explore subreddits
+![Explore subreddits structure](./public/readme-img/explore-subreddits.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* renders subreddit boxes
+* each box includes a subreddit name, an icon (if available), a banner (if available) and 2 buttons
+* left button displays a window with more details about a subreddit, such as its description or the number of subscribers
+* right button removes the subreddit from My Subreddits selection, subreddit is than displaced to Explore subreddits page section
+* 7 subreddits are initially preselected as default and can be removed: pics, funny, AskReddit, gaming, worldnews, aww, Music.
+* SWIPER subreddits buttons in the header of the app always correspond to the subreddits in My Subreddits selection
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Utilized technologies
+* React JS - Reddit.to.read is a single-page react application with function components as the main building elements. React router manages the navigation and URL structures
+* CSS - styles for components are written in css modules.
+* JSX, HTML - to mark up the content
+* Redux - used as a state management tool, primarily to fetch and store arrays of requested content such as posts, comments, subreddits, etc.
+* Framer motion - for animations, such as entering and exiting items in the app, layout animations.
+* Jest and Enzyme - for unit and integration tests
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
+### MIT License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Copyright (c) 2024 Tomas Ruzicka
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
