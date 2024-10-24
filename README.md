@@ -42,7 +42,7 @@ Subreddits displayed in SWIPER can be changed depending on user`s interests. Cli
 * After inputting a search query and clicking search submit button, a request is for subreddits is send and results appear below.
 * Subreddit boxes in search results can be added to My Subreddits selection by clicking their plus button, located on the same place as delete button of already added subreddits
 
-### Browsing Rreddit posts
+### Browsing reddit posts
 
 Reddit posts (Reddits) for various topics show up after clicking on different subreddits on the swiper next to the app logo. 
 Popular is the first navigation link on the swiper, serves to display the most popular current reddits worldwide and cannot be removed.
