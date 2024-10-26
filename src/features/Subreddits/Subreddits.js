@@ -125,7 +125,7 @@ export default function Subreddits () {
                     <ErrorMessage message="Request failed."
                                     onClick={handleErrorSearchSubmitReloadClick} />
                     : searchedSubreddits.length === 0 ?
-                    <ErrorMessage message="No subreddits found" />
+                    <p>No subreddits found</p>
                     :
                     searchedSubreddits.map((subreddit) => {
                     return (
