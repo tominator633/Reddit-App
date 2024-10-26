@@ -18,25 +18,33 @@ export default function ReplyComment ({replyContent}) {
             return null;
         };
     return (
-        <div className={`${styles.comment} ${styles.gb}`}>
-            <div className={`${styles.commentInfo} ${styles.gb}`}>
-                <a className={`${styles.commentUser} ${styles.gb}`}
+        <article className={styles.replyComment}
+                aria-label={`Reply by ${replyContent.rAuthor}`}>
+            <header className={styles.replyCommentInfo}>
+                <a className={styles.replyAuthor}
                     target="_blank"
                     rel="noreferrer noopener" 
-                    href={`https://www.reddit.com/user/${replyContent.rAuthor}/`}>{replyContent.rAuthor}</a>
-                <p className={`${styles.commentTimePosted} ${styles.gb}`}>{epochToAgo(replyContent.rCreated)}</p>
-            </div>
-            <div className={`${styles.commentContent} ${styles.gb}`}>
-                <p  className={`${styles.replyCommentText} ${styles.gb}`}
+                    href={`https://www.reddit.com/user/${replyContent.rAuthor}/`}
+                    aria-label={`Visit profile of ${replyContent.rAuthor}`}
+                    >{replyContent.rAuthor}</a>
+                <time className={styles.replyTimePosted}
+                        aria-label={`Posted ${epochToAgo(replyContent.rCreated)}`}>{epochToAgo(replyContent.rCreated)}</time>
+            </header>
+            <section className={styles.commentContent}
+                    aria-live="polite" 
+                    aria-atomic="true">
+                <p  className={styles.replyCommentText}
                     dangerouslySetInnerHTML={renderSelfText()}  // Use the renderSelfText method
                     />
-            </div>
-            <div className={`${styles.infoLine} ${styles.gb}`}>
-                <figure className={`${styles.arrowUp} ${styles.gb}`}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"></path></svg>
+            </section>
+            <footer className={styles.infoLine}>
+                <figure className={styles.arrowUp}
+                        role="presentation">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"></path></svg>
                 </figure>
-                <p className={`${styles.score} ${styles.gb}`}>{formatNumberWithSpaces(replyContent.rScore)}</p>
-            </div>
-        </div>
+                <p className={styles.score}
+                    aria-label={`the score of this comment is: ${replyContent.rScore}`}>{formatNumberWithSpaces(replyContent.rScore)}</p>
+            </footer>
+        </article>
     )
 }
