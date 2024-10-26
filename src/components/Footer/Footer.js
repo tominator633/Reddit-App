@@ -11,7 +11,7 @@ export default function Footer () {
                     <img src="img/TR-logo-pink.png" 
                         alt="logo of the author"/>
                 </figure>
-                <p>2024 <span>&#169;</span> Tomas Ruzicka. <br/>All rights reserved.</p>
+                <small className={styles.copyright}><time dateTime="2024">2024 </time><span>&copy;</span> Tomas Ruzicka. <br/>All rights reserved.</small>
             </section>
             <section id={styles.footerContact} 
                     role="presentation">
@@ -31,7 +31,7 @@ export default function Footer () {
                     </a>
                 </address>
             </section>
-            <p id={styles.mobileCopyright} >2024 <span>&#169;</span> Tomas Ruzicka. All rights reserved.</p>
+            <small id={styles.mobileCopyright}><time dateTime="2024">2024 </time><span>&copy;</span> Tomas Ruzicka. All rights reserved.</small>
       </footer>
     )
 }

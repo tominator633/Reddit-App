@@ -45,12 +45,12 @@
     width: 100%;
     height: auto;
 }
-#footerLogo p {
+.copyright {
     color: #FF6B6B;
-    font-size: 12px;
+    font-size: 14px;
     margin-top: 10px;
 }
-#footerLogo p span {
+.copyright span {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -88,7 +88,7 @@
     font-size: 14px;
 }
 @media only screen and (max-width: 600px) {
-    #footerLogo p {
+    .copyright {
         display: none;
     }
     .appFooter {
