@@ -21,21 +21,23 @@ export default function SavedReddits () {
     return (
         <>
         <h2 className={styles.savedRedditsH2}>{`Saved reddits (${savedReddits.length})`}</h2>
-        <section className={styles.savedReddits}>
+        <section className={styles.savedReddits}
+                role="region">
             <AnimatePresence> 
             {
             redditsToRender.length > 0 ?
             redditsToRender.map((content) => {
                 return (
                     <LayoutGroup key={content.id}>
-                        <motion.div className={styles.savedRedditWrapper}
+                        <motion.article className={styles.savedRedditWrapper}
                                     variants={savedRedditVar}
                                     layout
                                     exit="exit"
-                                    transition={{ duration: 0.2 }}>
+                                    transition={{ duration: 0.2 }}
+                                    role="presentation">
                             <Reddit content={content} 
                                     key={content.id} />
-                        </motion.div>
+                        </motion.article>
                             
                     </LayoutGroup>
                 )
