@@ -162,7 +162,7 @@ export default function Header () {
             <AnimatePresence>
             {searchBtn && 
             <motion.search 
-                    className={`${styles.searchRedditsForm} ${styles.gb}`}
+                    className={styles.searchRedditsForm}
                     id="searchRedditsForm"
                     aria-label="search reddits bar"
 
@@ -172,7 +172,7 @@ export default function Header () {
                     exit="hidden"
                     
                     >
-                <motion.input className={`${styles.searchField} ${styles.gb}`}
+                <motion.input className={styles.searchField}
                         onChange={handleSearchFieldChange}
                         id="searchRedditsField"
                         value={searchInput}
