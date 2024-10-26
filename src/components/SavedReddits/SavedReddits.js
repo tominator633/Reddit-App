@@ -51,28 +51,3 @@ export default function SavedReddits () {
 }
 
 
-/* <div className={`${styles.mySubreddits} ${styles.gb}`}>
-                <AnimatePresence> 
-                    {swiperSubreddits.length > 0 ?
-                    swiperSubreddits.map((subreddit) => {
-                    return    (
-                        <LayoutGroup key={subreddit.id}>
-                            <motion.div variants={mySubredditVar}
-                                        layout
-                                        initial="hidden"
-                                        animate="visible"
-                                        exit="exit"
-                                        transition={{ duration: 0.2 }}>
-                                <Subreddit content={subreddit} 
-                                            key={subreddit.id}
-                                            isSwiperSubreddit={true}/>
-                            </motion.div>
-                        </LayoutGroup>
-                        )
-                        } 
-                    )
-                    :
-                    <ErrorMessage message="You have no subreddits in your selection." />
-                    }
-                </AnimatePresence>
-                </div> */

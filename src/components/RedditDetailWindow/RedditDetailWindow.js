@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from "./RedditDetailWindow.module.css";
 import Comment from "../Comment/Comment";
@@ -33,88 +33,109 @@ export default function RedditDetailWindow () {
         dispatch(loadComments(currentReddit.permalink));
     }
 
+    useEffect(() => {
+        const handleKeyDown = (event) => {
+        if (event.key === "Escape") handleCloseButtonClick();
+        };
+        if (isVisible) {
+        document.addEventListener("keydown", handleKeyDown);
+        }
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [isVisible]);
+
     return (
-<AnimatePresence onExitComplete={() => {
-            dispatch(emptyComments());
-            navigate(-1);
-        }}>
-    {
-    isVisible &&
-    <motion.div id={redditId} 
-                className={`${styles.windowBarrier} ${styles.gb}`} 
-                role="presentation"
+        <AnimatePresence onExitComplete={() => {
+                    dispatch(emptyComments());
+                    navigate(-1);
+                }}>
+            {
+            isVisible &&
+            <motion.div id={redditId} 
+                        className={styles.windowBarrier} 
+                        role="presentation"
 
-                variants={windowBarrierVar}
-                initial="hidden"
-                animate="visible"
-                exit="hidden"
-    >
-    <motion.section className={`${styles.redditDetailWindow} ${styles.gb}`} 
-            role="dialog" 
-            aria-label="reddit detail window"
-            
-            variants={redditDetailWindowVar}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
+                        variants={windowBarrierVar}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
             >
-        <button onClick={handleCloseButtonClick} 
-                className={`${styles.closeBtn} ${styles.gb} ${styles.clearfix}`}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496"/></svg>
-        </button>
-        <div className={styles.redditDetail} >
-            <div className={`${styles.redditInfoLine} ${styles.gb}`} 
-                    role="presentation">
-                <div className={`${styles.scoreDiv} ${styles.gb}`}>
-                    <figure className={`${styles.arrowUp} ${styles.gb}`}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"></path></svg>
-                    </figure>
-                    <p className={`${styles.votes} ${styles.gb}`} 
-                        aria-label={`The score of this reddit is ${currentReddit.score}`}>{formatNumberWithSpaces(currentReddit.score)}</p>
-                </div>
-                <a className={`${styles.redditUser} ${styles.gb}`}
-                    target="_blank"
-                    rel="noreferrer noopener" 
-                    href={`https://www.reddit.com/user/${currentReddit.user}/`}>{currentReddit.user}</a>
-                <p className={`${styles.redditTimePosted} ${styles.gb}`}>{epochToAgo(currentReddit.created)}</p>
-
-            </div>
-            <div className={`${styles.redditTitle} ${styles.gb}`} role="presentation">
-                <h4>{currentReddit.title}</h4>
-            </div>
-        </div>
-        <h2 className={`${styles.commentsH2} ${styles.gb}`}>{`Comments (${comments.length})`}</h2>
-        <div className={`${styles.commentsSection} ${styles.gb}`}>
-            <AnimatePresence>
-            {isCommentsLoading ? 
-            <Loading loadingText="Loading comments..."/> 
-            :
-            hasCommentsError ?
-            <ErrorMessage message="Request failed."
-                            onClick={handleErrorCommentsReloadBtn}/>
-            :
-            comments.length === 0 ?
-            <p className={`${styles.noComments} ${styles.gb}`}>This post has no comments</p>
-            :
-            comments.map((content, index) => {
-                    return <motion.div  variants={commentVar}
-                                        initial="hidden"
-                                        animate="visible"
-                                        exit="hidden" >
+            <motion.section className={styles.redditDetailWindow} 
+                    role="dialog" 
+                    aria-label="reddit window with comments"
                     
-                                    <Comment content={content} 
-                                            key={index}
-                                                />
-                            </motion.div>
-            }) }
-            </AnimatePresence>
-            
-        </div>
-    </motion.section>
-</motion.div>
-    }
-    
+                    variants={redditDetailWindowVar}
+                    initial="hidden"
+                    animate="visible"
+                    exit="hidden"
+                    >
+                <button onClick={handleCloseButtonClick} 
+                        className={`${styles.closeBtn} ${styles.clearfix}`}
+                        aria-label="close this window"
+                        tabIndex={0}>
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024"><path fill="currentColor" d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496"/></svg>
+                </button>
+                <div className={styles.redditDetail} 
+                    aria-label="reddit info">
+                    <div className={styles.redditInfoLine} 
+                            role="presentation">
+                        <div className={styles.scoreDiv}
+                            role="presentation">
+                            <figure className={styles.arrowUp}
+                                    role="presentation">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M10.586 3L4 9.586a2 2 0 0 0-.434 2.18l.068.145A2 2 0 0 0 5.414 13H8v7a2 2 0 0 0 2 2h4l.15-.005A2 2 0 0 0 16 20l-.001-7h2.587A2 2 0 0 0 20 9.586L13.414 3a2 2 0 0 0-2.828 0"></path></svg>
+                            </figure>
+                            <p className={styles.votes} 
+                                aria-label={`The score of this reddit is ${currentReddit.score}`}>{formatNumberWithSpaces(currentReddit.score)}</p>
+                        </div>
+                        <a className={styles.redditUser}
+                            target="_blank"
+                            rel="noreferrer noopener" 
+                            href={`https://www.reddit.com/user/${currentReddit.user}/`}
+                            aria-label={`View ${currentReddit.user}'s profile on Reddit in a new tab`}>{currentReddit.user}</a>
+                        <p className={styles.redditTimePosted}
+                            aria-label={`Posted ${epochToAgo(currentReddit.created)}`}>{epochToAgo(currentReddit.created)}</p>
 
-</AnimatePresence>
+                    </div>
+                    <div className={styles.redditTitle} 
+                        role="presentation">
+                        <h4>{currentReddit.title}</h4>
+                    </div>
+                </div>
+                <h2 className={styles.commentsH2}>{`Comments (${comments.length})`}</h2>
+                <div className={styles.commentsSection}
+                    aria-live="polite">
+                    <AnimatePresence>
+                    {isCommentsLoading ? 
+                    <Loading loadingText="Loading comments..."/> 
+                    :
+                    hasCommentsError ?
+                    <ErrorMessage message="Request failed."
+                                    onClick={handleErrorCommentsReloadBtn}/>
+                    :
+                    comments.length === 0 ?
+                    <p className={styles.noComments}>This post has no comments</p>
+                    :
+                    comments.map((content, index) => {
+                            return <motion.div  variants={commentVar}
+                                                initial="hidden"
+                                                animate="visible"
+                                                exit="hidden" 
+                                                
+                                                role="presentation">
+                            
+                                            <Comment content={content} 
+                                                    key={index}
+                                                        />
+                                    </motion.div>
+                    }) }
+                    </AnimatePresence>
+                    
+                </div>
+            </motion.section>
+        </motion.div>
+            }
+            
+
+        </AnimatePresence>
     )
 }
