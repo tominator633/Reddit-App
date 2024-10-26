@@ -4,7 +4,7 @@ import styles from "./Footer.module.css";
 
 export default function Footer () {
     return (
-        <footer className={styles.gb}>
+        <footer className={styles.appFooter}>
         <section    id={styles.footerLogo} 
                     className={styles.gb} role="presentation">
             <figure role="presentation">

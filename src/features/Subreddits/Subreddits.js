@@ -27,9 +27,6 @@ export default function Subreddits () {
         return tempElement.innerHTML;
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    }
     const handleSearchFieldChange = ({ target }) => {
         const regex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\sěščřžůú]*$/;
         if (regex.test(target.value)) {
@@ -93,7 +90,7 @@ export default function Subreddits () {
             </section>
             <section className={`${styles.searchSubredditsCon} ${styles.gb}`}>
                 <h2 className={`${styles.searchSubredditsH2} ${styles.gb}`}>Explore subreddits</h2>
-                <form onSubmit={handleSubmit}
+                <search className={styles.searchSubredditsSection}
                         onKeyDown={handleKeyDown}>
                     <input className={styles.searchField} 
                             onChange={handleSearchFieldChange}
@@ -104,7 +101,7 @@ export default function Subreddits () {
                             maxLength="60"
                             pattern="[A-Za-z0-9\s]+"
                             title="Alphanumeric characters only"/>
-                </form>
+                </search>
                 <AnimatePresence>
                 {searchInput &&
                 <motion.button className={`${styles.submitSearchSubredditsBtn} ${styles.gb}`}
