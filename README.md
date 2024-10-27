@@ -82,13 +82,14 @@ The **_search bar_** appears after clicking the **_search button_** and accepts 
 The **_search button_** disappears everytime the subreddits manager is accessed or when the Saved reddits section is accessed without any reddits saved.
 
 ## Utilized technologies
-* **React JS** - Reddit.to.read is a single-page react application with function components as the main building elements. React router manages the navigation and URL structures
+* **React JS** - Reddit.to.read is a single-page react application with function components as the main building elements. React router manages the navigation and URL structures.
 * **CSS** - styles for components are written in css modules.
-* **JSX, HTML** - to mark up the content
+* **JSX, HTML** - to mark up the content.
 * **Redux** - used as a state management tool, primarily to fetch and store arrays of requested content such as posts, comments, subreddits, etc.
 * **Framer motion** - for animations, such as entering and exiting items in the app, layout animations.
-* **Jest and Enzyme** - for unit and integration tests
+* **Jest and Enzyme** - for unit and integration tests.
 * **MarkdownIt, DOMpurify** - to translate and sanitize markdown text of posts and comments to HTML.
+* **dash.js** - to establish a media player for videos of reddits posts based on their dash URL and thus enable video sound in this app.
 
 
 
