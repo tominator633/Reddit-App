@@ -62,6 +62,8 @@ export default function RedditDetailWindow () {
             <motion.section className={styles.redditDetailWindow} 
                     role="dialog" 
                     aria-label="reddit window with comments"
+                    aria-modal="true"
+                    tabIndex="-1"
                     
                     variants={redditDetailWindowVar}
                     initial="hidden"
