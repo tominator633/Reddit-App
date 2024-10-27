@@ -40,7 +40,8 @@ export default function ErrorMessage ({message, onClick}) {
             {onClick && 
             <button className={styles.errorbutton}
                     onClick={onClick}
-                    aria-live="polite">Try again</button>
+                    aria-live="polite"
+                    aria-label="Try again this action">Try again</button>
             }
             
         </div>

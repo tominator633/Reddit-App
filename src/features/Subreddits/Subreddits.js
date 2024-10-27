@@ -59,10 +59,13 @@ export default function Subreddits () {
     };
     return (
         <>
-        <div className={`${styles.srManagerCon} ${styles.gb}`}>
-            <section className={`${styles.mySubredditsCon} ${styles.gb}`}>
-                <h2 className={`${styles.mySubredditsH2} ${styles.gb}`}>My Subreddits selection</h2>
-                <div className={`${styles.mySubreddits} ${styles.gb}`}>
+        <div className={styles.srManagerCon}
+            role="presentation">
+            <section className={styles.mySubredditsCon}
+                    aria-label="My subreddits selection section">
+                <h2 className={styles.mySubredditsH2}>My Subreddits selection</h2>
+                <div className={styles.mySubreddits}
+                    role="presentation">
                 <AnimatePresence> 
                     {swiperSubreddits.length > 0 ?
                     swiperSubreddits.map((subreddit) => {
@@ -73,7 +76,8 @@ export default function Subreddits () {
                                         initial="hidden"
                                         animate="visible"
                                         exit="exit"
-                                        transition={{ duration: 0.2 }}>
+                                        transition={{ duration: 0.2 }}
+                                        role="presentation">
                                 <Subreddit content={subreddit} 
                                             key={subreddit.id}
                                             isSwiperSubreddit={true}/>
@@ -88,11 +92,16 @@ export default function Subreddits () {
                 </AnimatePresence>
                 </div>
             </section>
-            <section className={`${styles.searchSubredditsCon} ${styles.gb}`}>
-                <h2 className={`${styles.searchSubredditsH2} ${styles.gb}`}>Explore subreddits</h2>
+            <section className={styles.searchSubredditsCon}
+                    aria-label="Explore subreddits section">
+                <h2 className={styles.searchSubredditsH2}>Explore subreddits</h2>
                 <search className={styles.searchSubredditsSection}
-                        onKeyDown={handleKeyDown}>
+                        onKeyDown={handleKeyDown}
+                        role="search"
+                        aria-label="Search subreddits in Reddit database based on keywords">
                     <input className={styles.searchField} 
+                            aria-label="search field for your query"
+                            aria-required="true"
                             onChange={handleSearchFieldChange}
                             id="searchSubredditsField"
                             value={searchInput}
@@ -104,8 +113,9 @@ export default function Subreddits () {
                 </search>
                 <AnimatePresence>
                 {searchInput &&
-                <motion.button className={`${styles.submitSearchSubredditsBtn} ${styles.gb}`}
+                <motion.button className={styles.submitSearchSubredditsBtn}
                         onClick={handleSubmitSearchSubredditsBtnClick}
+                        aria-label="Submit subreddit search"
                         
                         variants={submitBtnVar}
                         initial="hidden"
@@ -113,11 +123,14 @@ export default function Subreddits () {
                         exit="hidden"
                         
                         >
-                    <svg role="presentation" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14"></path></svg>
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0c.41-.41.41-1.08 0-1.49zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14"></path></svg>
                 </motion.button>
                 }
                 </AnimatePresence>
-                <div className={`${styles.searchedSubreddits} ${styles.gb}`}>
+                <div className={styles.searchedSubreddits}
+                    aria-label="Search results"
+                    role="region" 
+                    aria-live="polite">
                 <AnimatePresence> 
                     {isSearchSubredditsLoading ?
                     <Loading loadingText="Loading subreddits..."/>
@@ -135,7 +148,8 @@ export default function Subreddits () {
                                         initial="hidden"
                                         animate="visible"
                                         exit="exit"
-                                        transition={{ duration: 0.2 }}>
+                                        transition={{ duration: 0.2 }}
+                                        role="presentation">
                                 <Subreddit content={subreddit} 
                                             key={subreddit.id}
                                             isSwiperSubreddit={false}/>
