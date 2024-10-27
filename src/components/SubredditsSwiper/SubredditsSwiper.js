@@ -67,7 +67,7 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
             <NavLink to="/popular" 
                       className={({isActive}) => isActive ? styles.activeSubreddit : styles.inactiveSubreddit}
                       onClick={handleSwiperSubredditClick}
-                      aria-current={isActive ? "current page" : undefined}
+                      aria-current={({isActive}) => isActive ? "current page" : undefined}
                       >
                 <figure id={styles.iconPopular} 
                         aria-hidden="true" >
@@ -95,7 +95,7 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
             <NavLink to={`${subreddit.name}`} 
                       className={({isActive}) => isActive ? styles.activeSubreddit : styles.inactiveSubreddit}
                       onClick={handleSwiperSubredditClick}
-                      aria-current={isActive ? "current page" : undefined}>
+                      aria-current={({isActive}) => isActive ? "current page" : undefined}>
                 {
                 <figure id={styles.icon} 
                         aria-hidden="true"
