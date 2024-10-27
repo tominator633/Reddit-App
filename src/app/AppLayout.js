@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import styles from "./AppLayout.module.css";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 
 
@@ -18,7 +19,7 @@ export default function AppLayout() {
     return (
         <>
         <Header/>
-        <main>
+        <main className={styles.appMain}>
            <Outlet/>
         </main>
         <Footer/>

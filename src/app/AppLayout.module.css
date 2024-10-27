@@ -5,6 +5,25 @@
     font-family: "Urbanist", sans-serif;
 }
 
-main {
+.appMain {
     min-height: 700px;
+    padding-top: 80px;
+}
+
+@media only screen and (max-width: 940px) {
+    .appMain {
+        padding-top: 140px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .appMain {
+        padding-top: 130px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .appMain {
+        padding-top: 120px;
+    }
 }
