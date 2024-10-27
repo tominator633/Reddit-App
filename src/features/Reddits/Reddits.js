@@ -34,17 +34,17 @@ export default function Reddits () {
         )
     } else if (hasError) {
         return (
-            <>
-            <h2 className={`${styles.redditsH2} ${styles.gb}`}>{subredditName}</h2>
+            <section role="presentation">
+            <h2 className={styles.redditsH2}>{subredditName}</h2>
             <ErrorMessage message="Request failed" 
                         onClick={handleErrorBtnClick}/>
-            </>
+            </section>
         )
     } else {
         return (
-            <>
-            <h2 className={`${styles.redditsH2} ${styles.gb}`}>{subredditName}</h2>
-            <section className={`${styles.reddits} ${styles.gb}`}>
+            <section role="presentation">
+            <h2 className={styles.redditsH2}>{subredditName}</h2>
+            <section className={styles.reddits}>
                 {
                 redditsToRender.length > 0 ?
                 redditsToRender.map((content) => (
@@ -56,7 +56,7 @@ export default function Reddits () {
                 }
             </section>
             <Outlet/>
-            </>
+            </section>
         )
     }
 }
