@@ -7,14 +7,14 @@ import {errorMessageVar} from "./errorMessageFMVariants.js";
 export default function ErrorMessage ({message, onClick}) {
 
       // Reference to focus the error message
-      const errorRef = useRef(null);
+   /*    const errorRef = useRef(null); */
 
       // Set focus to the error message when it is displayed
-      useEffect(() => {
+/*       useEffect(() => {
           if (errorRef.current) {
               errorRef.current.focus();
           }
-      }, []);
+      }, []); */
 
     return (
     <motion.section className={styles.errorContainer}
@@ -26,7 +26,7 @@ export default function ErrorMessage ({message, onClick}) {
                 role="alert" // Inform assistive technologies that this is an important message
                 aria-live="assertive" // Ensure this message is announced immediately
                 tabIndex={-1} // Make the div focusable
-                ref={errorRef} // Reference for managing focus
+                //ref={errorRef} // Reference for managing focus
     
     >
         <div className={styles.errorDiv}
