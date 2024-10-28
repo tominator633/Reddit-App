@@ -15,8 +15,7 @@ export default function Footer () {
             </section>
             <section id={styles.footerContact} 
                     role="presentation">
-                <address id={styles.socials} 
-                        className={styles.gb} >
+                <address id={styles.socials} >
                     <a href="https://github.com/tominator633" 
                         target="_blank" 
                         rel="noreferrer noopener" 
