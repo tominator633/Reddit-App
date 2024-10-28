@@ -2,11 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Comment from './Comment';
-import ReplyComment from '../ReplyComment/ReplyComment';
 import { epochToAgo, formatNumberWithSpaces } from '../../utils/utils';
-import { motion } from 'framer-motion';
-import MarkdownIt from 'markdown-it';
-import DOMPurify from 'dompurify';  
 
 jest.mock('../ReplyComment/ReplyComment', () => () => <div data-testid="reply-comment">Reply Comment</div>);
 jest.mock('../../utils/utils', () => ({
