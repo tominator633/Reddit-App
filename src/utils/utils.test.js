@@ -1,16 +1,25 @@
 
 import { epochToAgo, formatNumberWithSpaces } from './utils.js';
 
+
+
+
 describe('epochToAgo', () => {
-    beforeAll(() => {
+
+    /* USE ALWAYS beforeEach and afterEach instead of beforeAll afterAll...it was causing all tests to fail  */
+    beforeEach(() => {
         // Mock the Date.now() function to return a fixed time (e.g., 1,615,000,000,000 ms)
         jest.spyOn(Date, 'now').mockImplementation(() => 1615000000000);
     });
 
-    afterAll(() => {
+    afterEach(() => {
         // Restore the original Date.now() implementation after tests
         jest.restoreAllMocks();
     });
+
+    test("Date.now() returns the mock value", () => {
+        expect(Date.now()).toBe(1615000000000);
+    })
 
     test('returns correct output for 1 year ago', () => {
         const oneYearAgoEpoch = 1615000000 - 31556926;
