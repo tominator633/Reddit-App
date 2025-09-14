@@ -43,6 +43,18 @@ export default function RedditDetailWindow () {
         return () => document.removeEventListener("keydown", handleKeyDown);
     }, [isVisible]);
 
+        if (!currentReddit) {
+        return (
+            <AnimatePresence>
+                <motion.div className={styles.windowBarrier} role="presentation">
+                    <motion.section className={styles.redditDetailWindow} role="dialog" aria-label="reddit window with comments" aria-modal="true" tabIndex="-1">
+                        <Loading loadingText="Loading post details..." />
+                    </motion.section>
+                </motion.div>
+            </AnimatePresence>
+        );
+    }
+
     return (
         <AnimatePresence onExitComplete={() => {
                     dispatch(emptyComments());
