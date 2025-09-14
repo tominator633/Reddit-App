@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const proxyUrl = "https://corsproxy.io/?";
 const baseUrl = "https://www.reddit.com";
 
 
@@ -7,7 +8,7 @@ export const loadReddits = createAsyncThunk(
     "reddits/loadReddits",
     async (subreddit = "popular") => {
         const searchEndpoint = `/r/${subreddit}.json`;
-        const response = await fetch(baseUrl + searchEndpoint);
+        const response = await fetch(proxyUrl + baseUrl + searchEndpoint);
         if (response.ok) {
             const jsonResponse = await response.json();
             const redditsArr = jsonResponse.data.children.map((post) => {
