@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./SavedReddits.module.css";
 import { useSelector } from 'react-redux';
 import { selectSavedReddits, filterReddits} from "../../features/Reddits/redditsSlice";
@@ -17,6 +17,10 @@ export default function SavedReddits () {
     const title = searchParams.get("title");
 
     const redditsToRender = title ? filterReddits(title,savedReddits) : savedReddits;
+
+      useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      },[]);
 
     return (
         <>

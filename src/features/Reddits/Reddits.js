@@ -23,6 +23,10 @@ export default function Reddits () {
         dispatch(loadReddits(subredditName));
     }, [dispatch, subredditName]);
 
+     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [subredditName]);
+
 
     const handleErrorBtnClick = () => {
             dispatch(loadReddits(subredditName));

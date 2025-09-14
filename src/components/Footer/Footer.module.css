@@ -20,7 +20,7 @@
 /*********************FOOTER **/
 /*********************FOOTER **/
 .appFooter {
-    margin-top: 200px;
+  
     border-top: 1px solid #c4dde2;
     width: 100%;
     padding-top: 100px;
@@ -30,6 +30,7 @@
     justify-content: space-around;
     color:#FF6B6B;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #DAF6FB;
 }
 .appFooter a {
     text-decoration: none;

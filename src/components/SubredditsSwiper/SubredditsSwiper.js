@@ -84,13 +84,7 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
                         className={styles.swiperSlide}
                         role="group"
                         aria-label={`Subreddit: ${subreddit.name}`}>
-            <motion.div
-            variants={swiperSubredditVar}
-            initial="hidden"
-            animate="visible"
-            layout
-            role="presentation"
-            >
+    
 
             <NavLink to={`${subreddit.name}`} 
                       className={({isActive}) => isActive ? styles.activeSubreddit : styles.inactiveSubreddit}
@@ -113,7 +107,6 @@ export default function SubredditsSwiper ({setSearchBtn, setSearchInput}) {
                 }
                 <h3>{subreddit.name}</h3>
             </NavLink>
-            </motion.div>
           </SwiperSlide>
         )
       )}

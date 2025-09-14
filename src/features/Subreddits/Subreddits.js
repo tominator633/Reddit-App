@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import styles from "./Subreddits.module.css";
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import {submitBtnVar, mySubredditVar, searchedSubredditVar} from "./subredditsFMVariants";
@@ -20,6 +20,10 @@ export default function Subreddits () {
 
     const [searchInput, setSearchInput] = useState("");
     const searchInputRef = useRef(null);
+
+      useEffect(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          },[]);
 
     const sanitizeInput = (input) => {
         const tempElement = document.createElement('div');
