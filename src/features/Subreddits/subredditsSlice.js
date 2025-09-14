@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {initialSubredditsSelection} from "../../utils/utils";
 
+const proxyUrl = "https://corsproxy.io/?";
 const baseUrl = "https://www.reddit.com";
 
 export const searchSubreddits = createAsyncThunk(
     "subreddits/searchSubreddits",
     async (searchInput) => {
         const searchEndpoint = `/subreddits/search.json?q=${searchInput}&limit=20`;
-        const response = await fetch(baseUrl + searchEndpoint);
+        const response = await fetch(proxyUrl + baseUrl + searchEndpoint);
         if (response.ok) {
             const jsonResponse = await response.json();
             const searchedSubredditsArr = jsonResponse.data.children.map((subreddit) => {

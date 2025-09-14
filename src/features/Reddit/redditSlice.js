@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
+const proxyUrl = "https://corsproxy.io/?";
 const baseUrl = "https://api.reddit.com";
 
  export const loadComments = createAsyncThunk(
     "reddit/loadComments",
     async (permalink) => {
         const searchEndpoint = `/${permalink}.json`;
-        const response = await fetch(baseUrl + searchEndpoint);
+        const response = await fetch(proxyUrl + baseUrl + searchEndpoint);
         if (response.ok) {
             const jsonResponse = await response.json();
             const commentsArr = jsonResponse[1].data.children.map((post) => {
