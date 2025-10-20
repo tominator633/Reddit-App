@@ -96,7 +96,7 @@ The **_search button_** disappears everytime the subreddits manager is accessed 
 ## License
 ### MIT License
 
-Copyright (c) 2024 Tomas Ruzicka
+Copyright (c) 2025 Tomas Ruzicka
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
