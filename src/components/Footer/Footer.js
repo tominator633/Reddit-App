@@ -30,7 +30,7 @@ export default function Footer () {
                     </a>
                 </address>
             </section>
-            <small id={styles.mobileCopyright}><time dateTime="2024">2024 </time><span>&copy;</span> Tomas Ruzicka. All rights reserved.</small>
+            <small id={styles.mobileCopyright}><time dateTime="2024">2025 </time><span>&copy;</span> Tomas Ruzicka. All rights reserved.</small>
       </footer>
     )
 }
